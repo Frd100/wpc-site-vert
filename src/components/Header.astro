@@ -1,0 +1,194 @@
+---
+// Header component
+---
+
+<nav class="main-navigation bg-gray-900">
+  <div class="main-navigation__container max-w-full mx-0 px-6 md:px-6">
+    <div class="main-navigation__content flex justify-start items-center m-0 py-4 pl-8 gap-12 relative">
+      <!-- Logo -->
+      <div class="main-navigation__logo">
+        <a href="/" class="main-navigation__logo-link">
+          <div class="main-navigation__logo-text text-white font-bold text-xl leading-tight" data-text="WEST PARIS&#10;CONSULTING">
+            WEST PARIS<br>CONSULTING
+          </div>
+        </a>
+      </div>
+
+      <!-- Bouton hamburger mobile -->
+      <button 
+        class="main-navigation__toggle md:hidden absolute right-4 bg-transparent border-none cursor-pointer z-50" 
+        id="mobile-menu-toggle"
+        aria-label="Ouvrir le menu de navigation" 
+        aria-expanded="false"
+      >
+        <div class="hamburger-icon flex flex-col gap-1.5 w-6 h-6">
+          <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
+          <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
+          <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
+        </div>
+      </button>
+
+      <!-- Liens de navigation -->
+      <div class="main-navigation__links hidden md:flex gap-6 items-center" id="desktop-menu" role="navigation" aria-label="Menu principal">
+        <a href="/" class="main-navigation__link text-white hover:text-primary-blue transition-colors">
+          <span>Accueil</span>
+        </a>
+        <a href="/equipe" class="main-navigation__link text-white hover:text-primary-blue transition-colors">
+          <span>Notre Équipe</span>
+        </a>
+        <a href="/contact" class="main-navigation__link text-white hover:text-primary-blue transition-colors">
+          <span>Contact</span>
+        </a>
+        <a href="/nous-rejoindre" class="main-navigation__link text-white hover:text-primary-blue transition-colors">
+          <span>Carrière</span>
+        </a>
+      </div>
+      <!-- Menu mobile (caché par défaut) -->
+      <div class="main-navigation__links hidden md:hidden fixed top-0 left-0 w-full h-screen bg-gray-900 z-40 flex flex-col justify-center items-center gap-8" id="mobile-menu" role="navigation" aria-label="Menu principal">
+        <a href="/" class="main-navigation__link text-white hover:text-primary-blue transition-colors text-xl">
+          <span>Accueil</span>
+        </a>
+        <a href="/equipe" class="main-navigation__link text-white hover:text-primary-blue transition-colors text-xl">
+          <span>Notre Équipe</span>
+        </a>
+        <a href="/contact" class="main-navigation__link text-white hover:text-primary-blue transition-colors text-xl">
+          <span>Contact</span>
+        </a>
+        <a href="/nous-rejoindre" class="main-navigation__link text-white hover:text-primary-blue transition-colors text-xl">
+          <span>Carrière</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    let gsap;
+    try {
+      await waitForGSAP();
+      const gsapResult = getGSAP();
+      gsap = gsapResult.gsap;
+    } catch (error) {
+      gsap = null;
+    }
+    
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerLines = document.querySelectorAll('.hamburger-line');
+    
+    if (!mobileToggle || !mobileMenu) return;
+
+    let isOpen = false;
+
+    mobileToggle.addEventListener('click', () => {
+      isOpen = !isOpen;
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      
+      if (gsap) {
+        // Menu avec animations GSAP
+        if (isOpen) {
+          // Ouvrir le menu
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-screen', 'bg-gray-900', 'z-40', 'flex', 'flex-col', 'justify-center', 'items-center', 'gap-8');
+          
+          gsap.fromTo(mobileMenu, 
+            { x: '-100%', opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }
+          );
+          
+          // Animation des liens
+          const links = mobileMenu.querySelectorAll('a');
+          gsap.from(links, {
+            y: 30,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.4,
+            ease: 'power2.out',
+            delay: 0.2
+          });
+          
+          // Animation hamburger
+          hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+          hamburgerLines[1].style.opacity = '0';
+          hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        } else {
+          // Fermer le menu
+          gsap.to(mobileMenu, {
+            x: '-100%',
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power3.in',
+            onComplete: () => {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'h-screen', 'bg-gray-900', 'z-40', 'flex', 'flex-col', 'justify-center', 'items-center', 'gap-8');
+            }
+          });
+          
+          // Réinitialiser hamburger
+          hamburgerLines.forEach(line => {
+            line.style.transform = '';
+            line.style.opacity = '';
+          });
+        }
+      } else {
+        // Menu basique sans GSAP (fallback)
+        if (isOpen) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-screen', 'bg-gray-900', 'z-40', 'flex', 'flex-col', 'justify-center', 'items-center', 'gap-8');
+        } else {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('fixed', 'top-0', 'left-0', 'w-full', 'h-screen', 'bg-gray-900', 'z-40', 'flex', 'flex-col', 'justify-center', 'items-center', 'gap-8');
+        }
+      }
+    });
+
+    // Fermer le menu au clic sur un lien
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) {
+          mobileToggle.click();
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .main-navigation {
+    position: static;
+    background: #202229;
+    padding: 0.5rem 0 0 0;
+    margin: 0;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .main-navigation__logo-text {
+    font-family: 'Inter', sans-serif;
+    white-space: pre-line;
+  }
+
+  .main-navigation__link {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .main-navigation {
+      background: #202229;
+    }
+    
+    .main-navigation__content {
+      gap: 1.5rem;
+    }
+  }
+</style>
+

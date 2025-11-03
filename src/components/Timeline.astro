@@ -1,0 +1,243 @@
+---
+// Timeline Component for Processus Section
+---
+
+<section class="cmp-about-section about-section py-20 px-4 bg-gray-100">
+  <div class="cmp-about-container about-container max-w-7xl mx-auto">
+    <!-- Titre NOS PROCESSUS -->
+    <div class="wpc-expertise-title-wrapper mb-16">
+      <div class="huge-letters text-4xl md:text-6xl font-bold text-center">
+        <span animation-direction="below-custom" class="huge-letters__title scroll-animation">
+          <span class="is-word" aria-hidden="true">
+            <i aria-hidden="true">N</i>
+            <i aria-hidden="true">O</i>
+            <i aria-hidden="true">S</i>
+          </span>
+        </span>
+        <br>
+        <span animation-direction="below-custom" class="huge-letters__title scroll-animation">
+          <span class="is-word" aria-hidden="true">
+            <i aria-hidden="true">P</i>
+            <i aria-hidden="true">R</i>
+            <i aria-hidden="true">O</i>
+            <i aria-hidden="true">C</i>
+            <i aria-hidden="true">E</i>
+            <i aria-hidden="true">S</i>
+            <i aria-hidden="true">S</i>
+            <i aria-hidden="true">U</i>
+            <i aria-hidden="true">S</i>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Section Processus -->
+    <div id="section-wpc-processus" class="cmp-container">
+      <div class="cmp-processus-section section-gray bg-white rounded-2xl p-8 md:p-12">
+        <div class="cmp-processus-content">
+          <!-- Timeline Processus -->
+          <div class="cmp-timeline flex flex-col gap-8">
+            <div class="cmp-timeline-step flex gap-6">
+              <div class="cmp-timeline-step__number flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-lg">
+                1
+              </div>
+              <div class="cmp-timeline-step__content">
+                <h3 class="cmp-timeline-step__title text-xl font-bold mb-2">Prise de contact</h3>
+                <p class="cmp-timeline-step__description text-gray-600">
+                  Un premier échange permettant d'identifier les besoins.
+                </p>
+              </div>
+            </div>
+
+            <div class="cmp-timeline-step flex gap-6">
+              <div class="cmp-timeline-step__number flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-lg">
+                2
+              </div>
+              <div class="cmp-timeline-step__content">
+                <h3 class="cmp-timeline-step__title text-xl font-bold mb-2">Proposition d'intervention</h3>
+                <p class="cmp-timeline-step__description text-gray-600">
+                  Élaboration de la proposition sous 72 heures.
+                </p>
+              </div>
+            </div>
+
+            <div class="cmp-timeline-step flex gap-6">
+              <div class="cmp-timeline-step__number flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-lg">
+                3
+              </div>
+              <div class="cmp-timeline-step__content">
+                <h3 class="cmp-timeline-step__title text-xl font-bold mb-2">Réunion de lancement</h3>
+                <p class="cmp-timeline-step__description text-gray-600">
+                  Une réunion de cadrage formalisant les attentes et précisant les livrables.
+                </p>
+              </div>
+            </div>
+
+            <div class="cmp-timeline-step flex gap-6">
+              <div class="cmp-timeline-step__number flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-lg">
+                4
+              </div>
+              <div class="cmp-timeline-step__content">
+                <h3 class="cmp-timeline-step__title text-xl font-bold mb-2">Phase opérationnelle</h3>
+                <p class="cmp-timeline-step__description text-gray-600">
+                  Les Chefs de Projet pilotent la mission et assurent le suivi régulier avec le client.
+                </p>
+              </div>
+            </div>
+
+            <div class="cmp-timeline-step flex gap-6">
+              <div class="cmp-timeline-step__number flex-shrink-0 w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center font-bold text-lg">
+                5
+              </div>
+              <div class="cmp-timeline-step__content">
+                <h3 class="cmp-timeline-step__title text-xl font-bold mb-2">Restitution et clôture</h3>
+                <p class="cmp-timeline-step__description text-gray-600">
+                  Présentation complète des résultats et remise du livrable final.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await waitForGSAP();
+    } catch (error) {
+      return;
+    }
+
+    const { gsap, ScrollTrigger } = getGSAP();
+    
+    if (!gsap || !ScrollTrigger) {
+      return;
+    }
+
+    // Animation des lettres géantes "NOS PROCESSUS"
+    const scrollElements = document.querySelectorAll('.scroll-animation');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-animation--in-viewport');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    scrollElements.forEach(element => {
+      observer.observe(element);
+    });
+
+    // Animation Timeline Processus
+    const timeline = document.querySelector('.cmp-timeline');
+    if (!timeline) return;
+
+    const timelineSteps = timeline.querySelectorAll('.cmp-timeline-step');
+    if (timelineSteps.length === 0) return;
+
+    // État initial : tous les éléments invisibles
+    timelineSteps.forEach(step => {
+      const number = step.querySelector('.cmp-timeline-step__number');
+      const title = step.querySelector('.cmp-timeline-step__title');
+      const description = step.querySelector('.cmp-timeline-step__description');
+
+      if (number) gsap.set(number, { scale: 0, opacity: 0 });
+      if (title) gsap.set(title, { opacity: 0, x: -20 });
+      if (description) gsap.set(description, { opacity: 0, y: 10 });
+    });
+
+    // Timeline principale avec ScrollTrigger
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: timeline,
+        start: 'top 70%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Animation séquentielle des étapes
+    timelineSteps.forEach((step, index) => {
+      const number = step.querySelector('.cmp-timeline-step__number');
+      const title = step.querySelector('.cmp-timeline-step__title');
+      const description = step.querySelector('.cmp-timeline-step__description');
+
+      if (number && title && description) {
+        // Animation du numéro (scale + fade)
+        tl.to(number, {
+          scale: 1,
+          opacity: 1,
+          duration: 0.4,
+          ease: 'back.out(1.7)'
+        }, index * 0.2);
+
+        // Animation du titre (fade + slide)
+        tl.to(title, {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          ease: 'power2.out'
+        }, index * 0.2 + 0.1);
+
+        // Animation de la description (fade + slide up)
+        tl.to(description, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power2.out'
+        }, index * 0.2 + 0.2);
+      }
+    });
+  });
+</script>
+
+<style>
+  .cmp-about-section {
+    padding: 5rem 1rem;
+    background-color: #f3f4f6;
+  }
+
+  .huge-letters {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .huge-letters__title {
+    display: inline-block;
+  }
+
+  .huge-letters__title .is-word {
+    display: inline-block;
+  }
+
+  .huge-letters__title .is-word i {
+    display: inline-block;
+  }
+
+  .cmp-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .cmp-timeline-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .cmp-about-section {
+      padding: 3rem 1rem;
+    }
+  }
+</style>
+

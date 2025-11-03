@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const teamMembers = [
+  {
+    name: 'Farid Seridj',
+    role: 'Président',
+    linkedin: 'https://www.linkedin.com/in/farid-seridj'
+  },
+  {
+    name: 'Wahil Derdega',
+    role: 'Trésorier',
+    linkedin: 'https://www.linkedin.com/in/wahil-derdega-224794231/'
+  },
+  {
+    name: 'Amine Rherbaoui',
+    role: 'Secrétaire Général',
+    linkedin: 'https://www.linkedin.com/in/rherbaoui-amine/'
+  },
+  {
+    name: 'Yazid Badache',
+    role: 'Chef de Projet Junior',
+    linkedin: 'https://www.linkedin.com/in/yazid-badache-797264267/'
+  },
+  {
+    name: 'Alexis Fotsa Meli',
+    role: 'Chef de Projet Junior',
+    linkedin: 'https://www.linkedin.com/in/alexis-fotsam/'
+  }
+];
+---
+
+<BaseLayout 
+  title="Notre Équipe - West Paris Consulting"
+  description="Découvrez l'équipe dirigeante de West Paris Consulting : des étudiants motivés et compétents au service de l'innovation locale."
+  pageId="page-wpc-equipe"
+  ogUrl="https://westparisconsulting.fr/equipe"
+>
+  <!-- Hero Section Équipe -->
+  <div class="hero-section bg-primary-blue py-16 px-4">
+    <div class="hero-content max-w-4xl mx-auto text-center">
+      <h1 class="hero-title text-3xl md:text-4xl font-bold text-white">Notre Équipe</h1>
+    </div>
+  </div>
+
+  <!-- Section texte intro équipe -->
+  <div class="cmp-equipe-intro-section py-12 px-4">
+    <div class="cmp-equipe-intro-content max-w-4xl mx-auto text-center">
+      <p class="cmp-equipe-intro-text text-lg md:text-xl text-gray-700">
+        Découvrez les membres qui composent notre équipe.<br>
+        Chacun apporte son expertise et sa créativité pour répondre aux besoins concrets des projets qui nous sont confiés.
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <main class="main py-12 px-4">
+    <div id="main-wpc-content" class="cmp-container max-w-6xl mx-auto">
+      <div class="section">
+        <!-- Section Équipe -->
+        <div id="section-wpc-equipe" class="cmp-container">
+          <div class="cmp-equipe-section">
+            <div class="cmp-equipe-content team-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamMembers.map((member) => (
+                <div class="cmp-membre-item team-item bg-white rounded-lg p-6 shadow-md">
+                  <div class="team-item-icon-wrapper w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center mb-4">
+                    <svg class="team-item-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path d="M7 5L13 10L7 15V5Z" fill="white" />
+                    </svg>
+                  </div>
+                  <h2 class="cmp-membre-name team-name text-xl font-bold mb-2">
+                    <a 
+                      href={member.linkedin} 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-gray-900 hover:text-primary-blue transition-colors"
+                    >
+                      {member.name}
+                    </a>
+                  </h2>
+                  <div class="team-item-separator w-12 h-0.5 bg-primary-blue mb-2"></div>
+                  <p class="cmp-membre-role team-role text-gray-600">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await waitForGSAP();
+    } catch (error) {
+      return;
+    }
+
+    const { gsap, SplitText, ScrollTrigger } = getGSAP();
+    
+    if (!gsap || !SplitText || !ScrollTrigger) {
+      return;
+    }
+
+    // Animation du texte intro
+    const introText = document.querySelector('.cmp-equipe-intro-text');
+    if (introText) {
+      gsap.from(introText, {
+        opacity: 0,
+        x: 60,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: introText,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Animation des noms de l'équipe
+    const teamItems = document.querySelectorAll('.cmp-membre-item.team-item');
+    if (teamItems.length === 0) return;
+
+    teamItems.forEach((item) => {
+      const nameElement = item.querySelector('.cmp-membre-name.team-name');
+      const roleElement = item.querySelector('.cmp-membre-role.team-role');
+
+      if (!nameElement || !roleElement) return;
+
+      // SplitText sur le nom par mots
+      const split = new SplitText(nameElement, { type: 'words' });
+
+      if (!split.words || split.words.length === 0) {
+        gsap.set(nameElement, { opacity: 1 });
+        gsap.set(roleElement, { opacity: 1 });
+        return;
+      }
+
+      // État initial
+      gsap.set(split.words, {
+        opacity: 0,
+        y: 40
+      });
+
+      gsap.set(roleElement, {
+        opacity: 0
+      });
+
+      // Timeline pour chaque membre
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      // Animation par mots pour le nom
+      tl.to(split.words, {
+        duration: 0.5,
+        opacity: 1,
+        y: 0,
+        ease: 'power3.out',
+        stagger: 0.03
+      });
+
+      // Animation fade pour le rôle
+      tl.to(roleElement, {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, '-=0.2');
+    });
+  });
+</script>
+
+<style>
+  .hero-section {
+    background-color: #1B86FF;
+    padding: 4rem 1rem;
+  }
+
+  .cmp-equipe-intro-section {
+    padding: 3rem 1rem;
+  }
+
+  .team-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .team-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .team-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .team-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .team-item-separator {
+    width: 3rem;
+    height: 2px;
+    background-color: #1B86FF;
+    margin: 0.5rem 0;
+  }
+</style>
+

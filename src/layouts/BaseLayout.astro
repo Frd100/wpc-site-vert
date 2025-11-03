@@ -1,0 +1,150 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  pageId?: string;
+  ogImage?: string;
+  ogUrl?: string;
+}
+
+const {
+  title,
+  description = "West Paris Consulting (WPC) est une association étudiante de l'Université Paris Nanterre qui accompagne entreprises et organisations dans leurs projets de transformation.",
+  pageId = 'page-wpc-main',
+  ogImage = 'https://westparisconsulting.fr/images/banner.webp',
+  ogUrl = 'https://westparisconsulting.fr/',
+} = Astro.props;
+
+// Structured Data JSON-LD
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "West Paris Consulting",
+  "alternateName": "WPC",
+  "url": "https://westparisconsulting.fr",
+  "description": "Association étudiante de l'Université Paris Nanterre qui accompagne entreprises et organisations dans leurs projets de transformation et d'innovation.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "200 Avenue de la République",
+    "addressLocality": "Nanterre",
+    "postalCode": "92000",
+    "addressCountry": "FR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "contact@westparisconsulting.fr",
+    "contactType": "customer service"
+  },
+  "foundingDate": "2024",
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Université Paris Nanterre"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="fr-FR" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-language" content="fr-FR">
+
+  <!-- WPC Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={ogUrl}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:site_name" content="WPC">
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:locale" content="fr_FR">
+
+  <title>{title}</title>
+  <meta name="description" content={description}>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+
+  <!-- GSAP via CDN (gratuit depuis avril 2024) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</head>
+<body class="page basicpage" id={pageId} data-cmp-link-accessibility-enabled="" data-cmp-link-accessibility-text="s'ouvre dans un nouvel onglet" data-cmp-data-layer-enabled="">
+  <div class="root container responsivegrid">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+
+  <!-- Global scripts -->
+  <script>
+    // Smooth scrolling pour les ancres
+    document.addEventListener('DOMContentLoaded', () => {
+      const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+      smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#' || !href) return;
+          
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Classe active sur les liens de navigation
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.main-navigation__link');
+      
+      navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (!linkPath) return;
+        
+        // Normaliser les chemins (enlever index.html, ajouter / au début si nécessaire)
+        const normalizedCurrent = currentPath === '/' || currentPath.endsWith('/index.html') ? '/' : currentPath;
+        const normalizedLink = linkPath === '/' || linkPath === '/index.html' || linkPath === 'index.html' ? '/' : linkPath;
+        
+        if (normalizedCurrent === normalizedLink || 
+            (normalizedCurrent === '/' && normalizedLink === '/') ||
+            (normalizedCurrent.endsWith(normalizedLink) && normalizedLink !== '/')) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+

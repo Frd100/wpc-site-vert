@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Contact - West Paris Consulting"
+  description="Contactez West Paris Consulting pour vos projets de conseil. Notre équipe étudiante vous accompagne dans vos projets de transformation et d'innovation."
+  pageId="page-wpc-contact"
+  ogUrl="https://westparisconsulting.fr/contact"
+>
+  <!-- Hero Section Contact -->
+  <div class="hero-section bg-primary-blue py-16 px-4">
+    <div class="hero-content max-w-4xl mx-auto text-center">
+      <h1 class="hero-title text-3xl md:text-4xl font-bold text-white">Contact</h1>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main py-12 px-4">
+    <div id="main-wpc-content" class="cmp-container max-w-7xl mx-auto">
+      <div class="section">
+        <!-- Section Contact -->
+        <div class="contact-form-section">
+          <div class="contact-form-container grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <!-- Informations de contact à gauche -->
+            <div class="contact-info-wrapper">
+              <h2 class="contact-location-title text-2xl font-bold mb-6 text-gray-900">Nanterre</h2>
+              <div class="contact-address mb-6 text-gray-700">
+                <p>200 Avenue de la République</p>
+                <p>92000 Nanterre</p>
+                <p>France</p>
+              </div>
+              <div class="contact-email mb-6 text-gray-700">
+                <p>contact@westparisconsulting.fr</p>
+              </div>
+              <a 
+                href="https://www.google.com/maps/place/200+Avenue+de+la+R%C3%A9publique,+92000+Nanterre,+France"
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="hero-button button button--stroke inline-block px-6 py-3 border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white transition-colors relative overflow-hidden"
+                data-block="button"
+              >
+                <span class="button__flair absolute inset-0 rounded-full opacity-0 pointer-events-none"></span>
+                <span class="button__label relative z-10">Voir sur Google Maps</span>
+              </a>
+            </div>
+
+            <!-- Formulaire à droite -->
+            <div class="contact-form-iframe-wrapper">
+              <iframe 
+                src="https://tally.so/r/3NegqO" 
+                width="100%" 
+                height="700" 
+                frameborder="0"
+                title="Formulaire de contact" 
+                style="border: none; border-radius: 0.5rem;"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await waitForGSAP();
+    } catch (error) {
+      return;
+    }
+
+    const { gsap, ScrollTrigger } = getGSAP();
+    
+    if (!gsap || !ScrollTrigger) {
+      return;
+    }
+
+    // Animation du formulaire au scroll
+    const formSection = document.querySelector('.contact-form-section');
+    const formIframe = formSection?.querySelector('.contact-form-iframe-wrapper iframe');
+    
+    if (formSection && formIframe) {
+      gsap.set(formIframe, {
+        opacity: 0,
+        y: 40
+      });
+
+      gsap.to(formIframe, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: formSection,
+          start: 'top 70%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+
+    // Animation du bouton flair - utilise l'utilitaire Button
+    const { initStrokeButtons } = await import('../scripts/button-animation');
+    initStrokeButtons();
+  });
+</script>
+
+<style>
+  .hero-section {
+    background-color: #1B86FF;
+    padding: 4rem 1rem;
+  }
+
+  .contact-form-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-form-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .button__flair {
+    width: 0;
+    height: 0;
+    background: rgba(27, 134, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+

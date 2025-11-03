@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Carrière - West Paris Consulting"
+  description="Rejoignez West Paris Consulting ! Découvrez nos opportunités d'engagement et postulez pour faire partie de notre équipe étudiante de conseil."
+  pageId="page-wpc-nous-rejoindre"
+  ogUrl="https://westparisconsulting.fr/nous-rejoindre"
+>
+  <!-- Hero Section Carrière -->
+  <div class="hero-section bg-primary-blue py-16 px-4">
+    <div class="hero-content max-w-4xl mx-auto text-center">
+      <h1 class="hero-title text-3xl md:text-4xl font-bold text-white">Carrière</h1>
+    </div>
+  </div>
+
+  <!-- WPC Main Content -->
+  <main class="main py-12 px-4">
+    <div id="main-wpc-content" class="cmp-container max-w-7xl mx-auto">
+      <div class="section">
+        <!-- Section Formulaire avec Texte -->
+        <div class="contact-form-section">
+          <div class="contact-form-container grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <!-- Texte à gauche -->
+            <div class="nous-rejoindre-text-wrapper">
+              <p class="nous-rejoindre-intro-text text-lg md:text-xl text-gray-700 mb-6">
+                Rejoindre West Paris Consulting, c'est s'engager dans une aventure professionnelle enrichissante.
+              </p>
+              <p class="nous-rejoindre-intro-text text-lg md:text-xl text-gray-700">
+                Cette expérience vous permettra de mettre en pratique vos connaissances académiques dans un cadre professionnel.
+              </p>
+            </div>
+
+            <!-- Formulaire à droite -->
+            <div class="contact-form-iframe-wrapper">
+              <iframe 
+                src="https://tally.so/r/nPagAb" 
+                width="100%" 
+                height="700" 
+                frameborder="0"
+                title="Formulaire de candidature" 
+                style="border: none; border-radius: 0.5rem;"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await waitForGSAP();
+    } catch (error) {
+      return;
+    }
+
+    const { gsap, ScrollTrigger } = getGSAP();
+    
+    if (!gsap || !ScrollTrigger) {
+      return;
+    }
+
+    // Animation du texte intro
+    const introTexts = document.querySelectorAll('.nous-rejoindre-intro-text');
+    introTexts.forEach(introText => {
+      gsap.from(introText, {
+        opacity: 0,
+        x: 60,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: introText,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // Animation du formulaire au scroll
+    const formSection = document.querySelector('.contact-form-section');
+    const formIframe = formSection?.querySelector('.contact-form-iframe-wrapper iframe');
+    
+    if (formSection && formIframe) {
+      gsap.set(formIframe, {
+        opacity: 0,
+        y: 40
+      });
+
+      gsap.to(formIframe, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: formSection,
+          start: 'top 70%',
+          toggleActions: 'play none none none'
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  .hero-section {
+    background-color: #1B86FF;
+    padding: 4rem 1rem;
+  }
+
+  .contact-form-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .contact-form-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
+

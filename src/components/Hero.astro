@@ -1,0 +1,234 @@
+---
+// Hero Component
+---
+
+<section class="hero-minimal relative overflow-hidden">
+  <div class="hero-banner-container absolute inset-0 z-0">
+    <img 
+      src="/images/banner.webp"
+      alt="Image de fond de la section hero de West Paris Consulting, association étudiante de conseil de l'Université Paris Nanterre"
+      class="hero-banner-image w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  
+  <div class="hero-container relative z-10 flex flex-col justify-center items-center min-h-screen px-4 py-20 text-center">
+    <h1 class="hero-title text-4xl md:text-6xl font-bold text-white mb-6">
+      <div class="line">
+        <span class="text">Apprendre et agir</span>
+      </div>
+      <div class="line">
+        <span class="text">ensemble</span>
+      </div>
+    </h1>
+    <p class="hero-subtitle text-lg md:text-xl text-white mb-8">
+      Des étudiants engagés au service<br>
+      de projets concrets.
+    </p>
+    <div class="hero-button-container">
+      <a href="/contact" class="hero-button button button--stroke inline-block px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-colors relative overflow-hidden" data-block="button">
+        <span class="button__flair absolute inset-0 rounded-full opacity-0 pointer-events-none"></span>
+        <span class="button__label relative z-10" data-label="Nous contacter">Nous contacter</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Attendre le chargement de GSAP depuis le CDN
+    try {
+      await waitForGSAP();
+    } catch (error) {
+      console.warn('GSAP not loaded, animations skipped');
+      return;
+    }
+
+    const { gsap, SplitText, ScrollTrigger } = getGSAP();
+    
+    if (!gsap || !SplitText) {
+      return;
+    }
+
+    // Animation SplitText pour le titre hero
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+      const dataText = document.querySelectorAll('.hero-title .line .text');
+      if (dataText.length > 0) {
+        const split = new SplitText(dataText, { type: 'words' });
+        
+        gsap.from(split.words, {
+          duration: 0.6,
+          opacity: 0,
+          y: 40,
+          ease: 'power3.out',
+          stagger: 0.03
+        });
+      }
+    }
+
+    // Effets pour l'image banner hero
+    const bannerImage = document.querySelector('.hero-banner-image');
+    const heroSection = document.querySelector('.hero-minimal');
+    
+    if (bannerImage && heroSection && ScrollTrigger) {
+      // Animation d'apparition initiale
+      gsap.fromTo(bannerImage,
+        {
+          opacity: 0,
+          scale: 1.15,
+          filter: 'blur(10px)'
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: 1.5,
+          ease: 'power3.out',
+          delay: 0.2
+        }
+      );
+
+      // Effet de parallaxe et zoom léger au scroll
+      gsap.to(bannerImage, {
+        yPercent: 30,
+        scale: 1.1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+
+      // Effet de lumière animée subtile
+      const bannerContainer = document.querySelector('.hero-banner-container');
+      if (bannerContainer) {
+        const lightEffect = document.createElement('div');
+        lightEffect.style.cssText = `
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(
+            ellipse 800px 600px at 50% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 70%
+          );
+          pointer-events: none;
+          z-index: 1;
+          opacity: 0;
+        `;
+        bannerContainer.appendChild(lightEffect);
+
+        // Animation de la lumière
+        gsap.to(lightEffect, {
+          opacity: 0.6,
+          duration: 3,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        });
+      }
+
+      // Effet de mouvement léger au hover (si desktop)
+      if (window.innerWidth >= 769) {
+        heroSection.addEventListener('mousemove', (e: MouseEvent) => {
+          const rect = heroSection.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+
+          gsap.to(bannerImage, {
+            x: x,
+            y: y,
+            duration: 1,
+            ease: 'power2.out'
+          });
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+          gsap.to(bannerImage, {
+            x: 0,
+            y: 0,
+            duration: 1,
+            ease: 'power2.out'
+          });
+        });
+      }
+    }
+
+    // Animation du bouton flair avec GSAP utils (comme dans main.js original)
+    try {
+      const { initStrokeButtons } = await import('../scripts/button-animation');
+      initStrokeButtons();
+    } catch (error) {
+      console.warn('Button animation module not loaded');
+    }
+  });
+</script>
+
+<style>
+  .hero-minimal {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero-banner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 5rem 1rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .button__flair {
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 768px) {
+    .hero-container {
+      padding: 3rem 1rem;
+    }
+  }
+</style>
+

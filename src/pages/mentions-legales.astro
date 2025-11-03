@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Mentions Légales - West Paris Consulting"
+  description="Mentions légales de West Paris Consulting - Association étudiante de l'Université Paris Nanterre."
+  pageId="page-wpc-mentions-legales"
+  ogUrl="https://westparisconsulting.fr/mentions-legales"
+>
+  <!-- Hero Section Mentions Légales -->
+  <div class="hero-section bg-primary-blue py-16 px-4">
+    <div class="hero-content max-w-4xl mx-auto text-center">
+      <h1 class="hero-title text-3xl md:text-4xl font-bold text-white">Mentions Légales</h1>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <main class="main py-12 px-4">
+    <div id="main-wpc-content" class="cmp-container max-w-4xl mx-auto">
+      <div class="section">
+        <!-- Section Mentions Légales -->
+        <div id="section-wpc-mentions-legales" class="cmp-container section-gray bg-white rounded-lg p-8 md:p-12">
+          <div class="cmp-mentions-legales-section">
+            <div class="cmp-mentions-legales-content">
+              <div class="cmp-mentions-legales-info">
+                <div class="legal-content space-y-6">
+                  <div class="legal-section">
+                    <h3 class="legal-title text-xl font-semibold mb-2 text-gray-900">Nom de l'association :</h3>
+                    <p class="legal-text text-gray-700">West Paris Consulting</p>
+                  </div>
+
+                  <div class="legal-section">
+                    <h3 class="legal-title text-xl font-semibold mb-2 text-gray-900">Adresse du siège :</h3>
+                    <p class="legal-text text-gray-700">
+                      Université Paris Nanterre<br>
+                      200 Avenue de la République<br>
+                      92000 Nanterre, France
+                    </p>
+                  </div>
+
+                  <div class="legal-section">
+                    <h3 class="legal-title text-xl font-semibold mb-2 text-gray-900">
+                      Responsable publication :</h3>
+                    <p class="legal-text text-gray-700">Seridj Farid – Président</p>
+                  </div>
+
+                  <div class="legal-section">
+                    <h3 class="legal-title text-xl font-semibold mb-2 text-gray-900">
+                      Contact :</h3>
+                    <p class="legal-text text-gray-700">contact@westparisconsulting.fr</p>
+                  </div>
+
+                  <div class="legal-section">
+                    <h3 class="legal-title text-xl font-semibold mb-2 text-gray-900">
+                      Hébergeur du site :</h3>
+                    <p class="legal-text text-gray-700">
+                      GitHub, Inc.<br>
+                      88 Colin P Kelly Jr St<br>
+                      San Francisco, CA 94107, USA
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    background-color: #1B86FF;
+    padding: 4rem 1rem;
+  }
+
+  .hero-content {
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-title {
+    color: white;
+  }
+
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .legal-section {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .legal-section:last-child {
+    border-bottom: none;
+  }
+</style>
+

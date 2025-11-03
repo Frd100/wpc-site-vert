@@ -1,0 +1,30 @@
+@import './custom.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS globales (si nécessaire pour compatibilité) */
+:root {
+  --primary-blue: #1B86FF;
+  --wpc-white: #FFFFFF;
+  --wpc-black: #000000;
+  --text-primary: #212529;
+  --text-white: #FFFFFF;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FFFFFF;
+  --bg-dark: #212529;
+}
+
+/* Styles de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #212529;
+  background-color: #FFFFFF;
+}
+

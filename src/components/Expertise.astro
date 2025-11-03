@@ -1,0 +1,65 @@
+---
+// Expertise Section Component
+---
+
+<section class="cmp-expertise-section py-12 px-4">
+  <div class="cmp-expertise-content max-w-4xl mx-auto">
+    <p class="cmp-expertise-subtitle text-lg md:text-xl text-center text-gray-700">
+      Nous mettons les compétences<br>
+      et la créativité d'étudiants issus<br>
+      de parcours variés au service de projets concrets.
+    </p>
+  </div>
+</section>
+
+<script>
+  
+  import { waitForGSAP, getGSAP } from '../scripts/utils';
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await waitForGSAP();
+    } catch (error) {
+      return;
+    }
+
+    const { gsap, SplitText, ScrollTrigger } = getGSAP();
+    
+    if (!gsap || !SplitText || !ScrollTrigger) {
+      return;
+    }
+
+    const subtitle = document.querySelector('.cmp-expertise-subtitle');
+    if (subtitle) {
+      const split = new SplitText(subtitle, { type: 'words' });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: subtitle,
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      tl.from(split.words, {
+        duration: 0.5,
+        opacity: 0,
+        y: 40,
+        ease: 'power3.out',
+        stagger: 0.03
+      });
+    }
+  });
+</script>
+
+<style>
+  .cmp-expertise-section {
+    padding: 3rem 1rem;
+  }
+  
+  .cmp-expertise-content {
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+</style>
+
