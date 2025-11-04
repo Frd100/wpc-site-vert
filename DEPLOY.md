@@ -25,19 +25,18 @@ git push origin main
 
 GitHub Pages se mettra à jour automatiquement après chaque push sur `main`.
 
-### Structure actuelle
+### Structure du projet
 
 Le projet est organisé comme suit :
 ```
 wpc-site-astro/
-├── html/
-│   ├── index.html
-│   ├── equipe.html
-│   ├── contact.html
-│   ├── nous-rejoindre.html
-│   ├── mentions-legales.html
-│   ├── confidentialite.html
-│   └── exercer-mes-droits.html
+├── index.html
+├── equipe.html
+├── contact.html
+├── nous-rejoindre.html
+├── mentions-legales.html
+├── confidentialite.html
+├── exercer-mes-droits.html
 ├── css/
 │   ├── global.css
 │   └── custom.css
@@ -54,12 +53,10 @@ wpc-site-astro/
     └── models/
 ```
 
-### Structure de déploiement
+### Développement local
 
-Les fichiers HTML sont maintenant à la racine du dépôt avec des chemins absolus :
-- `/index.html`, `/equipe.html`, `/contact.html`, etc.
-- `/css/` pour les styles
-- `/js/` pour les scripts
-- `/public/` pour les assets
+Les fichiers HTML à la racine fonctionnent aussi bien en local qu'en production grâce à :
+- `<base href='/wpc-site-astro/'>` dans chaque fichier HTML
+- Chemins relatifs (`css/`, `js/`, `public/`) qui fonctionnent avec le base href
 
-Les fichiers dans `html/` sont conservés pour le développement local avec chemins relatifs.
+Pour tester en local, ouvrez simplement `index.html` dans votre navigateur ou utilisez un serveur local.
