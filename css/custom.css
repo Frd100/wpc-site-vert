@@ -411,13 +411,13 @@ body#page-wpc-main .homepage-section:first-of-type {
     }
 }
 
-/* Hero sections plus courtes sur les autres pages (sauf index) */
-body:not(#page-wpc-main) .hero-minimal {
+/* Hero sections plus courtes sur les autres pages (sauf index, contact et nous-rejoindre) */
+body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-minimal {
     min-height: 50vh;
 }
 
 @media (min-width: 768px) {
-    body:not(#page-wpc-main) .hero-minimal {
+    body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-minimal {
         min-height: 60vh;
     }
 }
@@ -529,8 +529,8 @@ body:not(#page-wpc-main) .hero-minimal {
         padding-bottom: 3.25rem;
     }
     
-    /* Container hero plus court sur mobile pour les autres pages */
-    body:not(#page-wpc-main) .hero-container {
+    /* Container hero plus court sur mobile pour les autres pages (sauf contact et nous-rejoindre) */
+    body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
         justify-content: center;
         padding-top: 2rem;
         padding-bottom: 2rem;
@@ -547,18 +547,78 @@ body:not(#page-wpc-main) .hero-minimal {
     }
 }
 
-/* Container hero plus court sur les autres pages (sauf index) */
-body:not(#page-wpc-main) .hero-container {
+/* Container hero plus court sur les autres pages (sauf index, contact et nous-rejoindre) */
+body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
     min-height: 50vh;
     padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
-    body:not(#page-wpc-main) .hero-container {
+    body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
         min-height: 60vh;
         padding-top: 4rem;
         padding-bottom: 4rem;
+    }
+}
+
+/* Hero contact et nous-rejoindre - grandes comme index */
+body#page-wpc-contact .hero-contact,
+body#page-wpc-nous-rejoindre .hero-contact {
+    min-height: 90vh;
+}
+
+@media (min-width: 768px) {
+    body#page-wpc-contact .hero-contact,
+    body#page-wpc-nous-rejoindre .hero-contact {
+        min-height: 100vh;
+    }
+}
+
+body#page-wpc-contact .hero-contact-container,
+body#page-wpc-nous-rejoindre .hero-contact-container {
+    min-height: 90vh;
+    justify-content: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    body#page-wpc-contact .hero-contact-container,
+    body#page-wpc-nous-rejoindre .hero-contact-container {
+        min-height: 100vh;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.hero-contact-content {
+    max-width: 800px;
+}
+
+.hero-contact-form {
+    min-width: 0;
+}
+
+.contact-form-iframe-wrapper {
+    width: 100%;
+}
+
+/* Iframe plus haute pour la page nous-rejoindre */
+body#page-wpc-nous-rejoindre .hero-contact-form iframe {
+    height: 800px;
+}
+
+@media (max-width: 768px) {
+    body#page-wpc-contact .hero-contact-container,
+    body#page-wpc-nous-rejoindre .hero-contact-container {
+        justify-content: flex-start;
+        padding-top: 3.5rem;
+        padding-bottom: 3.25rem;
+    }
+    
+    .hero-contact-form {
+        margin-top: 2rem;
     }
 }
 
@@ -724,7 +784,7 @@ body:not(#page-wpc-main) .hero-container {
 .main-navigation__logo-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 550;
     line-height: 1.2;
     letter-spacing: 0.01em;
     display: flex;
@@ -745,7 +805,7 @@ body:not(#page-wpc-main) .hero-container {
 @media (min-width: 768px) {
     .main-navigation__logo-text {
         font-size: 1.375rem;
-        font-weight: 700;
+        font-weight: 550;
     }
 }
 

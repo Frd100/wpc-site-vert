@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr-FR" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-language" content="fr-FR">
 
-    <!-- Base URL for GitHub Pages - Détection automatique -->
-    <script>
-      // Détecte si on est en local ou en production
-      (function() {
-        const isLocal = window.location.protocol === 'file:' || 
-                       window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1';
-        if (!isLocal) {
-          const base = document.createElement('base');
-          base.href = '/wpc-site-astro/';
-          document.head.insertBefore(base, document.head.firstChild);
-        }
-      })();
-    </script>
+  <!-- Base URL for GitHub Pages - Détection automatique -->
+  <script>
+    // Détecte si on est en local ou en production
+    (function () {
+      const isLocal = window.location.protocol === 'file:' ||
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1';
+      if (!isLocal) {
+        const base = document.createElement('base');
+        base.href = '/wpc-site-astro/';
+        document.head.insertBefore(base, document.head.firstChild);
+      }
+    })();
+  </script>
 
-    <meta property="og:type" content="website">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://westparisconsulting.fr/contact.html">
   <meta property="og:title" content="Contact - West Paris Consulting">
   <meta property="og:description" content="Contactez West Paris Consulting pour vos projets de conseil.">
@@ -29,7 +30,11 @@
   <meta name="description" content="Contactez West Paris Consulting pour vos projets de conseil.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="./public/icons/favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
@@ -39,67 +44,68 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
+
 <body class="page basicpage" id="page-wpc-contact">
   <div class="root responsivegrid w-full max-w-full">
     <nav class="main-navigation">
       <div class="main-navigation__container w-full max-w-full mx-0 px-3 md:px-4">
         <button class="main-navigation__toggle md:hidden bg-transparent border-none cursor-pointer z-50"
-            id="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+          id="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
           <div class="hamburger-icon flex flex-col gap-1 w-4 h-4">
             <span class="hamburger-line bg-white h-0.5 w-full"></span>
             <span class="hamburger-line bg-white h-0.5 w-full"></span>
             <span class="hamburger-line bg-white h-0.5 w-full"></span>
           </div>
         </button>
-        <div
-            class="main-navigation__content flex justify-start m-0 py-1.5 md:py-2 pl-3 md:pl-4 relative h-full">
-            <div class="main-navigation__logo">
-                <a href="index.html" class="main-navigation__logo-link">
-                    <div class="main-navigation__logo-text text-white">
-                        <span class="logo-line">West Paris</span>
-                        <span class="logo-line">Consulting</span>
-                    </div>
-                </a>
-            </div>
+        <div class="main-navigation__content flex justify-start m-0 py-1.5 md:py-2 pl-3 md:pl-4 relative h-full">
+          <div class="main-navigation__logo">
+            <a href="index.html" class="main-navigation__logo-link">
+              <div class="main-navigation__logo-text text-white">
+                <span class="logo-line">West Paris</span>
+                <span class="logo-line">Consulting</span>
+              </div>
+            </a>
+          </div>
 
-            <div class="main-navigation__links hidden md:flex gap-5 md:gap-6" id="desktop-menu"
-                role="navigation" aria-label="Menu principal">
-                <a href="index.html" class="main-navigation__link">
-                    <span class="main-navigation__link-text">Accueil</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
-                </a>
-                <a href="equipe.html" class="main-navigation__link">
-                    <span class="main-navigation__link-text">Notre Équipe</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Notre Équipe</span>
-                </a>
-                <a href="contact.html" class="main-navigation__link">
-                    <span class="main-navigation__link-text">Contact</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
-                </a>
-                <a href="nous-rejoindre.html" class="main-navigation__link">
-                    <span class="main-navigation__link-text">Nous rejoindre</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
-                </a>
-            </div>
+          <div class="main-navigation__links hidden md:flex gap-5 md:gap-6" id="desktop-menu" role="navigation"
+            aria-label="Menu principal">
+            <a href="index.html" class="main-navigation__link">
+              <span class="main-navigation__link-text">Accueil</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
+            </a>
+            <a href="equipe.html" class="main-navigation__link">
+              <span class="main-navigation__link-text">Notre Équipe</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Notre Équipe</span>
+            </a>
+            <a href="contact.html" class="main-navigation__link">
+              <span class="main-navigation__link-text">Contact</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
+            </a>
+            <a href="nous-rejoindre.html" class="main-navigation__link">
+              <span class="main-navigation__link-text">Nous rejoindre</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
+            </a>
+          </div>
 
-            <div class="main-navigation__links hidden md:hidden fixed top-0 left-0 w-full h-screen z-40 flex flex-col justify-center items-center gap-8"
-                id="mobile-menu" role="navigation" aria-label="Menu principal">
-                <a href="index.html" class="main-navigation__link main-navigation__link--mobile">
-                    <span class="main-navigation__link-text">Accueil</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
-                </a>
-                <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile">
-                    <span class="main-navigation__link-text">Notre Équipe</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Notre Équipe</span>
-                </a>
-                <a href="contact.html" class="main-navigation__link main-navigation__link--mobile">
-                    <span class="main-navigation__link-text">Contact</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
-                </a>
-                <a href="nous-rejoindre.html" class="main-navigation__link main-navigation__link--mobile">
-                    <span class="main-navigation__link-text">Nous rejoindre</span>
-                    <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
-                </a>
+          <div
+            class="main-navigation__links hidden md:hidden fixed top-0 left-0 w-full h-screen z-40 flex flex-col justify-center items-center gap-8"
+            id="mobile-menu" role="navigation" aria-label="Menu principal">
+            <a href="index.html" class="main-navigation__link main-navigation__link--mobile">
+              <span class="main-navigation__link-text">Accueil</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
+            </a>
+            <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile">
+              <span class="main-navigation__link-text">Notre Équipe</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Notre Équipe</span>
+            </a>
+            <a href="contact.html" class="main-navigation__link main-navigation__link--mobile">
+              <span class="main-navigation__link-text">Contact</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
+            </a>
+            <a href="nous-rejoindre.html" class="main-navigation__link main-navigation__link--mobile">
+              <span class="main-navigation__link-text">Nous rejoindre</span>
+              <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
+            </a>
           </div>
         </div>
       </div>
@@ -107,49 +113,52 @@
     <main class="w-full max-w-full">
 
       <!-- HERO -->
-      <section class="hero-minimal relative overflow-hidden">
-        <div class="hero-container relative z-10 flex flex-col items-center px-3 md:px-4 text-center">
-          <h1 class="hero-title text-white mb-6">
-            <div class="line">
-              <span class="text">Contactez</span>
-            </div>
-            <div class="line">
-              <span class="text">nous</span>
-            </div>
-          </h1>
-          <p class="hero-subtitle text-lg md:text-xl text-white/90 mb-8">
-            Discutons de votre projet<br>
-            et découvrons ensemble comment nous pouvons vous accompagner.
-          </p>
-        </div>
-      </section>
-
-      <main class="main py-12 px-4">
-        <div class="cmp-container max-w-7xl mx-auto">
-          <div class="contact-form-section">
-            <div class="contact-form-container grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <div class="contact-info-wrapper">
-                <h2 class="contact-location-title text-2xl font-bold mb-6 text-gray-900">Nanterre</h2>
-                <div class="contact-address mb-6 text-gray-700">
-                  <p>200 Avenue de la République</p>
-                  <p>92000 Nanterre</p>
-                  <p>France</p>
-                </div>
-                <div class="contact-email mb-6 text-gray-700">
-                  <p>contact@westparisconsulting.fr</p>
-                </div>
-                <a href="https://www.google.com/maps/place/200+Avenue+de+la+R%C3%A9publique,+92000+Nanterre,+France" target="_blank" rel="noopener noreferrer" class="hero-button button button--stroke inline-block px-6 py-3 border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white transition-colors relative overflow-hidden" data-block="button">
-                  <span class="button__flair absolute inset-0 rounded-full opacity-0 pointer-events-none"></span>
-                  <span class="button__label relative z-10">Voir sur Google Maps</span>
-                </a>
+      <section class="hero-minimal hero-contact relative overflow-hidden">
+        <div
+          class="hero-container hero-contact-container relative z-10 flex flex-col md:flex-row items-start md:items-center px-3 md:px-4 max-w-7xl mx-auto gap-8 md:gap-12">
+          <!-- Colonne gauche : Informations de contact -->
+          <div class="hero-contact-content text-left flex-1">
+            <h1 class="hero-title text-white mb-6">
+              <div class="line">
+                <span class="text">Démarrons</span>
               </div>
-              <div class="contact-form-iframe-wrapper">
-                <iframe src="https://tally.so/r/3NegqO" width="100%" height="700" frameborder="0" title="Formulaire de contact" style="border: none; border-radius: 0.5rem;"></iframe>
+              <div class="line">
+                <span class="text">votre projet</span>
+              </div>
+            </h1>
+            <p class="hero-subtitle text-lg md:text-xl text-white/90 mb-12 max-w-2xl">
+              Partagez-nous vos défis et vos objectifs. Notre équipe étudiante vous accompagne dans la réalisation de
+              vos projets avec des solutions sur mesure et adaptées à vos besoins.
+            </p>
+
+            <div class="contact-info-list flex flex-col gap-6">
+              <div class="contact-info-item flex items-start gap-4">
+                <span class="material-icons text-white/90 text-2xl">location_on</span>
+                <div class="contact-info-text text-white/90">
+                  <p>200 Avenue de la République</p>
+                  <p>92000 Nanterre, France</p>
+                </div>
+              </div>
+              <div class="contact-info-item flex items-start gap-4">
+                <span class="material-icons text-white/90 text-2xl">email</span>
+                <div class="contact-info-text text-white/90">
+                  <a href="mailto:contact@westparisconsulting.fr" class="hover:text-white transition-colors">
+                    contact@westparisconsulting.fr
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Colonne droite : Formulaire -->
+          <div class="hero-contact-form flex-1 w-full md:w-auto">
+            <div class="contact-form-iframe-wrapper">
+              <iframe src="https://tally.so/r/3NegqO" width="100%" height="600" frameborder="0"
+                title="Formulaire de contact" style="border: none; background: white;"></iframe>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
     </main>
     <footer class="cmp-footer bg-gray-900 text-white py-8">
       <div class="cmp-footer__container max-w-7xl mx-auto px-6">
@@ -173,14 +182,18 @@
             <div class="cmp-footer__nav-section">
               <h4 class="text-lg font-semibold mb-4">Légal</h4>
               <div class="cmp-footer__nav-links flex flex-col gap-2">
-                <a href="mentions-legales.html" class="text-gray-300 hover:text-primary-blue transition-colors">Mentions légales</a>
-                <a href="confidentialite.html" class="text-gray-300 hover:text-primary-blue transition-colors">Politique de Confidentialité</a>
-                <a href="exercer-mes-droits.html" class="text-gray-300 hover:text-primary-blue transition-colors">Exercer mes droits</a>
+                <a href="mentions-legales.html" class="text-gray-300 hover:text-primary-blue transition-colors">Mentions
+                  légales</a>
+                <a href="confidentialite.html" class="text-gray-300 hover:text-primary-blue transition-colors">Politique
+                  de Confidentialité</a>
+                <a href="exercer-mes-droits.html"
+                  class="text-gray-300 hover:text-primary-blue transition-colors">Exercer mes droits</a>
               </div>
             </div>
           </div>
           <div class="cmp-footer__copyright mt-12 pt-8 border-t border-gray-700">
-            <p class="text-sm text-gray-400">© 2025 West Paris Consulting, association étudiante de l'Université Paris Nanterre. Tous droits réservés.</p>
+            <p class="text-sm text-gray-400">© 2025 West Paris Consulting, association étudiante de l'Université Paris
+              Nanterre. Tous droits réservés.</p>
           </div>
         </div>
       </div>
@@ -199,23 +212,26 @@
       }
       const { gsap, ScrollTrigger } = getGSAP();
       if (!gsap || !ScrollTrigger) return;
-      const formSection = document.querySelector('.contact-form-section');
-      const formIframe = formSection?.querySelector('.contact-form-iframe-wrapper iframe');
-      if (formSection && formIframe) {
+      const formIframe = document.querySelector('.hero-contact-form iframe');
+      if (formIframe) {
         gsap.set(formIframe, { opacity: 0, y: 40 });
         gsap.to(formIframe, {
           opacity: 1, y: 0, duration: 0.8, ease: 'power2.out',
-          scrollTrigger: { trigger: formSection, start: 'top 70%', toggleActions: 'play none none none' }
+          scrollTrigger: { trigger: '.hero-contact-form', start: 'top 80%', toggleActions: 'play none none none' }
         });
       }
       initStrokeButtons();
     });
   </script>
   <style>
-    .contact-form-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-    @media (min-width: 768px) { .contact-form-container { grid-template-columns: 1fr 1fr; gap: 3rem; } }
-    .button__flair { width: 0; height: 0; background: rgba(27, 134, 255, 0.3); border-radius: 50%; transform: translate(-50%, -50%); }
+    .button__flair {
+      width: 0;
+      height: 0;
+      background: rgba(27, 134, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
   </style>
 </body>
-</html>
 
+</html>
