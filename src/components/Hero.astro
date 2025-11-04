@@ -3,31 +3,21 @@
 ---
 
 <section class="hero-minimal relative overflow-hidden">
-  <div class="hero-banner-container absolute inset-0 z-0">
-    <img 
-      src="/images/banner.webp"
-      alt="Image de fond de la section hero de West Paris Consulting, association étudiante de conseil de l'Université Paris Nanterre"
-      class="hero-banner-image w-full h-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
-  </div>
-  
-  <div class="hero-container relative z-10 flex flex-col justify-center items-center min-h-screen px-4 py-20 text-center">
-    <h1 class="hero-title text-4xl md:text-6xl font-bold text-white mb-6">
+  <div class="hero-container relative z-10 flex flex-col items-center px-3 md:px-4 text-center">
+    <h1 class="hero-title text-white mb-6">
       <div class="line">
-        <span class="text">Apprendre et agir</span>
+        <span class="text">Apprendre et</span>
       </div>
       <div class="line">
-        <span class="text">ensemble</span>
+        <span class="text">agir ensemble</span>
       </div>
     </h1>
-    <p class="hero-subtitle text-lg md:text-xl text-white mb-8">
+    <p class="hero-subtitle text-lg md:text-xl text-white/90 mb-8">
       Des étudiants engagés au service<br>
       de projets concrets.
     </p>
     <div class="hero-button-container">
-      <a href="/contact" class="hero-button button button--stroke inline-block px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-colors relative overflow-hidden" data-block="button">
+      <a href="/contact" class="hero-button button button--stroke inline-block px-6 py-3 border-2 border-white text-white relative overflow-hidden">
         <span class="button__flair absolute inset-0 rounded-full opacity-0 pointer-events-none"></span>
         <span class="button__label relative z-10" data-label="Nous contacter">Nous contacter</span>
       </a>
@@ -47,120 +37,45 @@
       return;
     }
 
-    const { gsap, SplitText, ScrollTrigger } = getGSAP();
+    const { gsap, SplitText } = getGSAP();
     
     if (!gsap || !SplitText) {
       return;
     }
 
-    // Animation SplitText pour le titre hero
+    // Animation blur GSAP mot par mot, ligne par ligne pour le titre hero
     const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
+    if (heroTitle && SplitText) {
       const dataText = document.querySelectorAll('.hero-title .line .text');
       if (dataText.length > 0) {
-        const split = new SplitText(dataText, { type: 'words' });
+        // Créer un timeline pour animer chaque ligne
+        const tl = gsap.timeline();
         
-        gsap.from(split.words, {
-          duration: 0.6,
-          opacity: 0,
-          y: 40,
-          ease: 'power3.out',
-          stagger: 0.03
+        dataText.forEach((textElement, lineIndex) => {
+          // Diviser chaque ligne en mots avec SplitText
+          const split = new SplitText(textElement, { type: 'words' });
+          
+          if (split.words && split.words.length > 0) {
+            // Initialiser chaque mot avec blur
+            gsap.set(split.words, {
+              filter: 'blur(20px)',
+              opacity: 0
+            });
+            
+            // Animer chaque mot de la ligne avec un délai
+            split.words.forEach((word, wordIndex) => {
+              tl.to(word, {
+                filter: 'blur(0px)',
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+              }, 0.3 + lineIndex * 0.3 + wordIndex * 0.1); // Délai initial de 0.3s
+            });
+          }
         });
       }
     }
 
-    // Effets pour l'image banner hero
-    const bannerImage = document.querySelector('.hero-banner-image');
-    const heroSection = document.querySelector('.hero-minimal');
-    
-    if (bannerImage && heroSection && ScrollTrigger) {
-      // Animation d'apparition initiale
-      gsap.fromTo(bannerImage,
-        {
-          opacity: 0,
-          scale: 1.15,
-          filter: 'blur(10px)'
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          filter: 'blur(0px)',
-          duration: 1.5,
-          ease: 'power3.out',
-          delay: 0.2
-        }
-      );
-
-      // Effet de parallaxe et zoom léger au scroll
-      gsap.to(bannerImage, {
-        yPercent: 30,
-        scale: 1.1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroSection,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
-
-      // Effet de lumière animée subtile
-      const bannerContainer = document.querySelector('.hero-banner-container');
-      if (bannerContainer) {
-        const lightEffect = document.createElement('div');
-        lightEffect.style.cssText = `
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(
-            ellipse 800px 600px at 50% 50%,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 70%
-          );
-          pointer-events: none;
-          z-index: 1;
-          opacity: 0;
-        `;
-        bannerContainer.appendChild(lightEffect);
-
-        // Animation de la lumière
-        gsap.to(lightEffect, {
-          opacity: 0.6,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut'
-        });
-      }
-
-      // Effet de mouvement léger au hover (si desktop)
-      if (window.innerWidth >= 769) {
-        heroSection.addEventListener('mousemove', (e: MouseEvent) => {
-          const rect = heroSection.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
-          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-
-          gsap.to(bannerImage, {
-            x: x,
-            y: y,
-            duration: 1,
-            ease: 'power2.out'
-          });
-        });
-
-        heroSection.addEventListener('mouseleave', () => {
-          gsap.to(bannerImage, {
-            x: 0,
-            y: 0,
-            duration: 1,
-            ease: 'power2.out'
-          });
-        });
-      }
-    }
 
     // Animation du bouton flair avec GSAP utils (comme dans main.js original)
     try {
@@ -176,23 +91,87 @@
   .hero-minimal {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     overflow: hidden;
+    background: #000000; /* Fond noir */
   }
 
-  .hero-banner-container {
-    position: absolute;
+  @media (min-width: 768px) {
+    .hero-minimal {
+      min-height: 100vh;
+    }
+  }
+
+  /* Image de fond avec animation d'apparition - fixée en haut */
+  .hero-minimal::before {
+    content: '';
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: url('/images/background-mobile.png') center top / cover no-repeat;
+    background-attachment: fixed;
+    transform: translateY(-30%);
+    opacity: 0;
+    animation: backgroundSlideIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.08s; /* Démarrer après le délai initial (7% de 1.2s ≈ 0.08s) */
+    will-change: transform, opacity;
     z-index: 0;
   }
 
-  .hero-banner-image {
+  @media (min-width: 768px) {
+    .hero-minimal::before {
+      background-image: url('/images/background.png');
+    }
+  }
+
+  @keyframes backgroundSlideIn {
+    0% {
+      transform: translateY(-30%);
+      opacity: 0;
+    }
+    7% {
+      transform: translateY(-30%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Respecter prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-minimal::before {
+      animation: none;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .hero-container {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  /* Dégradé noir en bas de la hero section */
+  .hero-minimal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.8) 80%, #000000 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  @media (min-width: 768px) {
+    .hero-minimal::after {
+      height: 35%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 70%, #000000 100%);
+    }
   }
 
   .hero-container {
@@ -202,19 +181,86 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 5rem 1rem;
+    min-height: 90vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    will-change: opacity;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    7% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-container {
+      justify-content: flex-end;
+      padding-top: 3.5rem;
+      padding-bottom: 3.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-container {
+      min-height: 100vh;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
   }
 
   .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400; /* Poids réduit (normal au lieu de bold) */
+    font-size: 4rem; /* 64px - taille augmentée */
+    line-height: 1.1;
     color: white;
     margin-bottom: 1.5rem;
+    will-change: filter;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 6rem; /* 96px sur desktop - taille fortement augmentée */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 3.5rem; /* 56px sur mobile - réduit */
+      margin-bottom: 1.5rem;
+    }
   }
 
   .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
     color: white;
     margin-bottom: 2rem;
+    font-size: 1.25rem; /* 20px par défaut - augmenté */
+  }
+
+  @media (min-width: 768px) {
+    .hero-subtitle {
+      font-size: 1.375rem; /* 22px sur desktop - augmenté */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-subtitle {
+      font-size: 1.375rem; /* 22px sur mobile - augmenté */
+      margin-top: 0;
+    }
   }
 
   .button__flair {
@@ -225,9 +271,31 @@
     transform: translate(-50%, -50%);
   }
 
+  .hero-button {
+    border-radius: 0 !important;
+    font-size: 1rem; /* 16px par défaut */
+    padding: 0.75rem 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-button {
+      font-size: 1.125rem; /* 18px sur desktop */
+      padding: 0.875rem 2rem;
+    }
+  }
+
   @media (max-width: 768px) {
+    .hero-button {
+      font-size: 1.125rem; /* 18px sur mobile */
+      padding: 1rem 2rem;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
     .hero-container {
-      padding: 3rem 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 </style>

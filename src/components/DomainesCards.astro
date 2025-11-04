@@ -2,7 +2,7 @@
 // Domaines Cards Component
 ---
 
-<section class="wpc-domaines-cards-section py-12 px-4 bg-white">
+<section class="wpc-domaines-cards-section py-12 px-3 md:px-4 bg-white">
   <div class="wpc-domaines-cards-title-wrapper mb-12">
     <p class="wpc-domaines-cards-subtitle cmp-expertise-subtitle text-lg md:text-xl text-center text-gray-700 mb-8">
       Trois domaines d'intervention<br>
@@ -115,8 +115,14 @@
 
 <style>
   .wpc-domaines-cards-section {
-    padding: 3rem 1rem;
+    padding: 3rem 0.75rem;
     background-color: #FFFFFF;
+  }
+  
+  @media (min-width: 768px) {
+    .wpc-domaines-cards-section {
+      padding: 3rem 1rem;
+    }
   }
   
   .wpc-domaines-cards-container {

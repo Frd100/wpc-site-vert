@@ -2,7 +2,7 @@
 // Timeline Component for Processus Section
 ---
 
-<section class="cmp-about-section about-section py-20 px-4 bg-gray-100">
+<section class="cmp-about-section about-section py-20 px-3 md:px-4 bg-gray-100">
   <div class="cmp-about-container about-container max-w-7xl mx-auto">
     <!-- Titre NOS PROCESSUS -->
     <div class="wpc-expertise-title-wrapper mb-16">
@@ -201,8 +201,14 @@
 
 <style>
   .cmp-about-section {
-    padding: 5rem 1rem;
+    padding: 5rem 0.75rem;
     background-color: #f3f4f6;
+  }
+  
+  @media (min-width: 768px) {
+    .cmp-about-section {
+      padding: 5rem 1rem;
+    }
   }
 
   .huge-letters {
@@ -236,7 +242,7 @@
 
   @media (max-width: 768px) {
     .cmp-about-section {
-      padding: 3rem 1rem;
+      padding: 3rem 0.75rem;
     }
   }
 </style>

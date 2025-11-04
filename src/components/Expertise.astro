@@ -2,7 +2,7 @@
 // Expertise Section Component
 ---
 
-<section class="cmp-expertise-section py-12 px-4">
+<section class="cmp-expertise-section py-12 px-3 md:px-4">
   <div class="cmp-expertise-content max-w-4xl mx-auto">
     <p class="cmp-expertise-subtitle text-lg md:text-xl text-center text-gray-700">
       Nous mettons les compétences<br>
@@ -54,7 +54,13 @@
 
 <style>
   .cmp-expertise-section {
-    padding: 3rem 1rem;
+    padding: 3rem 0.75rem;
+  }
+  
+  @media (min-width: 768px) {
+    .cmp-expertise-section {
+      padding: 3rem 1rem;
+    }
   }
   
   .cmp-expertise-content {
