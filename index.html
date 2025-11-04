@@ -7,8 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-language" content="fr-FR">
 
-    <!-- Base URL for GitHub Pages -->
-    <base href="/wpc-site-astro/">
+    <!-- Base URL for GitHub Pages - Détection automatique -->
+    <script>
+      // Détecte si on est en local ou en production
+      (function() {
+        const isLocal = window.location.protocol === 'file:' || 
+                       window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1';
+        if (!isLocal) {
+          const base = document.createElement('base');
+          base.href = '/wpc-site-astro/';
+          document.head.insertBefore(base, document.head.firstChild);
+        }
+      })();
+    </script>
 
     <!-- WPC Meta Tags -->
     <meta property="og:type" content="website">
@@ -43,9 +55,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="public/icons/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="public/icons/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="public/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="./public/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./public/icons/apple-touch-icon.png">
 
     <!-- GSAP via CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
@@ -121,7 +133,7 @@
                             <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
                         </a>
                         <a href="equipe.html" class="main-navigation__link">
-                            <span class="main-navigation__link-text">Notre-Équipe</span>
+                            <span class="main-navigation__link-text">Notre Équipe</span>
                             <span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span>
                         </a>
                         <a href="contact.html" class="main-navigation__link">
@@ -141,7 +153,7 @@
                             <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
                         </a>
                         <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile">
-                            <span class="main-navigation__link-text">Notre-Équipe</span>
+                            <span class="main-navigation__link-text">Notre Équipe</span>
                             <span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span>
                         </a>
                         <a href="contact.html" class="main-navigation__link main-navigation__link--mobile">

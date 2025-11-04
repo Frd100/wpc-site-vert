@@ -7,8 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-language" content="fr-FR">
 
-    <!-- Base URL for GitHub Pages -->
-    <base href="/wpc-site-astro/">
+    <!-- Base URL for GitHub Pages - Détection automatique -->
+    <script>
+      // Détecte si on est en local ou en production
+      (function() {
+        const isLocal = window.location.protocol === 'file:' || 
+                       window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1';
+        if (!isLocal) {
+          const base = document.createElement('base');
+          base.href = '/wpc-site-astro/';
+          document.head.insertBefore(base, document.head.firstChild);
+        }
+      })();
+    </script>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://westparisconsulting.fr/equipe.html">
     <meta property="og:title" content="Notre Équipe - West Paris Consulting">
@@ -27,12 +39,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="public/icons/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="public/icons/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="public/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="./public/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./public/icons/apple-touch-icon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
 
@@ -55,7 +68,7 @@
                     </div>
                 </button>
                 <div
-                    class="main-navigation__content flex justify-start items-center m-0 py-1.5 md:py-2 pl-3 md:pl-4 relative h-full">
+                    class="main-navigation__content flex justify-start m-0 py-1.5 md:py-2 pl-3 md:pl-4 relative h-full">
                     <div class="main-navigation__logo">
                         <a href="index.html" class="main-navigation__logo-link">
                             <div class="main-navigation__logo-text text-white">
@@ -64,46 +77,69 @@
                             </div>
                         </a>
                     </div>
-                    <div class="main-navigation__links hidden md:flex gap-5 md:gap-6 items-end" id="desktop-menu"
-                        role="navigation">
-                        <a href="index.html" class="main-navigation__link"><span
-                                class="main-navigation__link-text">Accueil</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Accueil</span></a>
-                        <a href="equipe.html" class="main-navigation__link"><span
-                                class="main-navigation__link-text">Notre-Équipe</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span></a>
-                        <a href="contact.html" class="main-navigation__link"><span
-                                class="main-navigation__link-text">Contact</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Contact</span></a>
-                        <a href="nous-rejoindre.html" class="main-navigation__link"><span
-                                class="main-navigation__link-text">Nous rejoindre</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span></a>
+
+                    <div class="main-navigation__links hidden md:flex gap-5 md:gap-6" id="desktop-menu"
+                        role="navigation" aria-label="Menu principal">
+                        <a href="index.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Accueil</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
+                        </a>
+                        <a href="equipe.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Notre Équipe</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span>
+                        </a>
+                        <a href="contact.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Contact</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
+                        </a>
+                        <a href="nous-rejoindre.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Nous rejoindre</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
+                        </a>
                     </div>
+
                     <div class="main-navigation__links hidden md:hidden fixed top-0 left-0 w-full h-screen z-40 flex flex-col justify-center items-center gap-8"
-                        id="mobile-menu" role="navigation">
-                        <a href="index.html" class="main-navigation__link main-navigation__link--mobile"><span
-                                class="main-navigation__link-text">Accueil</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Accueil</span></a>
-                        <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile"><span
-                                class="main-navigation__link-text">Notre-Équipe</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span></a>
-                        <a href="contact.html" class="main-navigation__link main-navigation__link--mobile"><span
-                                class="main-navigation__link-text">Contact</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Contact</span></a>
-                        <a href="nous-rejoindre.html" class="main-navigation__link main-navigation__link--mobile"><span
-                                class="main-navigation__link-text">Nous rejoindre</span><span
-                                class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span></a>
+                        id="mobile-menu" role="navigation" aria-label="Menu principal">
+                        <a href="index.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Accueil</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
+                        </a>
+                        <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Notre Équipe</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span>
+                        </a>
+                        <a href="contact.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Contact</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
+                        </a>
+                        <a href="nous-rejoindre.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Nous rejoindre</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </nav>
 
         <main class="w-full max-w-full">
-            <div class="hero-section bg-primary-blue py-16 px-4">
-                <div class="hero-content max-w-4xl mx-auto text-center">
-                    <h1 class="hero-title text-3xl md:text-4xl font-bold text-white">Notre Équipe</h1>
+
+            <!-- HERO -->
+            <section class="hero-minimal relative overflow-hidden">
+                <div class="hero-container relative z-10 flex flex-col items-center px-3 md:px-4 text-center">
+                    <h1 class="hero-title text-white mb-6">
+                        <div class="line">
+                            <span class="text">Notre</span>
+                        </div>
+                        <div class="line">
+                            <span class="text">Équipe</span>
+                        </div>
+                    </h1>
+                    <p class="hero-subtitle text-lg md:text-xl text-white/90 mb-8">
+                        Découvrez les membres qui composent notre équipe.<br>
+                        Chacun apporte son expertise et sa créativité.
+                    </p>
                 </div>
-            </div>
+            </section>
 
             <div class="cmp-equipe-intro-section py-12 px-4">
                 <div class="cmp-equipe-intro-content max-w-4xl mx-auto text-center">
@@ -262,7 +298,9 @@
     </div>
 
     <script src="js/utils.js"></script>
+    <script src="js/button-animation.js"></script>
     <script src="js/header.js"></script>
+    <script src="js/hero.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             try {

@@ -4,8 +4,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Base URL for GitHub Pages -->
-  <base href="/wpc-site-astro/">
+  <!-- Base URL for GitHub Pages - Détection automatique -->
+  <script>
+    // Détecte si on est en local ou en production
+    (function() {
+      const isLocal = window.location.protocol === 'file:' || 
+                     window.location.hostname === 'localhost' || 
+                     window.location.hostname === '127.0.0.1';
+      if (!isLocal) {
+        const base = document.createElement('base');
+        base.href = '/wpc-site-astro/';
+        document.head.insertBefore(base, document.head.firstChild);
+      }
+    })();
+  </script>
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://westparisconsulting.fr/nous-rejoindre.html">
@@ -15,9 +27,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="public/icons/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="./public/icons/favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/custom.css">
@@ -44,13 +58,13 @@
           </div>
           <div class="main-navigation__links hidden md:flex gap-5 md:gap-6 items-end">
             <a href="index.html" class="main-navigation__link"><span class="main-navigation__link-text">Accueil</span><span class="main-navigation__link-text" aria-hidden="true">Accueil</span></a>
-            <a href="equipe.html" class="main-navigation__link"><span class="main-navigation__link-text">Notre-Équipe</span><span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span></a>
+            <a href="equipe.html" class="main-navigation__link"><span class="main-navigation__link-text">Notre Équipe</span><span class="main-navigation__link-text" aria-hidden="true">Notre Équipe</span></a>
             <a href="contact.html" class="main-navigation__link"><span class="main-navigation__link-text">Contact</span><span class="main-navigation__link-text" aria-hidden="true">Contact</span></a>
             <a href="nous-rejoindre.html" class="main-navigation__link"><span class="main-navigation__link-text">Nous rejoindre</span><span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span></a>
           </div>
           <div class="main-navigation__links hidden md:hidden fixed top-0 left-0 w-full h-screen z-40 flex flex-col justify-center items-center gap-8" id="mobile-menu">
             <a href="index.html" class="main-navigation__link main-navigation__link--mobile"><span class="main-navigation__link-text">Accueil</span><span class="main-navigation__link-text" aria-hidden="true">Accueil</span></a>
-            <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile"><span class="main-navigation__link-text">Notre-Équipe</span><span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span></a>
+            <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile"><span class="main-navigation__link-text">Notre Équipe</span><span class="main-navigation__link-text" aria-hidden="true">Notre Équipe</span></a>
             <a href="contact.html" class="main-navigation__link main-navigation__link--mobile"><span class="main-navigation__link-text">Contact</span><span class="main-navigation__link-text" aria-hidden="true">Contact</span></a>
             <a href="nous-rejoindre.html" class="main-navigation__link main-navigation__link--mobile"><span class="main-navigation__link-text">Nous rejoindre</span><span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span></a>
           </div>
@@ -58,11 +72,25 @@
       </div>
     </nav>
     <main class="w-full max-w-full">
-      <div class="hero-section bg-primary-blue py-16 px-4">
-        <div class="hero-content max-w-4xl mx-auto text-center">
-          <h1 class="hero-title text-3xl md:text-4xl font-bold text-white">Carrière</h1>
+
+      <!-- HERO -->
+      <section class="hero-minimal relative overflow-hidden">
+        <div class="hero-container relative z-10 flex flex-col items-center px-3 md:px-4 text-center">
+          <h1 class="hero-title text-white mb-6">
+            <div class="line">
+              <span class="text">Nous</span>
+            </div>
+            <div class="line">
+              <span class="text">rejoindre</span>
+            </div>
+          </h1>
+          <p class="hero-subtitle text-lg md:text-xl text-white/90 mb-8">
+            Rejoignez une aventure professionnelle enrichissante<br>
+            et mettez vos connaissances en pratique dans un cadre concret.
+          </p>
         </div>
-      </div>
+      </section>
+
       <main class="main py-12 px-4">
         <div class="cmp-container max-w-7xl mx-auto">
           <div class="contact-form-section">
@@ -119,7 +147,9 @@
     </footer>
   </div>
   <script src="js/utils.js"></script>
+  <script src="js/button-animation.js"></script>
   <script src="js/header.js"></script>
+  <script src="js/hero.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
@@ -148,7 +178,6 @@
     });
   </script>
   <style>
-    .hero-section { background-color: #1B86FF; padding: 4rem 1rem; }
     .contact-form-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
     @media (min-width: 768px) { .contact-form-container { grid-template-columns: 1fr 1fr; gap: 3rem; } }
   </style>
