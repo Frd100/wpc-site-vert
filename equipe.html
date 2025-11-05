@@ -9,17 +9,17 @@
 
     <!-- Base URL for GitHub Pages - Détection automatique -->
     <script>
-      // Détecte si on est en local ou en production
-      (function() {
-        const isLocal = window.location.protocol === 'file:' || 
-                       window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1';
-        if (!isLocal) {
-          const base = document.createElement('base');
-          base.href = '/wpc-site-astro/';
-          document.head.insertBefore(base, document.head.firstChild);
-        }
-      })();
+        // Détecte si on est en local ou en production
+        (function () {
+            const isLocal = window.location.protocol === 'file:' ||
+                window.location.hostname === 'localhost' ||
+                window.location.hostname === '127.0.0.1';
+            if (!isLocal) {
+                const base = document.createElement('base');
+                base.href = '/wpc-site-astro/';
+                document.head.insertBefore(base, document.head.firstChild);
+            }
+        })();
     </script>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://westparisconsulting.fr/equipe.html">
@@ -67,8 +67,7 @@
                         <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
                     </div>
                 </button>
-                <div
-                    class="main-navigation__content flex justify-start m-0 pl-3 md:pl-4 relative h-full">
+                <div class="main-navigation__content flex justify-start m-0 pl-3 md:pl-4 relative h-full">
                     <div class="main-navigation__logo">
                         <a href="index.html" class="main-navigation__logo-link">
                             <div class="main-navigation__logo-text text-white">
@@ -141,107 +140,56 @@
                 </div>
             </section>
 
-            <div class="cmp-equipe-intro-section py-12 px-4">
-                <div class="cmp-equipe-intro-content max-w-4xl mx-auto text-center">
-                    <p class="cmp-equipe-intro-text text-lg md:text-xl text-gray-700">
-                        Découvrez les membres qui composent notre équipe.<br>
-                        Chacun apporte son expertise et sa créativité pour répondre aux besoins concrets des projets qui
-                        nous sont confiés.
-                    </p>
-                </div>
-            </div>
-
             <main class="main py-12 px-4">
                 <div id="main-wpc-content" class="cmp-container max-w-6xl mx-auto">
                     <div class="section">
                         <div id="section-wpc-equipe" class="cmp-container">
                             <div class="cmp-equipe-section">
-                                <div
-                                    class="cmp-equipe-content team-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    <div class="cmp-membre-item team-item bg-white rounded-lg p-6 shadow-md">
-                                        <div
-                                            class="team-item-icon-wrapper w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
-                                            <svg class="team-item-icon" width="16" height="16" viewBox="0 0 20 20"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path d="M7 5L13 10L7 15V5Z" fill="white" />
-                                            </svg>
-                                        </div>
-                                        <h2 class="cmp-membre-name team-name text-xl font-bold mb-2">
+                                <div class="cmp-equipe-content team-list">
+                                    <div class="cmp-membre-item team-item">
+                                        <h2 class="cmp-membre-name team-name">
                                             <a href="https://www.linkedin.com/in/farid-seridj" target="_blank"
                                                 rel="noopener noreferrer"
                                                 class="text-gray-900 hover:text-black transition-colors">Farid
                                                 Seridj</a>
                                         </h2>
-                                        <div class="team-item-separator w-12 h-0.5 bg-black mb-2"></div>
-                                        <p class="cmp-membre-role team-role text-gray-600">Président</p>
+                                        <p class="cmp-membre-role team-role">Président</p>
                                     </div>
-                                    <div class="cmp-membre-item team-item bg-white rounded-lg p-6 shadow-md">
-                                        <div
-                                            class="team-item-icon-wrapper w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
-                                            <svg class="team-item-icon" width="16" height="16" viewBox="0 0 20 20"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path d="M7 5L13 10L7 15V5Z" fill="white" />
-                                            </svg>
-                                        </div>
-                                        <h2 class="cmp-membre-name team-name text-xl font-bold mb-2">
+                                    <div class="cmp-membre-item team-item">
+                                        <h2 class="cmp-membre-name team-name">
                                             <a href="https://www.linkedin.com/in/wahil-derdega-224794231/"
                                                 target="_blank" rel="noopener noreferrer"
                                                 class="text-gray-900 hover:text-black transition-colors">Wahil
                                                 Derdega</a>
                                         </h2>
-                                        <div class="team-item-separator w-12 h-0.5 bg-black mb-2"></div>
-                                        <p class="cmp-membre-role team-role text-gray-600">Trésorier</p>
+                                        <p class="cmp-membre-role team-role">Trésorier</p>
                                     </div>
-                                    <div class="cmp-membre-item team-item bg-white rounded-lg p-6 shadow-md">
-                                        <div
-                                            class="team-item-icon-wrapper w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
-                                            <svg class="team-item-icon" width="16" height="16" viewBox="0 0 20 20"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path d="M7 5L13 10L7 15V5Z" fill="white" />
-                                            </svg>
-                                        </div>
-                                        <h2 class="cmp-membre-name team-name text-xl font-bold mb-2">
+                                    <div class="cmp-membre-item team-item">
+                                        <h2 class="cmp-membre-name team-name">
                                             <a href="https://www.linkedin.com/in/rherbaoui-amine/" target="_blank"
                                                 rel="noopener noreferrer"
                                                 class="text-gray-900 hover:text-black transition-colors">Amine
                                                 Rherbaoui</a>
                                         </h2>
-                                        <div class="team-item-separator w-12 h-0.5 bg-black mb-2"></div>
-                                        <p class="cmp-membre-role team-role text-gray-600">Secrétaire Général</p>
+                                        <p class="cmp-membre-role team-role">Secrétaire Général</p>
                                     </div>
-                                    <div class="cmp-membre-item team-item bg-white rounded-lg p-6 shadow-md">
-                                        <div
-                                            class="team-item-icon-wrapper w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
-                                            <svg class="team-item-icon" width="16" height="16" viewBox="0 0 20 20"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path d="M7 5L13 10L7 15V5Z" fill="white" />
-                                            </svg>
-                                        </div>
-                                        <h2 class="cmp-membre-name team-name text-xl font-bold mb-2">
+                                    <div class="cmp-membre-item team-item">
+                                        <h2 class="cmp-membre-name team-name">
                                             <a href="https://www.linkedin.com/in/yazid-badache-797264267/"
                                                 target="_blank" rel="noopener noreferrer"
                                                 class="text-gray-900 hover:text-black transition-colors">Yazid
                                                 Badache</a>
                                         </h2>
-                                        <div class="team-item-separator w-12 h-0.5 bg-black mb-2"></div>
-                                        <p class="cmp-membre-role team-role text-gray-600">Chef de Projet Junior</p>
+                                        <p class="cmp-membre-role team-role">Chef de Projet Junior</p>
                                     </div>
-                                    <div class="cmp-membre-item team-item bg-white rounded-lg p-6 shadow-md">
-                                        <div
-                                            class="team-item-icon-wrapper w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
-                                            <svg class="team-item-icon" width="16" height="16" viewBox="0 0 20 20"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                                <path d="M7 5L13 10L7 15V5Z" fill="white" />
-                                            </svg>
-                                        </div>
-                                        <h2 class="cmp-membre-name team-name text-xl font-bold mb-2">
+                                    <div class="cmp-membre-item team-item">
+                                        <h2 class="cmp-membre-name team-name">
                                             <a href="https://www.linkedin.com/in/alexis-fotsam/" target="_blank"
                                                 rel="noopener noreferrer"
                                                 class="text-gray-900 hover:text-black transition-colors">Alexis
                                                 Fotsa Meli</a>
                                         </h2>
-                                        <div class="team-item-separator w-12 h-0.5 bg-black mb-2"></div>
-                                        <p class="cmp-membre-role team-role text-gray-600">Chef de Projet Junior</p>
+                                        <p class="cmp-membre-role team-role">Chef de Projet Junior</p>
                                     </div>
                                 </div>
                             </div>
@@ -258,17 +206,18 @@
                     <div class="cmp-footer__info">
                         <div class="cmp-footer__contact-info">
                             <h4>Contact</h4>
-                            <p><a href="mailto:contact@westparisconsulting.fr" class="text-gray-300 hover:text-white transition-colors">contact@westparisconsulting.fr</a></p>
+                            <p><a href="mailto:contact@westparisconsulting.fr"
+                                    class="text-gray-300 hover:text-white transition-colors">contact@westparisconsulting.fr</a>
+                            </p>
                             <p>Université Paris Nanterre<br>200 Avenue de la République<br>92000 Nanterre</p>
                         </div>
                         <div class="cmp-footer__social">
                             <div class="cmp-footer__social-links">
-                                <a href="https://www.linkedin.com/company/westparisconsulting/" 
-                                   target="_blank" 
-                                   rel="noopener noreferrer"
-                                   class="cmp-footer__social-link"
-                                   aria-label="Suivez-nous sur LinkedIn">
-                                    <svg class="cmp-footer__social-icon" viewBox="0 0 382 382" xmlns="http://www.w3.org/2000/svg">
+                                <a href="https://www.linkedin.com/company/westparisconsulting/" target="_blank"
+                                    rel="noopener noreferrer" class="cmp-footer__social-link"
+                                    aria-label="Suivez-nous sur LinkedIn">
+                                    <svg class="cmp-footer__social-icon" viewBox="0 0 382 382"
+                                        xmlns="http://www.w3.org/2000/svg">
                                         <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
                                           C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
                                           H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
@@ -277,7 +226,7 @@
                                           c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
                                           c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
                                           c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
-                                          L341.91,330.654L341.91,330.654z"/>
+                                          L341.91,330.654L341.91,330.654z" />
                                     </svg>
                                 </a>
                             </div>
@@ -303,7 +252,8 @@
                         </div>
                     </nav>
                     <div class="cmp-footer__copyright">
-                        <p>© 2025 West Paris Consulting, association étudiante de l'Université Paris Nanterre. Tous droits réservés.</p>
+                        <p>© 2025 West Paris Consulting, association étudiante de l'Université Paris Nanterre. Tous
+                            droits réservés.</p>
                     </div>
                 </div>
             </div>
@@ -324,14 +274,6 @@
             }
             const { gsap, SplitText, ScrollTrigger } = getGSAP();
             if (!gsap || !SplitText || !ScrollTrigger) return;
-
-            const introText = document.querySelector('.cmp-equipe-intro-text');
-            if (introText) {
-                gsap.from(introText, {
-                    opacity: 0, x: 60, duration: 0.8, ease: 'power2.out',
-                    scrollTrigger: { trigger: introText, start: 'top 85%', toggleActions: 'play none none none' }
-                });
-            }
 
             const teamItems = document.querySelectorAll('.cmp-membre-item.team-item');
             teamItems.forEach((item) => {
@@ -356,39 +298,80 @@
             padding: 4rem 1rem;
         }
 
-        .cmp-equipe-intro-section {
-            padding: 3rem 1rem;
-        }
-
         .team-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .team-list {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .team-list {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
         .team-item {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            padding: 2rem 0;
+            border-bottom: 1px solid #000000;
         }
 
-        .team-item-separator {
-            width: 3rem;
-            height: 2px;
-            background-color: #000000;
-            margin: 0.5rem 0;
+        .team-item:last-child {
+            border-bottom: none;
+        }
+
+        .cmp-membre-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .cmp-membre-name {
+                font-size: 2rem;
+            }
+        }
+
+        .cmp-membre-name a {
+            color: #000000;
+            text-decoration: none;
+            padding: 0.05rem 0.15rem;
+            margin: -0.05rem -0.15rem;
+            border-radius: 0.125rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cmp-membre-name a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #EEF0F4;
+            transition: width 0.2s ease;
+            z-index: -1;
+            border-radius: 0.125rem;
+        }
+
+        .cmp-membre-name a:hover::before {
+            width: 100%;
+        }
+
+        .cmp-membre-name a:hover {
+            color: #000000;
+        }
+
+        .cmp-membre-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            color: #666666;
+            margin: 0;
+        }
+
+        @media (min-width: 768px) {
+            .cmp-membre-role {
+                font-size: 1rem;
+            }
         }
     </style>
 </body>
