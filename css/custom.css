@@ -529,25 +529,24 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
 }
 
 @media (max-width: 768px) {
+    /* Container hero plus court sur mobile pour les autres pages (sauf contact et nous-rejoindre) */
+    body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
+        justify-content: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
     .hero-container {
         justify-content: flex-end;
         padding-top: 3.5rem;
         padding-bottom: 3.25rem;
     }
 
-    /* Monter la position du titre, sous-titre et bouton sur la page index uniquement */
-    body#page-wpc-main .hero-container,
+    /* Monter la position du titre, sous-titre et bouton sur la page index uniquement - DOIT être après la règle générale */
     body#page-wpc-main section.hero-minimal .hero-container {
         justify-content: flex-start;
         padding-top: 3.25rem;
         padding-bottom: 3.25rem;
-    }
-
-    /* Container hero plus court sur mobile pour les autres pages (sauf contact et nous-rejoindre) */
-    body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
-        justify-content: center;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
     }
 }
 
