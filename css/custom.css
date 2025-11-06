@@ -1813,3 +1813,13 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
         text-align: center;
     }
 }
+
+/* Baisser la position du titre et sous-titre hero sur mobile (sauf index, contact, nous-rejoindre) */
+@media (max-width: 767px) {
+    body#page-wpc-equipe .hero-container,
+    body#page-wpc-mentions-legales .hero-container,
+    body#page-wpc-confidentialite .hero-container,
+    body#page-wpc-exercer-droits .hero-container {
+        padding-top: 2rem;
+    }
+}
