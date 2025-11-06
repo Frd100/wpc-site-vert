@@ -1806,7 +1806,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 
     body#page-wpc-contact .contact-info-item {
         justify-content: center;
-        flex-direction: column;
         align-items: center;
     }
 
