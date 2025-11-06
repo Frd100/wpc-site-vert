@@ -1389,7 +1389,7 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 }
 
 .index-section--about {
-    background-color: #FAFAFA;
+    background-color: #FFFFFF;
     padding-top: 5rem;
 }
 
@@ -1397,6 +1397,14 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     .index-section--about {
         padding-top: 6rem;
     }
+}
+
+/* Force le fond blanc pour la section about sur la page index */
+body#page-wpc-main .index-section--about,
+body#page-wpc-main main .index-section--about,
+body#page-wpc-main main section.index-section--about {
+    background-color: #FFFFFF;
+    background: #FFFFFF;
 }
 
 .index-section--ancrage {
@@ -1957,4 +1965,10 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     body#page-wpc-exercer-droits .hero-container {
         padding-top: 2rem;
     }
+}
+
+/* Surcharge finale pour forcer le fond blanc de la section about */
+body#page-wpc-main main section.index-section.index-section--about {
+    background-color: #FFFFFF;
+    background: #FFFFFF;
 }
