@@ -541,6 +541,12 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
+
+    /* Monter la position du titre, sous-titre et bouton sur la page index uniquement */
+    body#page-wpc-main .hero-container {
+        padding-top: 2rem;
+        padding-bottom: 3.25rem;
+    }
 }
 
 @media (min-width: 768px) {
