@@ -1365,13 +1365,7 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 .index-domaine-card {
     background-color: #F5F5F5;
     padding: 2.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid transparent;
-}
-
-.index-domaine-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 @media (min-width: 768px) {
