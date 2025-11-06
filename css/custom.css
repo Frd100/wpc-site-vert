@@ -551,16 +551,6 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
     }
 
     /* Ajustement supplémentaire pour les éléments de la hero sur la page index */
-    body#page-wpc-main .hero-title {
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
-
-    body#page-wpc-main .hero-subtitle {
-        margin-top: 0;
-        margin-bottom: 1.5rem;
-    }
-
     body#page-wpc-main .hero-button-container {
         margin-top: 0;
     }
