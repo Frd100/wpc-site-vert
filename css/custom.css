@@ -1567,20 +1567,11 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 }
 
 .index-stacked-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: #EEF0F4;
-    transition: width 0.2s ease;
-    z-index: -1;
-    border-radius: 0.125rem;
+    display: none;
 }
 
 .index-stacked-link:hover::before {
-    width: 100%;
+    display: none;
 }
 
 .index-stacked-link:hover {
@@ -1600,20 +1591,11 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 }
 
 .index-stacked-link-text::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: #EEF0F4;
-    transition: width 0.2s ease;
-    z-index: -1;
-    border-radius: 0.125rem;
+    display: none;
 }
 
 .index-stacked-title:hover .index-stacked-link-text::before {
-    width: 100%;
+    display: none;
 }
 
 .index-stacked-title:hover .index-stacked-link-text {
