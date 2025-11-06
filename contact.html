@@ -7,24 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-language" content="fr-FR">
 
-  <!-- Base URL for GitHub Pages - Détection automatique -->
-  <script>
-    // Détecte si on est en local, sur le domaine de production, ou sur GitHub Pages
-    (function () {
-      const isLocal = window.location.protocol === 'file:' ||
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1';
-      const isProductionDomain = window.location.hostname === 'westparisconsulting.fr' ||
-        window.location.hostname === 'www.westparisconsulting.fr';
-      // Ajouter le base href uniquement pour GitHub Pages, pas pour le domaine de production
-      if (!isLocal && !isProductionDomain) {
-        const base = document.createElement('base');
-        base.href = '/wpc-site-astro/';
-        document.head.insertBefore(base, document.head.firstChild);
-      }
-    })();
-  </script>
-
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://westparisconsulting.fr/contact.html">
   <meta property="og:title" content="Contact - West Paris Consulting">
