@@ -744,10 +744,13 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 }
 
 /* S'assurer que le logo et le bouton hamburger restent au-dessus du menu mobile */
-.main-navigation__logo,
-.main-navigation__toggle {
+.main-navigation__logo {
     position: relative;
-    z-index: 103;
+    z-index: 104;
+}
+
+.main-navigation__toggle {
+    z-index: 104;
 }
 
 /* Navigation identique sur toutes les pages (même style que index) */
@@ -964,7 +967,12 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     right: 1rem;
     transform: translateY(-50%);
     padding: 0.75rem;
-    z-index: 50;
+    z-index: 104;
+}
+
+/* Surcharger la classe Tailwind z-50 du HTML */
+.main-navigation__toggle.z-50 {
+    z-index: 104;
 }
 
 @media (max-width: 768px) {
@@ -1221,7 +1229,7 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     width: 100vw;
     margin: 0;
     padding: 0;
-    z-index: 102;
+    z-index: 101;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
