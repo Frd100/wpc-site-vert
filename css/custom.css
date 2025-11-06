@@ -1798,4 +1798,19 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
         text-align: center;
         padding-top: 2rem;
     }
+
+    body#page-wpc-contact .contact-info-list {
+        align-items: center;
+        text-align: center;
+    }
+
+    body#page-wpc-contact .contact-info-item {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body#page-wpc-contact .contact-info-text {
+        text-align: center;
+    }
 }
