@@ -1,10 +1,3 @@
-/**
- * Utility functions for GSAP and general helpers
- */
-
-/**
- * Wait for GSAP to be loaded from CDN
- */
 function waitForGSAP(timeout = 5000) {
   return new Promise((resolve, reject) => {
     if (window.gsap) {
@@ -28,9 +21,6 @@ function waitForGSAP(timeout = 5000) {
   });
 }
 
-/**
- * Get GSAP and plugins from window
- */
 function getGSAP() {
   const gsap = window.gsap;
   const SplitText = window.SplitText;
@@ -46,9 +36,6 @@ function getGSAP() {
   return { gsap, SplitText, ScrollTrigger, TextPlugin };
 }
 
-/**
- * Smooth scroll to element
- */
 function smoothScroll(target) {
   const element = document.querySelector(target);
   if (element) {
@@ -56,9 +43,6 @@ function smoothScroll(target) {
   }
 }
 
-/**
- * Check if element is in viewport
- */
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
   return (

@@ -1,7 +1,3 @@
-/**
- * Header Navigation Script
- */
-
 document.addEventListener('DOMContentLoaded', async () => {
     let gsap;
     try {
@@ -12,14 +8,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         gsap = null;
     }
 
-    // Mobile menu toggle
     const mobileToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const hamburgerLines = document.querySelectorAll('.hamburger-line');
 
     if (!mobileToggle || !mobileMenu) return;
 
-    // S'assurer que le menu est fermé au chargement
     mobileMenu.classList.add('hidden');
     mobileToggle.setAttribute('aria-expanded', 'false');
 
@@ -30,9 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         mobileToggle.setAttribute('aria-expanded', String(isOpen));
 
         if (gsap) {
-            // Menu avec animations GSAP
             if (isOpen) {
-                // Ouvrir le menu
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('absolute', 'top-0', 'left-0', 'w-full', 'z-40', 'flex', 'flex-col', 'items-center', 'gap-6');
 
@@ -41,11 +33,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     { y: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }
                 );
 
-                // Animation des liens
                 const links = mobileMenu.querySelectorAll('a');
                 const linkTexts = mobileMenu.querySelectorAll('.main-navigation__link-text');
 
-                // S'assurer que les liens et leurs textes sont visibles
                 links.forEach(link => {
                     gsap.set(link, { opacity: 1, visibility: 'visible', y: 0 });
                 });
@@ -61,7 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ease: 'power2.out',
                     delay: 0.1,
                     onComplete: () => {
-                        // S'assurer que tout est visible après l'animation
                         links.forEach(link => {
                             gsap.set(link, { opacity: 1, visibility: 'visible' });
                         });
@@ -71,12 +60,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
 
-                // Animation hamburger
                 hamburgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
                 hamburgerLines[1].style.opacity = '0';
                 hamburgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
             } else {
-                // Fermer le menu
                 gsap.to(mobileMenu, {
                     y: '-100%',
                     opacity: 0,
@@ -88,14 +75,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
                 });
 
-                // Réinitialiser hamburger
                 hamburgerLines.forEach(line => {
                     line.style.transform = '';
                     line.style.opacity = '';
                 });
             }
         } else {
-            // Menu basique sans GSAP (fallback)
             if (isOpen) {
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('absolute', 'top-0', 'left-0', 'w-full', 'z-40', 'flex', 'flex-col', 'items-center', 'gap-6');
@@ -106,7 +91,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // Fermer le menu au clic sur un lien
     const menuLinks = mobileMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -116,12 +100,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // Animation hover par lettre pour les liens de navigation
     function setupLetterHoverAnimation() {
-        // Sélectionner uniquement les liens du menu desktop (pas ceux du menu mobile)
         const allNavLinks = document.querySelectorAll('.main-navigation__link');
         const navLinks = Array.from(allNavLinks).filter(link => {
-            // Exclure les liens qui sont dans le menu mobile ou qui ont la classe mobile
             return !link.classList.contains('main-navigation__link--mobile') &&
                 !link.closest('#mobile-menu');
         });
@@ -141,7 +122,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 textElement.innerHTML = letters;
             });
 
-            // Animation au hover
             if (gsap) {
                 const firstText = link.querySelector('.main-navigation__link-text:first-child');
                 const secondText = link.querySelector('.main-navigation__link-text:last-child');
@@ -151,7 +131,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const secondLetters = secondText.querySelectorAll('.nav-letter');
 
                     link.addEventListener('mouseenter', () => {
-                        // Animation du premier texte (remonte)
                         gsap.to(firstLetters, {
                             y: '-100%',
                             duration: 0.4,
@@ -159,7 +138,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                             ease: 'power2.out'
                         });
 
-                        // Animation du second texte (remonte depuis le bas)
                         gsap.fromTo(secondLetters,
                             { y: '100%' },
                             {
@@ -172,7 +150,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     });
 
                     link.addEventListener('mouseleave', () => {
-                        // Animation inverse
                         gsap.to(firstLetters, {
                             y: '0%',
                             duration: 0.4,
@@ -192,7 +169,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Initialiser l'animation des lettres
     if (gsap) {
         setupLetterHoverAnimation();
     }

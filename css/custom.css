@@ -1,6 +1,3 @@
-/* Custom styles for GSAP classes and animations */
-
-/* Classes GSAP - NE JAMAIS SUPPRIMER */
 .split-chars {
     display: inline-block;
 }
@@ -15,7 +12,6 @@
     overflow: hidden;
 }
 
-/* États initiaux pour GSAP */
 .huge-letters__title[animation-direction="below-custom"] .is-word:nth-of-type(odd) i:nth-child(odd) {
     transform: translateY(10rem);
 }
@@ -24,7 +20,6 @@
     transform: translateY(20rem);
 }
 
-/* Animation déclenchée au scroll */
 .huge-letters__title.scroll-animation--in-viewport[animation-direction="below-custom"] .is-word:nth-of-type(odd) i:nth-child(odd) {
     transform: translateY(0);
     transition: transform 0.5s ease-out;
@@ -35,7 +30,6 @@
     transition: transform 0.6s ease-out;
 }
 
-/* === Stroke button animation (flair) === */
 :root {
     --color-surface-white: #FFFFFF;
     --color-just-black: #000000;
@@ -43,9 +37,6 @@
     --button-flair-color: #000000;
 }
 
-/* Base button styles - fusionné avec la définition ci-dessous */
-
-/* Spécifique au bouton de la hero: forcer le fond blanc et le texte noir */
 .button.hero-button {
     background: #E8EAED;
     color: #000000;
@@ -58,10 +49,8 @@
     background: #E8EAED;
     color: #000000;
     border: none;
-    /* Pas d'effet hover */
 }
 
-/* Bouton "Nous contacter" sur la page index uniquement - blanc par défaut */
 body#page-wpc-main .hero-button {
     background: #FFFFFF;
     border-radius: 0;
@@ -71,7 +60,6 @@ body#page-wpc-main .hero-button:hover,
 body#page-wpc-main .hero-button:active,
 body#page-wpc-main .hero-button:focus {
     background: #FFFFFF;
-    /* Pas d'effet hover */
 }
 
 .button--stroke:after {
@@ -91,7 +79,6 @@ body#page-wpc-main .hero-button:focus {
 }
 
 .button--stroke:hover .button__label {
-    /* Pas d'effet hover - garder la couleur par défaut */
     color: #000000;
 }
 
@@ -125,21 +112,17 @@ body#page-wpc-main .hero-button:focus {
     width: 170%;
 }
 
-/* === Homepage Sections Organization === */
 .homepage-section {
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
-/* Section principale avec fond blanc */
 .homepage-section.collection-module {
     background-color: #FFFFFF;
     padding: 6rem 0.75rem;
     transition: background-color 0.3s ease;
 }
-
-/* Les sections sont déjà en blanc par défaut, pas besoin de duplication */
 
 @media (min-width: 768px) {
     .homepage-section.collection-module {
@@ -147,7 +130,6 @@ body#page-wpc-main .hero-button:focus {
     }
 }
 
-/* Module content container */
 .module-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -155,7 +137,6 @@ body#page-wpc-main .hero-button:focus {
     z-index: 1;
 }
 
-/* Unit wrapper */
 .unit-wrapper {
     position: relative;
     display: flex;
@@ -181,7 +162,6 @@ body#page-wpc-main .hero-button:focus {
     z-index: 2;
 }
 
-/* Unit copy wrapper */
 .unit-copy-wrapper {
     position: relative;
     z-index: 3;
@@ -198,8 +178,6 @@ body#page-wpc-main .hero-button:focus {
     letter-spacing: -0.02em;
 }
 
-/* Les couleurs sont déjà définies par défaut, pas besoin de duplication */
-
 @media (min-width: 768px) {
     .headline {
         font-size: 3rem;
@@ -214,8 +192,6 @@ body#page-wpc-main .hero-button:focus {
     margin-bottom: 2rem;
 }
 
-/* Les couleurs sont déjà définies par défaut, pas besoin de duplication */
-
 @media (min-width: 768px) {
     .subhead {
         font-size: 1.125rem;
@@ -223,7 +199,6 @@ body#page-wpc-main .hero-button:focus {
     }
 }
 
-/* CTA Links */
 .cta-links {
     display: flex;
     flex-direction: column;
@@ -239,7 +214,6 @@ body#page-wpc-main .hero-button:focus {
     }
 }
 
-/* Button styles - Définition unique */
 .button {
     display: inline-flex;
     align-items: center;
@@ -290,7 +264,6 @@ body#page-wpc-main .hero-button:focus {
     transform: translateY(-2px);
 }
 
-/* Boutons adaptés pour la page index (fond blanc) */
 body#page-wpc-main .button-tertiary {
     color: #000000;
     border: 1px solid #000000;
@@ -301,7 +274,6 @@ body#page-wpc-main .button-tertiary:hover {
     color: #FFFFFF;
 }
 
-/* Alternance de fond pour certaines sections */
 .homepage-section[data-unit-id="about-wpc"],
 .homepage-section[data-unit-id="why-choose-wpc"],
 .homepage-section[data-unit-id="process-wpc"] {
@@ -316,9 +288,6 @@ body#page-wpc-main .button-tertiary:hover {
     background-color: #FFFFFF;
 }
 
-/* Les sections sont déjà en blanc par défaut, pas besoin de duplication */
-
-/* Services groupés : réduire le padding entre les sous-sections */
 .homepage-section[data-unit-id="service-strategie"],
 .homepage-section[data-unit-id="service-juridique"],
 .homepage-section[data-unit-id="service-innovation"] {
@@ -336,7 +305,6 @@ body#page-wpc-main .button-tertiary:hover {
     }
 }
 
-/* Section introductive des services */
 .homepage-section[data-unit-id="services-wpc"] {
     padding-bottom: 3rem;
 }
@@ -348,8 +316,6 @@ body#page-wpc-main .button-tertiary:hover {
 
 }
 
-/* Transition depuis la hero section (noir) vers la première section */
-/* Sur la page index, le fond est blanc directement */
 body#page-wpc-main .homepage-section:first-of-type {
     background: #FFFFFF;
     padding-top: 0;
@@ -365,12 +331,10 @@ body#page-wpc-main .homepage-section:first-of-type {
     }
 }
 
-/* Espacement cohérent entre sections */
 .homepage-section+.homepage-section {
     margin-top: 0;
 }
 
-/* Ajustement du contraste pour la première section */
 .homepage-section:first-of-type .headline {
     color: #000000;
 }
@@ -379,9 +343,6 @@ body#page-wpc-main .homepage-section:first-of-type {
     color: #666666;
 }
 
-/* Sur la page index (fond blanc), les couleurs sont identiques, donc pas besoin de duplication */
-
-/* Section CTA (avant le footer) : espacement supplémentaire en bas */
 .homepage-section[data-unit-id="cta-wpc"] {
     padding-bottom: 8rem;
 }
@@ -392,7 +353,6 @@ body#page-wpc-main .homepage-section:first-of-type {
     }
 }
 
-/* === HERO SECTION === */
 .hero-minimal {
     position: relative;
     width: 100%;
@@ -407,7 +367,6 @@ body#page-wpc-main .homepage-section:first-of-type {
     }
 }
 
-/* Hero sections plus courtes sur les autres pages (sauf index, contact et nous-rejoindre) */
 body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-minimal {
     min-height: 50vh;
 }
@@ -418,7 +377,6 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
     }
 }
 
-/* Image de fond avec animation d'apparition - contenue dans la hero section */
 .hero-minimal::before {
     content: '';
     position: absolute;
@@ -471,7 +429,6 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
     }
 }
 
-/* Dégradé noir en bas de la hero section */
 .hero-minimal::after {
     content: '';
     position: absolute;
@@ -525,21 +482,18 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
 
 @media (max-width: 768px) {
 
-    /* Container hero plus court sur mobile pour les autres pages (sauf contact et nous-rejoindre) */
     body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
         justify-content: center;
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
 
-    /* Règle générale pour toutes les pages */
     .hero-container {
         justify-content: flex-end;
         padding-top: 3.5rem;
         padding-bottom: 3.25rem;
     }
 
-    /* Surcharge spécifique pour la page index - DOIT être après la règle générale */
     body#page-wpc-main .hero-container {
         justify-content: flex-start;
         padding-top: 15.5rem;
@@ -558,7 +512,6 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
     }
 }
 
-/* Container hero plus court sur les autres pages (sauf index, contact et nous-rejoindre) */
 body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .hero-container {
     min-height: 50vh;
     padding-top: 3rem;
@@ -573,7 +526,6 @@ body:not(#page-wpc-main):not(#page-wpc-contact):not(#page-wpc-nous-rejoindre) .h
     }
 }
 
-/* Hero contact et nous-rejoindre - grandes comme index */
 body#page-wpc-contact .hero-contact,
 body#page-wpc-nous-rejoindre .hero-contact {
     min-height: 90vh;
@@ -617,7 +569,6 @@ body#page-wpc-nous-rejoindre .hero-contact-container {
     width: 100%;
 }
 
-/* Iframe plus haute pour la page nous-rejoindre */
 body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     height: 800px;
 }
@@ -658,7 +609,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
         margin-bottom: 1.5rem;
     }
 
-    /* Surcharge pour la page index - doit être après la règle générale */
     body#page-wpc-main .hero-title {
         margin-bottom: 1rem;
     }
@@ -683,7 +633,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
         margin-top: 0;
     }
 
-    /* Surcharge pour la page index - doit être après la règle générale */
     body#page-wpc-main .hero-subtitle {
         margin-bottom: 1.5rem;
     }
@@ -713,7 +662,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     }
 }
 
-/* === MAIN NAVIGATION === */
 .main-navigation {
     position: absolute;
     top: 0;
@@ -733,12 +681,10 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 }
 
 
-/* S'assurer que le conteneur de navigation peut contenir le menu mobile */
 .main-navigation__container {
     position: relative;
 }
 
-/* S'assurer que le logo et le bouton hamburger restent au-dessus du menu mobile */
 .main-navigation__logo {
     position: relative;
     z-index: 104;
@@ -747,8 +693,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 .main-navigation__toggle {
     z-index: 104;
 }
-
-/* Navigation identique sur toutes les pages (même style que index) */
 
 @keyframes fadeInNav {
     0% {
@@ -928,7 +872,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     will-change: transform;
 }
 
-/* Surcharge complète pour les liens mobiles - DOIT être après la règle générale */
 .main-navigation__link.main-navigation__link--mobile {
     font-size: 1.5rem;
     height: auto;
@@ -946,7 +889,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     color: #FFFFFF;
 }
 
-/* Désactiver le positionnement absolu pour les liens mobiles */
 .main-navigation__link--mobile .main-navigation__link-text {
     position: relative;
     z-index: auto;
@@ -977,7 +919,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     z-index: 104;
 }
 
-/* Surcharger la classe Tailwind z-50 du HTML */
 .main-navigation__toggle.z-50 {
     z-index: 104;
 }
@@ -1009,10 +950,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
         background: transparent;
     }
 }
-
-/* ============================================
-   FOOTER STYLES
-   ============================================ */
 
 .cmp-footer {
     background-color: #000000;
@@ -1117,7 +1054,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     margin: 0;
 }
 
-/* Réseaux sociaux */
 .cmp-footer__social {
     margin-top: 0.75rem;
 }
@@ -1156,7 +1092,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     fill: currentColor;
 }
 
-/* Responsive - Desktop */
 @media (min-width: 768px) {
     .cmp-footer__container {
         padding: 2.5rem 2rem;
@@ -1213,7 +1148,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     }
 }
 
-/* Positionner le menu mobile par rapport à la navigation pour qu'il aille jusqu'aux bords */
 .main-navigation__content {
     position: relative;
     overflow: visible;
@@ -1258,7 +1192,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     }
 }
 
-/* S'assurer que le menu mobile prend toute la largeur de l'écran sur mobile */
 @media (max-width: 767px) {
     #mobile-menu {
         top: -64px;
@@ -1277,7 +1210,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     display: flex;
 }
 
-/* Forcer la visibilité des liens dans le menu mobile */
 #mobile-menu a {
     opacity: 1;
     visibility: visible;
@@ -1307,7 +1239,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     color: #FFFFFF;
 }
 
-/* Masquer le deuxième span dans les autres pages pour éviter la duplication */
 #mobile-menu .main-navigation__link-text[aria-hidden="true"],
 #mobile-menu .main-navigation__link-text:last-child:not(:only-child) {
     display: none;
@@ -1318,10 +1249,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
         display: none;
     }
 }
-
-/* ============================================
-   INDEX SECTIONS BASE STYLES
-   ============================================ */
 
 .index-section {
     width: 100%;
@@ -1418,7 +1345,6 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
     }
 }
 
-/* Force le fond blanc pour la section about sur la page index */
 body#page-wpc-main .index-section--about,
 body#page-wpc-main main .index-section--about,
 body#page-wpc-main main section.index-section--about {
@@ -1689,10 +1615,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* ============================================
-   INDEX STACKED LIST STYLES (Design équipe)
-   ============================================ */
-
 .index-stacked-list {
     display: flex;
     flex-direction: column;
@@ -1802,11 +1724,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* ============================================
-   LEGAL PAGES STYLES
-   ============================================ */
-
-/* Container principal pour le contenu légal */
 .main {
     padding: 4rem 0.75rem;
     background-color: #FFFFFF;
@@ -1835,7 +1752,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* Contenu légal */
 .legal-content {
     display: flex;
     flex-direction: column;
@@ -1851,7 +1767,6 @@ body#page-wpc-main main section.index-section--about {
     border-bottom: none;
 }
 
-/* Titres légaux */
 .legal-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
@@ -1868,7 +1783,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* Titre principal (h2) */
 .legal-title.text-2xl {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -1880,7 +1794,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* Texte légal */
 .legal-text {
     font-family: 'Inter', sans-serif;
     font-size: 0.9375rem;
@@ -1912,7 +1825,6 @@ body#page-wpc-main main section.index-section--about {
     opacity: 0.7;
 }
 
-/* Section droits RGPD */
 .cmp-droits-info {
     margin-bottom: 3rem;
 }
@@ -1929,7 +1841,6 @@ body#page-wpc-main main section.index-section--about {
     border-top: 1px solid #000000;
 }
 
-/* Bouton pour exercer les droits */
 .droits-form {
     margin-top: 2rem;
 }
@@ -1938,7 +1849,6 @@ body#page-wpc-main main section.index-section--about {
     margin-top: 1.5rem;
 }
 
-/* Style pour le bouton "envoyer ma demande par email" - stroke inner comme index-button--secondary */
 .droits-form .hero-button.button--stroke {
     background-color: transparent;
     color: #000000;
@@ -1970,16 +1880,10 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* Espacement pour les sections */
 .legal-content .legal-section+.legal-section {
     margin-top: 0;
 }
 
-/* ============================================
-   CONTACT & NOUS-REJOINDRE - MOBILE ONLY
-   ============================================ */
-
-/* Centrer le texte et baisser la position sur mobile uniquement */
 @media (max-width: 767px) {
 
     body#page-wpc-contact .hero-contact-content,
@@ -2003,7 +1907,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* Baisser la position du titre et sous-titre hero sur mobile (sauf index, contact, nous-rejoindre) */
 @media (max-width: 767px) {
 
     body#page-wpc-equipe .hero-container,
@@ -2014,7 +1917,6 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
-/* Surcharge finale pour forcer le fond blanc de la section about */
 body#page-wpc-main main section.index-section.index-section--about {
     background-color: #FFFFFF;
     background: #FFFFFF;

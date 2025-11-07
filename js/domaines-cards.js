@@ -1,7 +1,3 @@
-/**
- * Domaines Cards Script
- */
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await waitForGSAP();
@@ -15,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Animation du sous-titre
   const subtitle = document.querySelector('.wpc-domaines-cards-subtitle');
   if (subtitle) {
     const split = new SplitText(subtitle, { type: 'words' });
@@ -37,7 +32,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Animation des cartes au scroll
   const cards = document.querySelectorAll('.wpc-domaine-card');
   cards.forEach((card, index) => {
     gsap.from(card, {

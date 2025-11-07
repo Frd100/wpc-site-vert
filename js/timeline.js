@@ -1,7 +1,3 @@
-/**
- * Timeline Script for Process Section
- */
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await waitForGSAP();
@@ -15,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Animation du titre "NOS PROCESSUS"
   const hugeLetters = document.querySelectorAll('.huge-letters__title');
   
   hugeLetters.forEach((title) => {

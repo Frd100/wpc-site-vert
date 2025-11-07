@@ -1,9 +1,3 @@
-/* Note: custom.css doit être chargé séparément dans les pages HTML */
-
-/* Note: Tailwind CSS est chargé via CDN dans les pages HTML */
-/* Les directives @tailwind ne sont pas nécessaires avec Tailwind CDN */
-
-/* Variables CSS globales (si nécessaire pour compatibilité) */
 :root {
   --primary-blue: #000000;
   --wpc-white: #FFFFFF;
@@ -15,7 +9,6 @@
   --bg-dark: #212529;
 }
 
-/* Styles de base */
 * {
   box-sizing: border-box;
 }
@@ -35,7 +28,6 @@ body {
   background-color: #FFFFFF;
 }
 
-/* Fond noir pour la page index */
 body#page-wpc-main {
   background-color: #000000;
   color: #FFFFFF;
@@ -49,7 +41,6 @@ body#page-wpc-main {
   padding: 0;
 }
 
-/* Fond noir pour le root sur la page index */
 body#page-wpc-main .root,
 body#page-wpc-main .responsivegrid {
   background-color: #000000;
@@ -60,7 +51,6 @@ main {
   max-width: 100%;
 }
 
-/* Fond blanc pour le main sur la page index (pour éviter les traits noirs entre sections) */
 body#page-wpc-main main {
   background-color: #FFFFFF;
 }

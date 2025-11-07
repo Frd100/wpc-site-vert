@@ -1,8 +1,3 @@
-/**
- * Index Sections Animations
- * Animations GSAP pour les sections de la page index
- */
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await waitForGSAP();
@@ -16,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Animation section "Qui sommes-nous"
   const aboutTitle = document.querySelector('.index-section--about .index-stacked-title');
   const aboutText = document.querySelector('.index-section--about .index-stacked-text');
   
@@ -54,7 +48,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Animation section "Ancrage local"
   const ancrageTitle = document.querySelector('.index-section--ancrage .index-stacked-title');
   const ancrageText = document.querySelector('.index-section--ancrage .index-stacked-text');
   
@@ -92,7 +85,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // Animation des cartes domaines
   const domaineCards = document.querySelectorAll('.index-domaine-card');
   domaineCards.forEach((card, index) => {
     const cardTitle = card.querySelector('.index-domaine-card__title');
@@ -137,7 +129,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Animation section processus
   const processusItems = document.querySelectorAll('.index-section--processus .index-stacked-item');
   processusItems.forEach((item, index) => {
     const itemTitle = item.querySelector('.index-stacked-title');
@@ -179,7 +170,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Animation section CTA
   const ctaTitle = document.querySelector('.index-section--cta .index-section__title');
   const ctaText = document.querySelector('.index-section--cta .index-section__text');
   const ctaButtons = document.querySelectorAll('.index-section--cta .index-button');

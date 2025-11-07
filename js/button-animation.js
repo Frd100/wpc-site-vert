@@ -1,8 +1,3 @@
-/**
- * Button Flair Animation
- * Animation de bouton avec effet ripple au hover
- */
-
 function initStrokeButtons() {
     if (typeof window === 'undefined') return;
 
