@@ -18,12 +18,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (heroTitle && SplitText) {
     const dataText = document.querySelectorAll('.hero-title .line .text');
     if (dataText.length > 0) {
-      const tl = gsap.timeline();
+      const allWords = [];
+      const tl = gsap.timeline({
+        onComplete: () => {
+          allWords.forEach(word => {
+            word.style.opacity = '1';
+            word.style.filter = 'blur(0px)';
+          });
+        }
+      });
 
       dataText.forEach((textElement, lineIndex) => {
         const split = new SplitText(textElement, { type: 'words' });
 
         if (split.words && split.words.length > 0) {
+          allWords.push(...split.words);
           gsap.set(split.words, {
             filter: 'blur(20px)',
             opacity: 0
