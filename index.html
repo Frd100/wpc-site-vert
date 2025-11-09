@@ -49,6 +49,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Lenis Smooth Scroll (dernière version) -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/dist/lenis.min.js" defer></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/global.css">
@@ -478,7 +481,7 @@
     <!-- Global scripts -->
     <script src="js/utils.js"></script>
     <script src="js/scroll-limit.js"></script>
-    <script src="js/smooth-scroll.js"></script>
+    <script src="js/scroll-smoother.js"></script>
     <script src="js/button-animation.js"></script>
     <script src="js/header.js"></script>
     <script src="js/hero.js"></script>
@@ -486,7 +489,7 @@
     <script src="js/index-sections.js"></script>
 
     <script>
-        // Smooth scrolling pour les ancres
+        // Smooth scrolling pour les ancres avec Lenis
         document.addEventListener('DOMContentLoaded', () => {
             const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
             smoothScrollLinks.forEach(link => {
@@ -497,10 +500,18 @@
                     const target = document.querySelector(href);
                     if (target) {
                         e.preventDefault();
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        // Utiliser Lenis si disponible, sinon fallback sur scrollIntoView
+                        if (window.lenis) {
+                            window.lenis.scrollTo(target, {
+                                offset: 0,
+                                duration: 1.2
+                            });
+                        } else {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
                     }
                 });
             });

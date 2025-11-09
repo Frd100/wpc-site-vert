@@ -37,9 +37,17 @@ function getGSAP() {
 }
 
 function smoothScroll(target) {
-  const element = document.querySelector(target);
+  const element = typeof target === 'string' ? document.querySelector(target) : target;
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    // Utiliser Lenis si disponible, sinon fallback sur scrollIntoView
+    if (window.lenis) {
+      window.lenis.scrollTo(element, {
+        offset: 0,
+        duration: 1.2
+      });
+    } else {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 
