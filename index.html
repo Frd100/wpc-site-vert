@@ -56,6 +56,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/animated-beam.css">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -95,67 +96,67 @@
 
             <!-- HERO -->
             <section class="hero-minimal relative overflow-hidden">
-                <!-- HEADER -->
-                <nav class="main-navigation">
-                    <div class="main-navigation__container w-full max-w-full mx-0 px-3 md:px-4">
-                        <button class="main-navigation__toggle md:hidden bg-transparent border-none cursor-pointer z-50"
-                            id="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
-                            <div class="hamburger-icon flex flex-col gap-1 w-4 h-4">
-                                <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
-                                <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
-                                <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
-                            </div>
-                        </button>
+        <!-- HEADER -->
+        <nav class="main-navigation">
+            <div class="main-navigation__container w-full max-w-full mx-0 px-3 md:px-4">
+                <button class="main-navigation__toggle md:hidden bg-transparent border-none cursor-pointer z-50"
+                    id="mobile-menu-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+                    <div class="hamburger-icon flex flex-col gap-1 w-4 h-4">
+                        <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
+                        <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
+                        <span class="hamburger-line bg-white h-0.5 w-full transition-all"></span>
+                    </div>
+                </button>
 
                         <div class="main-navigation__content flex justify-start m-0 pl-3 md:pl-4 relative h-full">
-                            <div class="main-navigation__logo">
-                                <a href="index.html" class="main-navigation__logo-link">
-                                    <div class="main-navigation__logo-text text-white">
-                                        <span class="logo-line">West Paris</span>
-                                        <span class="logo-line">Consulting</span>
-                                    </div>
-                                </a>
+                    <div class="main-navigation__logo">
+                        <a href="index.html" class="main-navigation__logo-link">
+                            <div class="main-navigation__logo-text text-white">
+                                <span class="logo-line">West Paris</span>
+                                <span class="logo-line">Consulting</span>
                             </div>
+                        </a>
+                    </div>
 
-                            <div class="main-navigation__links hidden md:flex gap-5 md:gap-6" id="desktop-menu"
-                                role="navigation" aria-label="Menu principal">
-                                <a href="index.html" class="main-navigation__link">
-                                    <span class="main-navigation__link-text">Accueil</span>
-                                    <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
-                                </a>
-                                <a href="equipe.html" class="main-navigation__link">
-                                    <span class="main-navigation__link-text">Notre Équipe</span>
-                                    <span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span>
-                                </a>
-                                <a href="contact.html" class="main-navigation__link">
-                                    <span class="main-navigation__link-text">Contact</span>
-                                    <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
-                                </a>
-                                <a href="nous-rejoindre.html" class="main-navigation__link">
-                                    <span class="main-navigation__link-text">Nous rejoindre</span>
-                                    <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
-                                </a>
-                            </div>
+                    <div class="main-navigation__links hidden md:flex gap-5 md:gap-6" id="desktop-menu"
+                        role="navigation" aria-label="Menu principal">
+                        <a href="index.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Accueil</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Accueil</span>
+                        </a>
+                        <a href="equipe.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Notre Équipe</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Notre-Équipe</span>
+                        </a>
+                        <a href="contact.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Contact</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Contact</span>
+                        </a>
+                        <a href="nous-rejoindre.html" class="main-navigation__link">
+                            <span class="main-navigation__link-text">Nous rejoindre</span>
+                            <span class="main-navigation__link-text" aria-hidden="true">Nous rejoindre</span>
+                        </a>
+                    </div>
 
                             <div class="main-navigation__links hidden md:hidden" id="mobile-menu" role="navigation"
                                 aria-label="Menu principal">
-                                <a href="index.html" class="main-navigation__link main-navigation__link--mobile">
-                                    <span class="main-navigation__link-text">Accueil</span>
-                                </a>
-                                <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile">
-                                    <span class="main-navigation__link-text">Notre Équipe</span>
-                                </a>
-                                <a href="contact.html" class="main-navigation__link main-navigation__link--mobile">
-                                    <span class="main-navigation__link-text">Contact</span>
-                                </a>
+                        <a href="index.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Accueil</span>
+                        </a>
+                        <a href="equipe.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Notre Équipe</span>
+                        </a>
+                        <a href="contact.html" class="main-navigation__link main-navigation__link--mobile">
+                            <span class="main-navigation__link-text">Contact</span>
+                        </a>
                                 <a href="nous-rejoindre.html"
                                     class="main-navigation__link main-navigation__link--mobile">
-                                    <span class="main-navigation__link-text">Nous rejoindre</span>
-                                </a>
-                            </div>
-                        </div>
+                            <span class="main-navigation__link-text">Nous rejoindre</span>
+                        </a>
                     </div>
-                </nav>
+                </div>
+            </div>
+        </nav>
                 <div class="hero-container relative z-10 px-3 md:px-4 text-center">
                     <h1 class="hero-title text-white">
                         <div class="line">
@@ -309,36 +310,133 @@
             <!-- DOMAINES -->
             <section class="index-section index-section--domaines">
                 <div class="index-section__container">
-                    <div class="index-section__header">
-                        <h2 class="index-section__title">Domaines d'intervention</h2>
-                        <p class="index-section__subtitle">
-                            Trois domaines d'intervention pour accompagner vos projets.
-                        </p>
+                    <div class="index-domaines-header">
+                        <h2 class="index-domaines-main-title">Domaines d'intervention</h2>
                     </div>
-                    <div class="index-domaines-grid">
-                        <div class="index-domaine-card">
-                            <h3 class="index-domaine-card__title">Stratégie et communication</h3>
-                            <ul class="index-domaine-card__list">
-                                <li>Études de marché</li>
-                                <li>Création de portefeuilles clients</li>
-                                <li>Élaboration de plans de communication</li>
-                            </ul>
+                    
+                    <div class="index-domaines-nav">
+                        <button class="index-domaines-tab active" data-tab="strategie">
+                            Stratégie
+                        </button>
+                        <button class="index-domaines-tab" data-tab="juridique">
+                            Juridique
+                        </button>
+                        <button class="index-domaines-tab" data-tab="digital">
+                            Digital
+                        </button>
+                    </div>
+
+                    <!-- Contenu Stratégie -->
+                    <div class="index-domaine-content active" data-content="strategie">
+                        <div class="index-domaine-layout">
+                            <div class="index-domaine-visual">
+                                <div class="index-beam-demo" id="beam-container-strategie">
+                                    <!-- L'animation du graphique sera créée dynamiquement par JavaScript -->
+                                </div>
+                            </div>
+                            <div class="index-domaine-text">
+                                <h3 class="index-domaine-content-title">Stratégie et communication</h3>
+                                <p class="index-domaine-description">
+                                    Nous vous accompagnons dans l'élaboration de votre stratégie de communication et de développement. De l'étude de marché à la création de portefeuilles clients, nous vous aidons à structurer vos plans de communication pour maximiser votre impact.
+                                </p>
+                                <ul class="index-domaine-features">
+                                    <li>Études de marché</li>
+                                    <li>Création de portefeuilles clients</li>
+                                    <li>Élaboration de plans de communication</li>
+                                </ul>
+                                <a href="contact.html" class="index-domaine-cta">Nous contacter</a>
+                            </div>
                         </div>
-                        <div class="index-domaine-card">
-                            <h3 class="index-domaine-card__title">Conseil et veille juridique</h3>
-                            <ul class="index-domaine-card__list">
-                                <li>Rédaction de documents de référence</li>
-                                <li>Appui aux démarches administratives</li>
-                                <li>Veille juridique et réglementaire</li>
-                            </ul>
+                    </div>
+
+                    <!-- Contenu Juridique -->
+                    <div class="index-domaine-content" data-content="juridique">
+                        <div class="index-domaine-layout">
+                            <div class="index-domaine-visual">
+                                <div class="index-beam-demo" id="beam-container-juridique">
+                                    <!-- L'animation du document sera créée dynamiquement par JavaScript -->
+                                </div>
+                            </div>
+                            <div class="index-domaine-text">
+                                <h3 class="index-domaine-content-title">Conseil et veille juridique</h3>
+                                <p class="index-domaine-description">
+                                    Notre équipe vous apporte son expertise en matière juridique et réglementaire. Nous vous accompagnons dans la rédaction de documents de référence, l'appui aux démarches administratives et la veille juridique pour sécuriser vos projets.
+                                </p>
+                                <ul class="index-domaine-features">
+                                    <li>Rédaction de documents de référence</li>
+                                    <li>Appui aux démarches administratives</li>
+                                    <li>Veille juridique et réglementaire</li>
+                                </ul>
+                                <a href="contact.html" class="index-domaine-cta">Nous contacter</a>
+                            </div>
                         </div>
-                        <div class="index-domaine-card">
-                            <h3 class="index-domaine-card__title">Solutions digitales et transformation</h3>
-                            <ul class="index-domaine-card__list">
-                                <li>Audit de présence digitale</li>
-                                <li>Création de sites web</li>
-                                <li>Optimisation des outils collaboratifs</li>
-                            </ul>
+                    </div>
+
+                    <!-- Contenu Digital -->
+                    <div class="index-domaine-content" data-content="digital">
+                        <div class="index-domaine-layout">
+                            <div class="index-domaine-visual">
+                                <div class="index-beam-demo" id="beam-container-digital">
+                                    <div style="display: flex; width: 100%; max-width: 35rem; flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem; margin: 0 auto; position: relative;">
+                                        <!-- Icône person à gauche -->
+                                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                                            <div class="animated-beam-circle" id="beam-digital-person" style="color: #000000;">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="12" cy="7" r="4" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Logo WPC au centre -->
+                                        <div style="display: flex; flex-direction: column; justify-content: center;">
+                                            <div class="animated-beam-circle animated-beam-circle--large" id="beam-wpc-digital">
+                                                <div style="font-family: 'Cormorant Garamond', serif; font-size: 0.875rem; font-weight: 600; color: #000000; text-align: center; line-height: 1;">
+                                                    WPC
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 3 icônes à droite (haut, milieu, bas) -->
+                                        <div style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; height: 100%;">
+                                            <div class="animated-beam-circle" id="beam-digital-audit" style="color: #000000;">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                                                </svg>
+                                            </div>
+                                            <div class="animated-beam-circle" id="beam-digital-web" style="color: #000000;">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                                    <line x1="8" y1="21" x2="16" y2="21" />
+                                                    <line x1="12" y1="17" x2="12" y2="21" />
+                                                </svg>
+                                            </div>
+                                            <div class="animated-beam-circle" id="beam-digital-collab" style="color: #000000;">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                                    <circle cx="9" cy="7" r="4" />
+                                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="index-domaine-text">
+                                <h3 class="index-domaine-content-title">Solutions digitales et transformation</h3>
+                                <p class="index-domaine-description">
+                                    Accélérez votre transformation digitale avec nos solutions sur mesure. De l'audit de votre présence digitale à la création de sites web, nous optimisons vos outils collaboratifs pour améliorer votre efficacité opérationnelle.
+                                </p>
+                                <ul class="index-domaine-features">
+                                    <li>Audit de présence digitale</li>
+                                    <li>Création de sites web</li>
+                                    <li>Optimisation des outils collaboratifs</li>
+                                </ul>
+                                <a href="contact.html" class="index-domaine-cta">Nous contacter</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -429,7 +527,7 @@
                             <div class="cmp-footer__social-links">
                                 <a href="https://www.linkedin.com/company/westparisconsulting/" target="_blank"
                                     rel="noopener noreferrer" class="cmp-footer__social-link"
-                                    aria-label="Suivez-nous sur LinkedIn">
+                                   aria-label="Suivez-nous sur LinkedIn">
                                     <svg class="cmp-footer__social-icon" viewBox="0 0 382 382"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
@@ -487,54 +585,9 @@
     <script src="js/hero.js"></script>
     <script src="js/marquee.js"></script>
     <script src="js/index-sections.js"></script>
-
-    <script>
-        // Smooth scrolling pour les ancres avec Lenis
-        document.addEventListener('DOMContentLoaded', () => {
-            const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
-            smoothScrollLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#' || !href) return;
-
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        // Utiliser Lenis si disponible, sinon fallback sur scrollIntoView
-                        if (window.lenis) {
-                            window.lenis.scrollTo(target, {
-                                offset: 0,
-                                duration: 1.2
-                            });
-                        } else {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
-                });
-            });
-
-            // Classe active sur les liens de navigation
-            const currentPath = window.location.pathname;
-            const navLinks = document.querySelectorAll('.main-navigation__link');
-
-            navLinks.forEach(link => {
-                const linkPath = link.getAttribute('href');
-                if (!linkPath) return;
-
-                const normalizedCurrent = currentPath === '/' || currentPath.endsWith('/index.html') ? '/' : currentPath;
-                const normalizedLink = linkPath === '/' || linkPath === '/index.html' || linkPath === 'index.html' ? '/' : linkPath;
-
-                if (normalizedCurrent === normalizedLink ||
-                    (normalizedCurrent === '/' && normalizedLink === '/') ||
-                    (normalizedCurrent.endsWith(normalizedLink) && normalizedLink !== '/')) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+    <script src="js/animated-beam.js"></script>
+    <script src="js/domaines-animations.js"></script>
+    <script src="js/domaines-beams.js"></script>
 </body>
 
 </html>

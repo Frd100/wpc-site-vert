@@ -180,7 +180,7 @@ body#page-wpc-main .hero-button:focus {
 
 @media (min-width: 768px) {
     .headline {
-        font-size: 3rem;
+    font-size: 3rem;
         margin-bottom: 1.5rem;
     }
 }
@@ -1420,8 +1420,8 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 
 .index-section__title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 1.75rem;
+    font-weight: 600;
     line-height: 1.3;
     color: #000000;
     margin-bottom: 1rem;
@@ -1434,7 +1434,7 @@ body#page-wpc-nous-rejoindre .hero-contact-form iframe {
 
 @media (min-width: 768px) {
     .index-section__title {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .index-section__title--large {
@@ -1500,10 +1500,10 @@ body#page-wpc-main main section.index-section--about {
 
 /* Taille réduite du titre "Qui sommes-nous" avec effet blur */
 .index-section--about .index-stacked-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 400;
     margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.2;
     will-change: filter;
 }
 
@@ -1623,69 +1623,192 @@ body#page-wpc-main main section.index-section--about {
 
 .index-section--domaines {
     background-color: #FFFFFF;
+    padding: 4rem 0;
 }
 
-.index-domaines-grid {
+.index-domaines-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.index-domaines-main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #000000;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .index-domaines-main-title {
+        font-size: 4rem;
+    }
+}
+
+.index-domaines-nav {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+.index-domaines-nav::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: var(--underline-left, 0);
+    width: 80px;
+    height: 2px;
+    background-color: #000000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.index-domaines-tab {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #666666;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.2s ease;
+    min-width: 80px;
+    text-align: center;
+}
+
+.index-domaines-tab:hover {
+    color: #000000;
+}
+
+.index-domaines-tab.active {
+    color: #000000;
+}
+
+.index-domaine-content {
+    display: none;
+}
+
+.index-domaine-content.active {
+    display: block;
+}
+
+.index-domaine-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: 2rem;
+    align-items: center;
 }
 
-@media (min-width: 768px) {
-    .index-domaines-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-top: 3rem;
+@media (min-width: 1024px) {
+    .index-domaine-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
     }
 }
 
-.index-domaine-card {
-    background-color: #F5F5F5;
-    padding: 2.5rem;
-    border: 1px solid transparent;
+.index-domaine-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-@media (min-width: 768px) {
-    .index-domaine-card {
-        padding: 3rem;
+.index-domaine-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    .index-domaine-visual {
+        justify-content: flex-start;
+    }
+    
+    .index-domaine-text {
+        align-items: flex-start;
+        text-align: left;
     }
 }
 
-.index-domaine-card__title {
-    font-family: 'Cormorant Garamond', serif;
+.index-domaine-number {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #666666;
+    margin-bottom: 1rem;
+}
+
+.index-domaine-content-title {
+    font-family: 'Inter', sans-serif;
     font-size: 1.75rem;
-    font-weight: 400;
-    line-height: 1.3;
+    font-weight: 500;
+    line-height: 1.2;
     color: #000000;
     margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
-    .index-domaine-card__title {
+    .index-domaine-content-title {
         font-size: 2rem;
     }
 }
 
-.index-domaine-card__list {
+.index-domaine-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666666;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .index-domaine-description {
+        font-size: 1.125rem;
+    }
+}
+
+.index-domaine-features {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 2rem 0;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    align-items: flex-start;
+    align-self: center;
+    width: auto;
 }
 
-.index-domaine-card__list li {
+@media (min-width: 1024px) {
+    .index-domaine-features {
+        align-items: flex-start;
+        align-self: flex-start;
+        text-align: left;
+    }
+}
+
+.index-domaine-features li {
     font-family: 'Inter', sans-serif;
     font-size: 0.9375rem;
     line-height: 1.7;
     color: #666666;
     position: relative;
     padding-left: 1.5rem;
+    padding-right: 0;
+    text-align: left;
 }
 
-.index-domaine-card__list li::before {
+.index-domaine-features li::before {
     content: '•';
     position: absolute;
     left: 0;
@@ -1694,14 +1817,82 @@ body#page-wpc-main main section.index-section--about {
     line-height: 1.4;
 }
 
+@media (min-width: 1024px) {
+    .index-domaine-features li {
+        text-align: left;
+    }
+}
+
+.index-domaine-cta {
+    display: inline-block;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.875rem 2rem;
+    transition: background-color 0.2s ease;
+}
+
+.index-domaine-cta:hover {
+    background-color: #333333;
+}
+
 @media (min-width: 768px) {
-    .index-domaine-card__list li {
+    .index-domaine-cta {
+        padding: 1rem 2.5rem;
         font-size: 1rem;
     }
 }
 
 .index-section--processus {
     background-color: #FAFAFA;
+}
+
+.index-section--processus .index-section__title {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .index-section--processus .index-section__title {
+        font-size: 4rem;
+    }
+}
+
+.index-section--beam {
+    background-color: #FFFFFF;
+    padding: 4rem 0;
+}
+
+.index-beam-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.index-beam-demo {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #F7F8FA;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+@media (min-width: 768px) {
+    .index-beam-demo {
+        padding: 2.5rem;
+        max-width: 550px;
+    }
 }
 
 .index-section--cta {
@@ -1798,8 +1989,8 @@ body#page-wpc-main main section.index-section--about {
 
 .index-stacked-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin-bottom: 0.5rem;
     color: #000000;
     line-height: 1.3;
@@ -1810,7 +2001,7 @@ body#page-wpc-main main section.index-section--about {
 
 @media (min-width: 768px) {
     .index-stacked-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 }
 
@@ -2084,7 +2275,13 @@ body#page-wpc-main main section.index-section--about {
     }
 }
 
+body#page-wpc-main main section.index-section.index-section--about {    background-color: #FFFFFF;    background: #FFFFFF;
+
+
 body#page-wpc-main main section.index-section.index-section--about {
-    background-color: #FFFFFF;
-    background: #FFFFFF;
-}
+
+
+
+
+
+

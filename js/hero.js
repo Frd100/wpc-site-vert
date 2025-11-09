@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  
+
   try {
     await waitForGSAP();
   } catch (error) {
@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const { gsap, SplitText, ScrollTrigger } = getGSAP();
-  
+
   if (!gsap || !SplitText) {
     return;
   }
 
-  
+
   const heroTitle = document.querySelector('.hero-title');
   if (heroTitle && SplitText) {
     const dataText = document.querySelectorAll('.hero-title .line .text');
@@ -27,24 +27,24 @@ document.addEventListener('DOMContentLoaded', async () => {
           });
         }
       });
-      
+
       dataText.forEach((textElement, lineIndex) => {
         const split = new SplitText(textElement, { type: 'words' });
-        
+
         if (split.words && split.words.length > 0) {
           allWords.push(...split.words);
           gsap.set(split.words, {
             filter: 'blur(20px)',
             opacity: 0
           });
-          
+
           split.words.forEach((word, wordIndex) => {
             tl.to(word, {
               filter: 'blur(0px)',
               opacity: 1,
               duration: 0.8,
               ease: 'power2.out'
-            }, 0.3 + lineIndex * 0.3 + wordIndex * 0.1); 
+            }, 0.3 + lineIndex * 0.3 + wordIndex * 0.1);
           });
         }
       });
@@ -55,11 +55,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const heroSection = document.querySelector('.hero-minimal');
   const heroContent = document.querySelector('.hero-container');
   const isMainPage = document.body.id === 'page-wpc-main';
-  
+
   // Effet parallaxe sur la hero section (uniquement sur la page d'accueil)
   if (heroSection && heroContent && gsap && ScrollTrigger && isMainPage) {
     let parallaxTimelines = [];
-    
+
     // Fonction pour calculer et appliquer l'effet parallaxe
     const setupParallax = () => {
       // Nettoyer les animations existantes
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         tl.kill();
       });
       parallaxTimelines = [];
-      
+
       // Calculer la hauteur de la hero section pour l'effet parallaxe
       const heroHeight = heroSection.offsetHeight;
-      
+
       // Animation parallaxe pour le contenu principal
       const contentTl = gsap.to(heroContent, {
         y: heroHeight * 0.3,
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       });
       parallaxTimelines.push(contentTl);
-      
+
       // Animation parallaxe pour la bande défilante (plus rapide)
       if (marqueeContainer) {
         // S'assurer que la position initiale est bien à 0 avant de créer l'animation
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         parallaxTimelines.push(marqueeTl);
       }
     };
-    
+
     // Animation d'entrée de la bande défilante
     if (marqueeContainer && gsap) {
       gsap.set(marqueeContainer, { y: 15, opacity: 0 });
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Si la bande défilante n'existe pas, configurer l'effet parallaxe immédiatement
       setupParallax();
     }
-    
+
     // Recalculer lors du redimensionnement
     let resizeTimeout;
     window.addEventListener('resize', () => {
