@@ -52,7 +52,6 @@ class AnimatedBeam {
   
   init() {
     if (!this.containerRef || !this.fromRef || !this.toRef) {
-      console.warn('AnimatedBeam: containerRef, fromRef, and toRef are required');
       return;
     }
     
@@ -236,8 +235,6 @@ class AnimatedBeam {
     // Utiliser GSAP si disponible
     if (typeof window !== 'undefined' && window.gsap) {
       this.startGSAPAnimation();
-    } else {
-      console.warn('AnimatedBeam: GSAP not available, animation will not start');
     }
   }
   

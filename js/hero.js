@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     await waitForGSAP();
   } catch (error) {
-    console.warn('GSAP not loaded, animations skipped');
     return;
   }
 

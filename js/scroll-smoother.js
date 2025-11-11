@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Vérifier si Lenis est disponible
   if (typeof Lenis === 'undefined') {
-    console.warn('Lenis not available');
     return;
   }
 
