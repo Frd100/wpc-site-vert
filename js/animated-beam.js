@@ -79,6 +79,7 @@ class AnimatedBeam {
   createSVG() {
     // Créer le conteneur SVG
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    this.svg.setAttribute('aria-hidden', 'true');
     this.svg.style.position = 'absolute';
     this.svg.style.top = '0';
     this.svg.style.left = '0';

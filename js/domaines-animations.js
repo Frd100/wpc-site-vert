@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Créer le SVG pour le document
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('aria-hidden', 'true');
             svg.style.position = 'absolute';
             svg.style.top = '0';
             svg.style.left = '0';
@@ -159,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Créer le SVG pour le graphique
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('aria-hidden', 'true');
             svg.style.position = 'absolute';
             svg.style.top = '0';
             svg.style.left = '0';

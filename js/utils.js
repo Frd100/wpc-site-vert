@@ -46,7 +46,7 @@ function smoothScroll(target) {
         duration: 1.2
       });
     } else {
-      element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: 'smooth' });
     }
   }
 }
