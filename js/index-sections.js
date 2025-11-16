@@ -17,35 +17,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (aboutTitle && SplitText) {
     const split = new SplitText(aboutTitle, { type: 'words' });
     if (split.words && split.words.length > 0) {
-      const allWords = [];
-      allWords.push(...split.words);
+      gsap.set(split.words, { opacity: 0, y: 40 });
 
-      gsap.set(split.words, {
-        filter: 'blur(20px)',
-        opacity: 0
-      });
-
-      const tl = gsap.timeline({
+      gsap.to(split.words, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.05,
         scrollTrigger: {
           trigger: aboutTitle,
-          start: 'top 85%',
+          start: 'top 75%',
           toggleActions: 'play none none none'
-        },
-        onComplete: () => {
-          allWords.forEach(word => {
-            word.style.opacity = '1';
-            word.style.filter = 'blur(0px)';
-          });
         }
-      });
-
-      split.words.forEach((word, wordIndex) => {
-        tl.to(word, {
-          filter: 'blur(0px)',
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out'
-        }, wordIndex * 0.1);
       });
     }
   }
@@ -108,35 +92,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (domaineTitle && SplitText) {
     const split = new SplitText(domaineTitle, { type: 'words' });
     if (split.words && split.words.length > 0) {
-      const allWords = [];
-      allWords.push(...split.words);
+      gsap.set(split.words, { opacity: 0, y: 40 });
 
-      gsap.set(split.words, {
-        filter: 'blur(20px)',
-        opacity: 0
-      });
-
-      const tl = gsap.timeline({
+      gsap.to(split.words, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.05,
         scrollTrigger: {
           trigger: domaineTitle,
-          start: 'top 85%',
+          start: 'top 75%',
           toggleActions: 'play none none none'
-        },
-        onComplete: () => {
-          allWords.forEach(word => {
-            word.style.opacity = '1';
-            word.style.filter = 'blur(0px)';
-          });
         }
-      });
-
-      split.words.forEach((word, wordIndex) => {
-        tl.to(word, {
-          filter: 'blur(0px)',
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out'
-        }, wordIndex * 0.1);
       });
     }
   }
@@ -206,35 +174,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (processusTitle && SplitText) {
     const split = new SplitText(processusTitle, { type: 'words' });
     if (split.words && split.words.length > 0) {
-      const allWords = [];
-      allWords.push(...split.words);
+      gsap.set(split.words, { opacity: 0, y: 40 });
 
-      gsap.set(split.words, {
-        filter: 'blur(20px)',
-        opacity: 0
-      });
-
-      const tl = gsap.timeline({
+      gsap.to(split.words, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        stagger: 0.05,
         scrollTrigger: {
           trigger: processusTitle,
-          start: 'top 85%',
+          start: 'top 75%',
           toggleActions: 'play none none none'
-        },
-        onComplete: () => {
-          allWords.forEach(word => {
-            word.style.opacity = '1';
-            word.style.filter = 'blur(0px)';
-          });
         }
-      });
-
-      split.words.forEach((word, wordIndex) => {
-        tl.to(word, {
-          filter: 'blur(0px)',
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out'
-        }, wordIndex * 0.1);
       });
     }
   }

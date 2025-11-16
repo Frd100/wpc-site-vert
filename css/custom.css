@@ -2125,6 +2125,33 @@ body#page-wpc-main main section.index-section--about {
     border-bottom: none;
 }
 
+/* Styles pour la page WPC Lab */
+.wpc-lab-intro .index-stacked-title {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    will-change: filter;
+    display: block;
+}
+
+.wpc-lab-intro .index-stacked-title .word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .wpc-lab-intro .index-stacked-title {
+        font-size: 4rem;
+    }
+}
+
+.wpc-lab-intro .index-stacked-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .legal-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;

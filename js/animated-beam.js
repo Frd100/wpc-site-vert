@@ -38,7 +38,7 @@ class AnimatedBeam {
     this.endXOffset = options.endXOffset || 0;
     this.endYOffset = options.endYOffset || 0;
     this.autoPlay = options.autoPlay !== false;
-    
+
     this.svg = null;
     this.path = null;
     this.glowPath = null;
@@ -46,22 +46,22 @@ class AnimatedBeam {
     this.pathLength = 0;
     this.gsapTimeline = null;
     this.gsapTween = null;
-    
+
     this.init();
   }
-  
+
   init() {
     if (!this.containerRef || !this.fromRef || !this.toRef) {
       return;
     }
-    
+
     this.createSVG();
-    
+
     // Attendre que le DOM soit prêt
     requestAnimationFrame(() => {
       this.updatePath();
     });
-    
+
     // Mettre à jour lors du redimensionnement avec debounce
     let resizeTimeout;
     const handleResize = () => {
@@ -70,11 +70,11 @@ class AnimatedBeam {
         this.updatePath();
       }, 150);
     };
-    
+
     window.addEventListener('resize', handleResize, { passive: true });
     this.resizeHandler = handleResize;
   }
-  
+
   createSVG() {
     // Créer le conteneur SVG
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -87,39 +87,39 @@ class AnimatedBeam {
     this.svg.style.pointerEvents = 'none';
     this.svg.style.overflow = 'visible';
     this.svg.setAttribute('preserveAspectRatio', 'none');
-    
+
     // Optimisation performance
     this.svg.style.willChange = 'transform';
-    
+
     // Créer les définitions (gradients, etc.)
     const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    
+
     // Gradient pour le path (ID unique)
     this.gradientId = `beam-gradient-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
     this.gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
     this.gradient.setAttribute('id', this.gradientId);
     this.gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
-    
+
     const stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop1.setAttribute('offset', '0%');
     stop1.setAttribute('stop-color', this.gradientStartColor);
     stop1.setAttribute('stop-opacity', '0');
-    
+
     const stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop2.setAttribute('offset', '50%');
     stop2.setAttribute('stop-color', this.gradientStartColor);
     stop2.setAttribute('stop-opacity', '1');
-    
+
     const stop3 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
     stop3.setAttribute('offset', '100%');
     stop3.setAttribute('stop-color', this.gradientStopColor);
     stop3.setAttribute('stop-opacity', '1');
-    
+
     this.gradient.appendChild(stop1);
     this.gradient.appendChild(stop2);
     this.gradient.appendChild(stop3);
     defs.appendChild(this.gradient);
-    
+
     // Créer le path de base (fade)
     this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     this.path.setAttribute('fill', 'none');
@@ -128,7 +128,7 @@ class AnimatedBeam {
     this.path.setAttribute('opacity', this.pathOpacity);
     this.path.setAttribute('stroke-linecap', 'round');
     this.path.setAttribute('stroke-linejoin', 'round');
-    
+
     // Créer le path avec lueur animée
     this.glowPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     this.glowPath.setAttribute('fill', 'none');
@@ -137,51 +137,51 @@ class AnimatedBeam {
     this.glowPath.setAttribute('opacity', '0');
     this.glowPath.setAttribute('stroke-linecap', 'round');
     this.glowPath.setAttribute('stroke-linejoin', 'round');
-    
+
     // Optimisation performance
     this.glowPath.style.willChange = 'stroke-dashoffset, opacity';
-    
+
     this.svg.appendChild(defs);
     this.svg.appendChild(this.path);
     this.svg.appendChild(this.glowPath);
-    
+
     // Ajouter le SVG au conteneur
     this.containerRef.appendChild(this.svg);
   }
-  
+
   getElementPosition(element) {
     const containerRect = this.containerRef.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
-    
+
     return {
       x: elementRect.left - containerRect.left + elementRect.width / 2,
       y: elementRect.top - containerRect.top + elementRect.height / 2
     };
   }
-  
+
   calculatePath(from, to) {
     const startX = from.x + this.startXOffset;
     const startY = from.y + this.startYOffset;
     const endX = to.x + this.endXOffset;
     const endY = to.y + this.endYOffset;
-    
+
     const midX = (startX + endX) / 2;
     const midY = (startY + endY) / 2;
-    
+
     // Calculer le point de contrôle pour la courbure
     const dx = endX - startX;
     const dy = endY - startY;
     const distance = Math.sqrt(dx * dx + dy * dy);
-    
+
     if (distance === 0) return null;
-    
+
     // Point de contrôle perpendiculaire
     const perpX = -dy / distance * this.curvature;
     const perpY = dx / distance * this.curvature;
-    
+
     const controlX = midX + perpX;
     const controlY = midY + perpY;
-    
+
     return {
       startX,
       startY,
@@ -191,60 +191,60 @@ class AnimatedBeam {
       controlY
     };
   }
-  
+
   updatePath() {
     if (!this.fromRef || !this.toRef || !this.path || !this.glowPath) return;
-    
+
     const fromPos = this.getElementPosition(this.fromRef);
     const toPos = this.getElementPosition(this.toRef);
-    
+
     const pathData = this.calculatePath(fromPos, toPos);
     if (!pathData) return;
-    
+
     // Créer le path SVG (courbe quadratique)
     const d = `M ${pathData.startX} ${pathData.startY} Q ${pathData.controlX} ${pathData.controlY} ${pathData.endX} ${pathData.endY}`;
     this.path.setAttribute('d', d);
     this.glowPath.setAttribute('d', d);
-    
+
     // Mettre à jour le gradient
     this.gradient.setAttribute('x1', pathData.startX);
     this.gradient.setAttribute('y1', pathData.startY);
     this.gradient.setAttribute('x2', pathData.endX);
     this.gradient.setAttribute('y2', pathData.endY);
-    
+
     // Stocker les données du path
     this.pathData = pathData;
-    
+
     // Calculer la longueur du path
     requestAnimationFrame(() => {
       this.pathLength = this.path.getTotalLength();
-      
+
       // Si autoPlay est activé et que l'animation n'a pas encore démarré
       if (this.autoPlay && !this.gsapTween && this.pathLength > 0) {
         this.startAnimation();
       }
     });
   }
-  
+
   startAnimation() {
     if (!this.path || !this.pathLength || this.pathLength === 0) {
       requestAnimationFrame(() => this.startAnimation());
       return;
     }
-    
+
     // Utiliser GSAP si disponible
     if (typeof window !== 'undefined' && window.gsap) {
       this.startGSAPAnimation();
     }
   }
-  
+
   startGSAPAnimation() {
     const gsap = window.gsap;
-    
+
     // Longueur de la lueur (20% de la longueur totale)
     const glowLength = this.pathLength * 0.2;
     const totalLength = this.pathLength + glowLength;
-    
+
     // Initialiser stroke-dasharray et stroke-dashoffset
     gsap.set(this.glowPath, {
       attr: {
@@ -253,10 +253,10 @@ class AnimatedBeam {
       },
       opacity: 0
     });
-    
+
     // Créer l'animation avec GSAP
     const progressObj = { value: 0 };
-    
+
     this.gsapTween = gsap.to(progressObj, {
       value: 1,
       duration: this.duration,
@@ -270,7 +270,7 @@ class AnimatedBeam {
       }
     });
   }
-  
+
   // Méthodes pour contrôler l'animation manuellement
   play() {
     if (this.gsapTween) {
@@ -279,13 +279,13 @@ class AnimatedBeam {
       this.startAnimation();
     }
   }
-  
+
   pause() {
     if (this.gsapTween) {
       this.gsapTween.pause();
     }
   }
-  
+
   setOpacity(opacity) {
     if (this.glowPath) {
       window.gsap?.set(this.glowPath, { opacity });
@@ -294,7 +294,7 @@ class AnimatedBeam {
       window.gsap?.set(this.path, { opacity: opacity > 0 ? this.pathOpacity : 0 });
     }
   }
-  
+
   setStrokeDashoffset(offset) {
     if (this.glowPath && this.pathLength > 0) {
       const glowLength = this.pathLength * 0.2;
@@ -302,30 +302,30 @@ class AnimatedBeam {
       this.glowPath.setAttribute('stroke-dashoffset', offset !== undefined ? offset : totalLength);
     }
   }
-  
+
   destroy() {
     // Arrêter l'animation GSAP
     if (this.gsapTween) {
       this.gsapTween.kill();
       this.gsapTween = null;
     }
-    
+
     if (this.gsapTimeline) {
       this.gsapTimeline.kill();
       this.gsapTimeline = null;
     }
-    
+
     // Supprimer le listener de resize
     if (this.resizeHandler) {
       window.removeEventListener('resize', this.resizeHandler);
     }
-    
+
     // Supprimer le SVG
     if (this.svg && this.svg.parentNode) {
       this.svg.parentNode.removeChild(this.svg);
     }
   }
-  
+
   // Méthode pour mettre à jour le path (utile lors du redimensionnement)
   refresh() {
     this.updatePath();

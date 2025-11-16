@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const contentTl = gsap.to(heroContent, {
         y: heroHeight * 0.3,
         ease: 'none',
+        force3D: false, // Optimisation pour éviter les conflits de transform
         scrollTrigger: {
           trigger: heroSection,
           start: 'top top',
@@ -90,10 +91,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Animation parallaxe pour la bande défilante (plus rapide)
       if (marqueeContainer) {
         // S'assurer que la position initiale est bien à 0 avant de créer l'animation
-        gsap.set(marqueeContainer, { y: 0 });
+        // Utiliser force3D: false pour éviter les conflits avec l'animation CSS translateX du track
+        gsap.set(marqueeContainer, { y: 0, force3D: false });
         const marqueeTl = gsap.to(marqueeContainer, {
           y: heroHeight * 0.2,
           ease: 'none',
+          force3D: false, // Éviter translate3d qui pourrait interférer avec l'animation CSS
           scrollTrigger: {
             trigger: heroSection,
             start: 'top top',
@@ -108,17 +111,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Animation d'entrée de la bande défilante
     if (marqueeContainer && gsap) {
-      gsap.set(marqueeContainer, { y: 15, opacity: 0 });
+      // Utiliser force3D: false pour éviter les conflits avec l'animation CSS translateX du track
+      gsap.set(marqueeContainer, { y: 15, opacity: 0, force3D: false });
       const marqueeEntranceTl = gsap.to(marqueeContainer, {
         y: 0,
         opacity: 1,
         duration: 0.6,
         ease: 'power2.out',
         delay: 0.5,
+        force3D: false, // Éviter translate3d qui pourrait interférer avec l'animation CSS
         onComplete: () => {
           marqueeContainer.style.opacity = '1';
           // S'assurer que la position y est bien à 0 avant de configurer l'effet parallaxe
-          gsap.set(marqueeContainer, { y: 0 });
+          gsap.set(marqueeContainer, { y: 0, force3D: false });
           // Attendre un court délai pour que le DOM soit complètement mis à jour
           setTimeout(() => {
             ScrollTrigger.refresh();
@@ -141,16 +146,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   } else if (marqueeContainer && gsap) {
     // Animation d'entrée de la bande défilante (sans effet parallaxe si pas sur la page principale)
-    gsap.set(marqueeContainer, { y: 15, opacity: 0 });
+    // Utiliser force3D: false pour éviter les conflits avec l'animation CSS translateX du track
+    gsap.set(marqueeContainer, { y: 15, opacity: 0, force3D: false });
     gsap.to(marqueeContainer, {
       y: 0,
       opacity: 1,
       duration: 0.6,
       ease: 'power2.out',
       delay: 0.5,
+      force3D: false, // Éviter translate3d qui pourrait interférer avec l'animation CSS
       onComplete: () => {
         marqueeContainer.style.opacity = '1';
-        marqueeContainer.style.transform = 'translateY(0)';
+        // Ne pas écraser le transform directement, laisser GSAP gérer
+        gsap.set(marqueeContainer, { y: 0, force3D: false });
       }
     });
   }
