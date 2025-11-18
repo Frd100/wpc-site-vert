@@ -109,20 +109,78 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Animation du texte
             if (text) {
-                gsap.set(text, { opacity: 0, y: 30 });
+                gsap.set(text, { opacity: 0, y: 30, willChange: 'opacity, transform' });
                 gsap.to(text, {
                     opacity: 1,
                     y: 0,
-                    duration: 0.6,
+                    duration: 0.4,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: text,
                         start: 'top 85%',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play none none none',
+                        once: true
                     },
-                    delay: 0.2
+                    delay: 0.1,
+                    onComplete: () => {
+                        gsap.set(text, { willChange: 'auto' });
+                    }
                 });
             }
+        });
+    }
+
+    /**
+     * Animation du texte d'intro de la section domaines
+     */
+    function initDomainesIntroAnimation() {
+        const domainesIntro = document.querySelector('.domaines-section__intro-text');
+        if (!domainesIntro) return;
+
+        gsap.set(domainesIntro, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+        gsap.to(domainesIntro, {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: domainesIntro,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+                once: true
+            },
+            delay: 0.1,
+            onComplete: () => {
+                gsap.set(domainesIntro, { willChange: 'auto' });
+            }
+        });
+    }
+
+    /**
+     * Animation des carrés de domaines
+     */
+    function initDomainesItemsAnimation() {
+        const domainesItems = document.querySelectorAll('.domaine-item');
+        if (!domainesItems || domainesItems.length === 0) return;
+
+        domainesItems.forEach((item) => {
+            gsap.set(item, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+            gsap.to(item, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                    once: true
+                },
+                delay: 0.1,
+                onComplete: () => {
+                    gsap.set(item, { willChange: 'auto' });
+                }
+            });
         });
     }
 
@@ -130,5 +188,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initHeroTitleAnimation();
     initHeroDescriptionAnimation();
     initContentSectionsAnimation();
+    initDomainesIntroAnimation();
+    initDomainesItemsAnimation();
 });
 

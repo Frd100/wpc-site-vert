@@ -1016,9 +1016,25 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-white);
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   line-height: 1.8;
+  padding: 0 4rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Surcharge le padding de .content-section--green .content-section__text */
+.content-section--green .content-section__text--intro {
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 1400px;
+}
+
+.content-section__text--intro p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 .content-section--green .content-section__text--intro .text-highlight {
@@ -1138,7 +1154,7 @@ body {
    ============================================ */
 
 .domaines-section {
-  background-color: var(--teal-light);
+  background-color: var(--teal-dark);
   width: 100%;
   padding: 4rem 0;
 }
@@ -1147,6 +1163,13 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* Garantir le padding desktop pour les écrans larges */
+@media (min-width: 1025px) {
+  .domaines-section__container {
+    padding: 0 2rem;
+  }
 }
 
 .domaines-section__title {
@@ -1219,13 +1242,10 @@ body {
 }
 
 .domaine-item__image img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
-  margin-top: 0.7rem;
 }
 
 .domaine-item__content {
@@ -1236,8 +1256,8 @@ body {
 }
 
 .domaine-item__title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-black);
   margin: 0 0 1rem 0;
@@ -1289,8 +1309,21 @@ body {
   }
 
   .domaine-item__image {
+    width: 100%;
     height: 220px;
-    padding: 2.5rem 2rem 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 1rem 0.80rem 0rem 0.80rem;
+    box-sizing: border-box;
+  }
+
+  .domaine-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .domaine-item__content {
@@ -1298,7 +1331,7 @@ body {
   }
 
   .domaine-item__title {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     min-height: 4.5rem;
   }
 
@@ -1314,7 +1347,7 @@ body {
   }
 
   .domaines-section__container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 
   .domaines-section__title {
@@ -1324,6 +1357,7 @@ body {
 
   .domaines-section__intro {
     margin-bottom: 2rem;
+    padding: 0 0.5rem;
   }
 
   .domaines-section__intro-label {
@@ -1339,11 +1373,27 @@ body {
     grid-template-columns: 1fr;
     gap: 1rem;
     max-width: 100%;
+    padding: 0;
   }
 
   .domaine-item__image {
-    height: 180px;
-    padding: 2.5rem 2rem 0 2rem;
+    width: 100%;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 1rem 1rem 0rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .domaine-item__image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
   .domaine-item__content {
@@ -1351,13 +1401,13 @@ body {
   }
 
   .domaine-item__title {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     min-height: auto;
     margin-bottom: 1rem;
   }
 
   .domaine-item__description {
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;
   }
 }
 
@@ -1872,6 +1922,10 @@ body {
 
   .main-content__container>.content-section:first-of-type .content-section__text p {
     font-size: 1.125rem;
+  }
+
+  .content-section__text--intro p {
+    font-size: 1.25rem;
   }
 
   /* Titres des sections plus petits en mobile - surcharge les règles spécifiques */
