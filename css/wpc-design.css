@@ -1078,6 +1078,39 @@ body {
   width: 100%;
 }
 
+/* Wrapper pour centrer le contenu des sections */
+.content-section__wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Texte centré */
+.content-section__text--centered {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.content-section__text--centered p {
+  margin-bottom: 1.5rem;
+}
+
+.content-section__text--centered p:last-child {
+  margin-bottom: 0;
+}
+
+/* Liste centrée */
+.content-list--centered {
+  text-align: left;
+  display: inline-block;
+  margin: 1.5rem auto;
+  max-width: 100%;
+}
+
+.content-list--centered li {
+  margin-bottom: 0.75rem;
+}
+
 /* Image La Défense - Mobile uniquement */
 .hero-mobile-image {
   display: none;
@@ -1783,6 +1816,25 @@ body {
   .content-section__text {
     font-size: 0.9375rem;
     line-height: 1.7;
+  }
+
+  /* Wrapper centré pour mobile */
+  .content-section__wrapper {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  /* Texte centré pour mobile */
+  .content-section__text--centered {
+    text-align: center;
+  }
+
+  /* Liste centrée pour mobile */
+  .content-list--centered {
+    text-align: left;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: calc(100% - 2rem);
   }
 
   /* Texte de la section "Qui sommes-nous" plus petit en mobile */
