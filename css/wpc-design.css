@@ -1939,7 +1939,7 @@ body {
 
   /* Afficher l'image La Défense en mobile */
   .hero-mobile-image {
-    display: block;
+    display: none;
   }
 
   .hero-section__subtitle {
