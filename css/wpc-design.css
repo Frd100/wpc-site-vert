@@ -1078,39 +1078,6 @@ body {
   width: 100%;
 }
 
-/* Wrapper pour centrer le contenu des sections */
-.content-section__wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* Texte centré */
-.content-section__text--centered {
-  text-align: center;
-  margin: 0 auto;
-}
-
-.content-section__text--centered p {
-  margin-bottom: 1.5rem;
-}
-
-.content-section__text--centered p:last-child {
-  margin-bottom: 0;
-}
-
-/* Liste centrée */
-.content-list--centered {
-  text-align: left;
-  display: inline-block;
-  margin: 1.5rem auto;
-  max-width: 100%;
-}
-
-.content-list--centered li {
-  margin-bottom: 0.75rem;
-}
-
 /* Image La Défense - Mobile uniquement */
 .hero-mobile-image {
   display: none;
@@ -1171,7 +1138,7 @@ body {
    ============================================ */
 
 .domaines-section {
-  background-color: var(--bg-light-gray);
+  background-color: var(--teal-light);
   width: 100%;
   padding: 4rem 0;
 }
@@ -1193,6 +1160,30 @@ body {
   letter-spacing: 0.01em;
 }
 
+.domaines-section__intro {
+  text-align: center;
+  margin: 0 auto 3rem auto;
+  max-width: 900px;
+}
+
+.domaines-section__intro-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.5;
+}
+
+.domaines-section__intro-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-white);
+  margin: 0;
+  line-height: 1.8;
+}
+
 .domaines-section__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1204,15 +1195,44 @@ body {
 /* Carte de domaine */
 .domaine-item {
   background-color: var(--white);
-  padding: 2.5rem 2rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .domaine-item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+
+.domaine-item__image {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  padding: 1rem 0.80rem 0rem 0.80rem;
+  box-sizing: border-box;
+}
+
+.domaine-item__image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  margin-top: 0.7rem;
+}
+
+.domaine-item__content {
+  padding: 1.5rem 2rem 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .domaine-item__title {
@@ -1250,13 +1270,31 @@ body {
     margin-bottom: 2.5rem;
   }
 
+  .domaines-section__intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .domaines-section__intro-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .domaines-section__intro-text {
+    font-size: 1.25rem;
+  }
+
   .domaines-section__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .domaine-item {
-    padding: 2rem 1.5rem;
+  .domaine-item__image {
+    height: 220px;
+    padding: 2.5rem 2rem 0 2rem;
+  }
+
+  .domaine-item__content {
+    padding: 1.25rem 1.5rem 2rem 1.5rem;
   }
 
   .domaine-item__title {
@@ -1284,20 +1322,32 @@ body {
     margin-bottom: 2rem;
   }
 
+  .domaines-section__intro {
+    margin-bottom: 2rem;
+  }
+
+  .domaines-section__intro-label {
+    font-size: 0.6875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .domaines-section__intro-text {
+    font-size: 1.125rem;
+  }
+
   .domaines-section__grid {
     grid-template-columns: 1fr;
     gap: 1rem;
     max-width: 100%;
   }
 
-  .domaine-item {
-    padding: 2rem 1.5rem;
-    aspect-ratio: 1;
-    height: auto;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .domaine-item__image {
+    height: 180px;
+    padding: 2.5rem 2rem 0 2rem;
+  }
+
+  .domaine-item__content {
+    padding: 1.25rem 1.5rem 2rem 1.5rem;
   }
 
   .domaine-item__title {
@@ -1308,9 +1358,6 @@ body {
 
   .domaine-item__description {
     font-size: 0.9375rem;
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
   }
 }
 
@@ -1818,25 +1865,6 @@ body {
     line-height: 1.7;
   }
 
-  /* Wrapper centré pour mobile */
-  .content-section__wrapper {
-    max-width: 100%;
-    padding: 0 1rem;
-  }
-
-  /* Texte centré pour mobile */
-  .content-section__text--centered {
-    text-align: center;
-  }
-
-  /* Liste centrée pour mobile */
-  .content-list--centered {
-    text-align: left;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: calc(100% - 2rem);
-  }
-
   /* Texte de la section "Qui sommes-nous" plus petit en mobile */
   .main-content__container>.content-section:first-of-type .content-section__text {
     font-size: 1.125rem;
@@ -2032,7 +2060,7 @@ body {
 
 /* Section grise complète (description + projets) */
 .lab-section {
-  background-color: var(--bg-light-gray);
+  background-color: var(--teal-light);
   width: 100%;
   padding: 4rem 0;
 }
@@ -2053,14 +2081,14 @@ body {
   font-family: var(--font-serif);
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--text-black);
+  color: var(--text-white);
   margin: 0 0 1.5rem 0;
 }
 
 .lab-section__text {
   font-family: var(--font-sans);
   font-size: 1.125rem;
-  color: var(--text-black);
+  color: var(--text-white);
   line-height: 1.8;
   max-width: 800px;
   margin: 0 auto;
@@ -2075,24 +2103,23 @@ body {
   margin: 0 auto;
 }
 
-/* Carte de projet */
+/* Carte de projet - Même design que les domaines */
 .lab-project-card {
   background-color: var(--white);
-  border: 1px solid #e0e0e0;
-  aspect-ratio: 1 / 1;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .lab-project-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .lab-project-card__link {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
   height: 100%;
   text-decoration: none;
   color: inherit;
@@ -2103,39 +2130,19 @@ body {
   font-size: 2rem;
   font-weight: 600;
   color: var(--text-black);
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
-  position: relative;
-  display: inline-block;
-  transition: color 0.2s ease;
-}
-
-.lab-project-card__link:hover .lab-project-card__title {
-  color: var(--teal-light);
-}
-
-.lab-project-card__title::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--teal-light);
-  transition: width 0.3s ease;
-}
-
-.lab-project-card__link:hover .lab-project-card__title::after {
-  width: 100%;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+  min-height: 5rem;
+  display: flex;
+  align-items: flex-start;
 }
 
 .lab-project-card__description {
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--text-black);
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
-  opacity: 0.8;
 }
 
 /* Responsive - Tablette */
@@ -2165,12 +2172,13 @@ body {
     gap: 1rem;
   }
 
-  .lab-project-card__link {
-    padding: 1.5rem;
+  .lab-project-card {
+    padding: 2rem 1.5rem;
   }
 
   .lab-project-card__title {
     font-size: 1.75rem;
+    min-height: 4.5rem;
   }
 
   .lab-project-card__description {
@@ -2206,16 +2214,27 @@ body {
     max-width: 100%;
   }
 
-  .lab-project-card__link {
+  .lab-project-card {
     padding: 2rem 1.5rem;
+    aspect-ratio: 1;
+    height: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .lab-project-card__title {
     font-size: 1.5rem;
+    min-height: auto;
+    margin-bottom: 1rem;
   }
 
   .lab-project-card__description {
     font-size: 0.9375rem;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
   }
 }
 
