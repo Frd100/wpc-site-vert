@@ -947,6 +947,16 @@ body {
   text-align: center;
 }
 
+/* Hero sections sur toutes les pages sauf accueil : titre en Cormorant Garamond et texte noir */
+.hero-section:not(.hero-section--home) .hero-section__title {
+  font-family: var(--font-serif);
+  color: var(--text-black);
+}
+
+.hero-section:not(.hero-section--home) .hero-section__description {
+  color: var(--text-black);
+}
+
 .hero-section__title-indent {
   display: inline-block;
   padding-left: 2rem;
@@ -2201,20 +2211,32 @@ body {
 }
 
 .lab-section__title {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 400;
   color: var(--text-white);
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 3rem 0;
+  line-height: 1.6;
 }
 
 .lab-section__text {
   font-family: var(--font-sans);
-  font-size: 1.125rem;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: var(--text-white);
   line-height: 1.8;
-  max-width: 800px;
+  max-width: 1400px;
   margin: 0 auto;
+  text-align: center;
+  padding: 0 4rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.lab-section__text p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
 }
 
 /* Grille des projets */
@@ -2284,10 +2306,17 @@ body {
 
   .lab-section__title {
     font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   .lab-section__text {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .lab-section__text p {
+    font-size: 1.5rem;
   }
 
   .lab-projects-grid {
@@ -2324,11 +2353,18 @@ body {
   }
 
   .lab-section__title {
-    font-size: 1.75rem;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   .lab-section__text {
-    font-size: 0.9375rem;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .lab-section__text p {
+    font-size: 1.5rem;
   }
 
   .lab-projects-grid {
@@ -2347,17 +2383,32 @@ body {
     justify-content: space-between;
   }
 
+  .lab-project-card__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+
   .lab-project-card__title {
-    font-size: 1.5rem;
+    font-size: 3.5rem;
     min-height: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
   }
 
   .lab-project-card__description {
-    font-size: 0.9375rem;
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
+    font-size: 1.65rem;
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+}
+
+/* Responsive - Desktop */
+@media (min-width: 1024px) {
+  .lab-section__title {
+    font-size: 2.5rem;
+    line-height: 1.7;
   }
 }
 
