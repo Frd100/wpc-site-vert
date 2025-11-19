@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    // Enregistrer ScrollTrigger
     if (ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
     }
@@ -31,28 +30,50 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!heroTitle) return;
 
         gsap.set(heroTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
-        gsap.to(heroTitle, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: heroTitle,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-                once: true
-            },
-            onComplete: () => {
-                gsap.set(heroTitle, { willChange: 'auto' });
-            }
-        });
+
+        // Vérifier si l'élément est déjà visible dans le viewport
+        const rect = heroTitle.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.9;
+
+        if (isVisible) {
+            // Si déjà visible, animer immédiatement
+            gsap.to(heroTitle, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                onComplete: () => {
+                    gsap.set(heroTitle, { willChange: 'auto' });
+                }
+            });
+        } else {
+            // Sinon, utiliser ScrollTrigger
+            gsap.to(heroTitle, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: heroTitle,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none',
+                    once: true
+                },
+                onComplete: () => {
+                    gsap.set(heroTitle, { willChange: 'auto' });
+                }
+            });
+        }
     }
 
     /**
-     * Animation de la description hero
+     * Animation de la description hero (uniquement sur la page index)
      */
     function initHeroDescriptionAnimation() {
-        const heroDescription = document.querySelector('.hero-section__description');
+        const heroSection = document.querySelector('.hero-section--home');
+        if (!heroSection) return;
+
+        const heroDescription = heroSection.querySelector('.hero-section__description');
         if (!heroDescription) return;
 
         gsap.set(heroDescription, { opacity: 0, y: 30 });
@@ -69,16 +90,18 @@ document.addEventListener('DOMContentLoaded', async () => {
      * Animation des sections de contenu au scroll
      */
     function initContentSectionsAnimation() {
+        // Ne pas animer les sections sur les pages légales
+        if (document.body.classList.contains('page-legal')) {
+            return;
+        }
+
         const contentSections = document.querySelectorAll('.content-section');
 
         contentSections.forEach((section, index) => {
-            // Exclure la section "Qui sommes-nous ?" (content-section--green) de l'animation SplitText
             const isGreenSection = section.classList.contains('content-section--green');
 
             const title = section.querySelector('.content-section__title');
             const text = section.querySelector('.content-section__text');
-
-            // Animation du titre (sauf pour la section verte)
             if (title && !isGreenSection) {
                 gsap.set(title, { opacity: 0, y: 40, willChange: 'opacity, transform' });
                 gsap.to(title, {
@@ -98,7 +121,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
             }
 
-            // Animation du texte (exclure la section verte qui a sa propre animation)
             if (text && !isGreenSection) {
                 gsap.set(text, { opacity: 0, y: 30, willChange: 'opacity, transform' });
                 gsap.to(text, {
@@ -131,7 +153,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (!quiSommesNousContainer) return;
 
-        // Animation du titre
         if (quiSommesNousTitle) {
             gsap.set(quiSommesNousTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
             gsap.to(quiSommesNousTitle, {
@@ -152,7 +173,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
 
-        // Animation du texte qui se déclenche plus tard dans le scroll
         if (quiSommesNousText) {
             gsap.set(quiSommesNousText, { opacity: 0, y: 30, willChange: 'opacity, transform' });
             gsap.to(quiSommesNousText, {
@@ -184,7 +204,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (!domainesIntroContainer) return;
 
-        // Animation simultanée du label et du texte avec le même trigger
         const elementsToAnimate = [];
 
         if (domainesIntroLabel) {
@@ -247,7 +266,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Initialiser les animations
     initHeroTitleAnimation();
     initHeroDescriptionAnimation();
     initContentSectionsAnimation();

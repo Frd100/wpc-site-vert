@@ -1,21 +1,18 @@
 /* Design pour West Paris Consulting */
 
 :root {
-  /* Couleurs principales */
   --teal-light: #027A64;
   --teal-dark: #025a4d;
   --teal-darker: #025a4d;
   --white: #ffffff;
   --black: #000000;
 
-  /* Couleurs de fond */
   --bg-white: #ffffff;
   --bg-light-gray: #f5f5f5;
   --accent-light: #f5f5f5;
   --bg-accent-light: #f5f5f5;
   --bg-accent-dark: #e0e0e0;
 
-  /* Couleurs de texte */
   --text-black: #000000;
   --text-white: #ffffff;
   --text-gray: #e5e5e5;
@@ -23,31 +20,24 @@
   --text-gray-medium: #666666;
   --text-gray-dark: #999999;
 
-  /* Couleurs de bordure */
   --border-light: rgba(0, 0, 0, 0.1);
   --border-gray: #e0e0e0;
 
-  /* Ombres */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
   --shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-  /* Couleurs d'interaction */
   --hover-bg-light: rgba(0, 0, 0, 0.05);
 
-  /* Typographie */
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Inter', sans-serif;
 
-  /* Espacements */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
-
-  /* Dimensions réutilisables */
   --nav-number-size: 3rem;
   --nav-number-margin: 1.5rem;
   --nav-content-width: calc(100% - var(--nav-number-size) - var(--nav-number-margin));
@@ -434,7 +424,6 @@ body {
   color: var(--text-black);
 }
 
-/* Mobile menu toggle */
 .main-navigation__toggle {
   display: none;
   background: transparent;
@@ -476,7 +465,6 @@ body {
   display: none;
 }
 
-/* Bouton LinkedIn dans le menu mobile */
 .main-navigation__menu.mobile-open .main-navigation__item--linkedin {
   margin-top: 0.5rem;
   padding: 0 1.5rem;
@@ -502,7 +490,6 @@ body {
   margin-right: 0.5rem;
 }
 
-/* Cacher le bouton LinkedIn dans le menu desktop */
 .main-navigation__item--linkedin {
   display: none;
 }
@@ -563,7 +550,6 @@ body {
   margin-left: calc(-1rem);
   margin-right: calc(-1rem);
   margin-top: calc(-2rem);
-  /* Remonter pour supprimer l'espace avec la hero section */
   margin-bottom: calc(-2rem);
   width: calc(100% + 2rem);
   max-width: none;
@@ -597,19 +583,15 @@ body {
   align-items: center;
 }
 
-/* Sur mobile : vidéo verticale 9:16 (1080x1920) */
 @media (max-width: 1023px) {
   .hero-section--home {
     padding-top: 150%;
-    /* Ratio réduit pour crop la vidéo et permettre à la section suivante de remonter */
   }
 }
 
-/* Sur desktop : vidéo horizontale 16:9 (3840x2160) */
 @media (min-width: 1024px) {
   .hero-section--home {
     padding-top: 40%;
-    /* Ratio réduit pour une hero section plus petite */
   }
 }
 
@@ -622,15 +604,11 @@ body {
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  /* Fallback : couleur de fond si la vidéo ne charge pas */
   background-color: #1a1a1a;
-  /* Améliorer les performances */
   will-change: auto;
-  /* Empêcher le téléchargement automatique sur mobile pour économiser les données */
   pointer-events: none;
 }
 
-/* Sur mobile, s'assurer que la vidéo verticale remplit correctement */
 @media (max-width: 1023px) {
   .hero-section__video {
     width: 100%;
@@ -640,7 +618,6 @@ body {
   }
 }
 
-/* Sur desktop, la vidéo desktop est déjà horizontale (16:9) donc pas de rotation nécessaire */
 @media (min-width: 1024px) {
   .hero-section__video {
     width: 100%;
@@ -694,7 +671,6 @@ body {
   align-items: start;
 }
 
-/* Informations de contact - Partie gauche */
 .contact-info {
   color: var(--white);
 }
@@ -756,7 +732,6 @@ body {
   opacity: 0.8;
 }
 
-/* Formulaire - Partie droite */
 .contact-form {
   background-color: var(--white);
   overflow: hidden;
@@ -770,7 +745,6 @@ body {
   border: none;
 }
 
-/* Responsive - Tablette */
 @media (max-width: 1024px) {
   .contact-page-section {
     padding: 3rem 0;
@@ -790,7 +764,6 @@ body {
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
   .contact-page-section {
     padding: 2rem 0;
@@ -843,7 +816,6 @@ body {
   align-items: start;
 }
 
-/* Informations de candidature - Partie gauche */
 .candidature-info {
   color: var(--white);
 }
@@ -865,7 +837,6 @@ body {
   margin: 0;
 }
 
-/* Formulaire - Partie droite */
 .candidature-form {
   background-color: var(--white);
   overflow: hidden;
@@ -879,7 +850,6 @@ body {
   border: none;
 }
 
-/* Responsive - Tablette */
 @media (max-width: 1024px) {
   .candidature-page-section {
     padding: 3rem 0;
@@ -903,7 +873,6 @@ body {
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
   .candidature-page-section {
     padding: 2rem 0;
@@ -1027,7 +996,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Bouton blanc sur desktop dans la hero section */
 @media (min-width: 1024px) {
   .hero-section--home .hero-section__button {
     background-color: var(--white);
@@ -1039,7 +1007,6 @@ body {
   }
 }
 
-/* Sections */
 .content-section {
   padding: 4rem 0;
   border-bottom: 1px solid var(--border-light);
@@ -1065,7 +1032,6 @@ body {
 }
 
 
-/* Titre "Qui sommes-nous" avec la même taille que "Domaines d'intervention" */
 .content-section__title--centered {
   text-align: center;
 }
@@ -1079,7 +1045,6 @@ body {
   line-height: 1.6;
 }
 
-/* Section "Qui sommes-nous" avec background blanc */
 .content-section--green {
   background-color: var(--white);
   padding: 4rem 0;
@@ -1129,7 +1094,6 @@ body {
   padding-right: max(calc(50vw - 700px + 1rem), 1rem);
 }
 
-/* Texte de la section "Qui sommes-nous" avec styles spécifiques */
 .content-section__text--intro {
   text-align: center;
   font-size: 1.5rem;
@@ -1143,7 +1107,6 @@ body {
   width: 100%;
 }
 
-/* Surcharge le padding de .content-section--green .content-section__text */
 .content-section--green .content-section__text--intro {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -1162,7 +1125,6 @@ body {
   font-weight: 400;
 }
 
-/* Styles pour les pages légales */
 .legal-section {
   margin-bottom: var(--spacing-md);
 }
@@ -1213,7 +1175,6 @@ body {
   width: 100%;
 }
 
-/* Image La Défense - Mobile uniquement */
 .hero-mobile-image {
   display: none;
   margin: 2rem auto 0;
@@ -1229,7 +1190,6 @@ body {
   border-radius: 0;
 }
 
-/* Section Qui sommes-nous avec image */
 .qui-sommes-nous__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1271,7 +1231,6 @@ body {
    SECTION DOMAINES D'INTERVENTION - Mobile First
    ============================================ */
 
-/* Structure de base */
 .domaines-section {
   background-color: var(--teal-light);
   width: 100%;
@@ -1283,7 +1242,6 @@ body {
   margin: 0 auto;
 }
 
-/* Introduction */
 .domaines-section__intro {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -1308,14 +1266,12 @@ body {
   line-height: 1.6;
 }
 
-/* Grille */
 .domaines-section__grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-/* Carte domaine */
 .domaine-item {
   background-color: var(--white);
   border-radius: 0;
@@ -1330,12 +1286,10 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Image container avec ratio 4:3 pour plus d'espace */
 .domaine-item__image {
   position: relative;
   width: 100%;
   padding-top: 75%;
-  /* 4:3 aspect ratio */
   background-color: var(--white);
   overflow: hidden;
 }
@@ -1352,7 +1306,6 @@ body {
   box-sizing: border-box;
 }
 
-/* Contenu */
 .domaine-item__content {
   padding: 0;
   display: flex;
@@ -1379,7 +1332,6 @@ body {
   padding: 0 1rem 1rem 1rem;
 }
 
-/* Tablette (768px et plus) */
 @media (min-width: 768px) {
   .domaines-section {
     padding: 4rem 2rem;
@@ -1422,7 +1374,6 @@ body {
   }
 }
 
-/* Desktop (1024px et plus) */
 @media (min-width: 1024px) {
   .domaines-section {
     padding: 5rem 2rem;
@@ -1475,13 +1426,22 @@ body {
    SECTION PROCESSUS - Timeline
    ============================================ */
 
-/* Titre centré pour la section processus */
 .content-section:has(.processus-timeline) .content-section__title {
-  font-size: 3.5rem;
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 400;
   text-align: center;
   margin-top: 0;
   margin-bottom: 3rem;
+  line-height: 1.6;
   letter-spacing: 0.01em;
+}
+
+@media (min-width: 1024px) {
+  .content-section:has(.processus-timeline) .content-section__title {
+    font-size: 2.5rem;
+    line-height: 1.7;
+  }
 }
 
 .processus-timeline {
@@ -1492,7 +1452,6 @@ body {
   position: relative;
 }
 
-/* Ligne de connexion entre les étapes (optionnel) */
 .processus-timeline::before {
   content: '';
   position: absolute;
@@ -1559,7 +1518,6 @@ body {
   opacity: 0.85;
 }
 
-/* Responsive - Tablette */
 @media (max-width: 1024px) {
   .processus-timeline {
     grid-template-columns: repeat(3, 1fr);
@@ -1590,7 +1548,6 @@ body {
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
   .processus-timeline {
     grid-template-columns: 1fr;
@@ -1781,7 +1738,6 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Section Brand (Logo + Contact) */
 .footer__section--brand {
   display: flex;
   flex-direction: column;
@@ -1825,7 +1781,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Social Links */
 .footer__social {
   display: flex;
   gap: 1rem;
@@ -1846,7 +1801,6 @@ body {
   color: #ffffff;
 }
 
-/* Navigation Sections */
 .footer__section--nav,
 .footer__section--legal {
   display: flex;
@@ -1890,7 +1844,6 @@ body {
   color: #ffffff;
 }
 
-/* Footer Bottom */
 .footer__bottom {
   padding-top: 2rem;
   text-align: center;
@@ -1959,7 +1912,6 @@ body {
     order: 3;
   }
 
-  /* Afficher le bouton LinkedIn dans le menu mobile */
   .main-navigation__item--linkedin {
     display: block;
   }
@@ -1968,7 +1920,6 @@ body {
     background-color: var(--white);
     background-image: none;
     align-items: flex-start;
-    /* padding-top géré par la règle principale pour le ratio vidéo */
     min-height: auto;
   }
 
@@ -1981,7 +1932,6 @@ body {
     margin-right: auto;
     text-align: center;
     margin-top: -10rem;
-    /* Remonter encore un peu le contenu sur mobile */
   }
 
   .hero-section:not(.hero-section--home) {
@@ -2038,7 +1988,6 @@ body {
     line-height: 1.7;
   }
 
-  /* Texte de la section "Qui sommes-nous" plus petit en mobile */
   .main-content__container>.content-section:first-of-type .content-section__text {
     font-size: 1.125rem;
   }
@@ -2075,7 +2024,6 @@ body {
     font-size: 0.875rem;
   }
 
-  /* Titres des sections plus petits en mobile - surcharge les règles spécifiques */
   .main-content__container>.content-section:first-of-type .content-section__title {
     font-size: 1.75rem;
   }
@@ -2093,10 +2041,9 @@ body {
   }
 
   .content-section:has(.processus-timeline) .content-section__title {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
-  /* Afficher l'image La Défense en mobile */
   .hero-mobile-image {
     display: none;
   }
@@ -2122,7 +2069,6 @@ body {
     background-color: var(--white);
   }
 
-  /* Footer responsive - Mobile */
   .footer {
     padding: 2.5rem 1rem 1.5rem;
   }
@@ -2186,7 +2132,6 @@ body {
   }
 }
 
-/* Footer responsive - Tablet */
 @media (min-width: 768px) {
   .footer__content {
     grid-template-columns: repeat(2, 1fr);
@@ -2198,7 +2143,6 @@ body {
   }
 }
 
-/* Footer responsive - Desktop */
 @media (min-width: 1024px) {
   .footer {
     padding: 4rem 2rem 2rem;
@@ -2237,11 +2181,13 @@ body {
   }
 }
 
-/* Réduire la hauteur de la section "Qui sommes-nous ?" sur desktop */
 @media (min-width: 1025px) {
   .content-section--green {
     padding: 2.5rem 0;
-    /* Réduire le padding vertical sur desktop */
+  }
+
+  .content-section:has(.processus-timeline) {
+    padding: 2.5rem 0;
   }
 }
 
@@ -2249,21 +2195,18 @@ body {
    SECTION ÉQUIPE - Team Section
    =========================== */
 
-/* Section wrapper avec background gris */
 .team-section {
   background-color: var(--bg-light-gray);
   width: 100%;
   padding: 4rem 0;
 }
 
-/* Container pour centrer le contenu */
 .team-section__container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Grille des membres */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2272,7 +2215,6 @@ body {
   margin: 0 auto;
 }
 
-/* Carte individuelle de membre */
 .team-card {
   background-color: var(--white);
   aspect-ratio: 1 / 1;
@@ -2288,7 +2230,6 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-/* Nom du membre */
 .team-card__name {
   font-family: var(--font-serif);
   font-size: 2.25rem;
@@ -2325,7 +2266,6 @@ body {
   width: 100%;
 }
 
-/* Fonction/Rôle du membre */
 .team-card__role {
   font-family: var(--font-sans);
   font-size: 1.125rem;
@@ -2334,7 +2274,6 @@ body {
   opacity: 0.8;
 }
 
-/* Responsive - Tablette */
 @media (max-width: 1024px) {
   .team-section {
     padding: 3rem 0;
@@ -2362,7 +2301,6 @@ body {
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
   .team-section {
     padding: 2rem 0;
@@ -2395,7 +2333,6 @@ body {
    WPC LAB - Lab Description & Projects
    =========================== */
 
-/* Section grise complète (description + projets) */
 .lab-section {
   background-color: var(--teal-light);
   width: 100%;
@@ -2408,7 +2345,6 @@ body {
   padding: 0 2rem;
 }
 
-/* Description en haut */
 .lab-section__description {
   text-align: center;
   margin-bottom: 3rem;
@@ -2443,7 +2379,6 @@ body {
   margin: 0;
 }
 
-/* Grille des projets */
 .lab-projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2452,7 +2387,6 @@ body {
   margin: 0 auto;
 }
 
-/* Carte de projet - Même design que les domaines */
 .lab-project-card {
   background-color: var(--white);
   padding: 2.5rem 2rem;
@@ -2494,7 +2428,6 @@ body {
   margin: 0;
 }
 
-/* Responsive - Tablette */
 @media (max-width: 1024px) {
   .lab-section {
     padding: 3rem 0;
@@ -2542,7 +2475,6 @@ body {
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
   .lab-section {
     padding: 2rem 0;
@@ -2608,7 +2540,6 @@ body {
   }
 }
 
-/* Responsive - Desktop */
 @media (min-width: 1024px) {
   .lab-section__title {
     font-size: 2.5rem;
@@ -2629,7 +2560,6 @@ body {
    TEMPLATE CV ATS PAGE - FORMAT ARTICLE
    =========================== */
 
-/* Hero section verte pour la page template CV ATS uniquement */
 .page-template-cv-ats .main-content__container>.hero-section {
   background-color: var(--teal-light);
   margin-left: calc(-1rem - (50vw - 700px));
@@ -2668,11 +2598,41 @@ body {
   color: var(--white);
 }
 
-/* Conteneur principal de l'article */
 .article-content {
   background-color: var(--bg-white);
   width: 100%;
   padding: 4rem 0;
+}
+
+.page-legal .article-content {
+  background-color: var(--teal-light);
+}
+
+.page-legal .article-section__text {
+  color: var(--white);
+}
+
+.page-legal .article-section__text p {
+  color: var(--white);
+}
+
+.page-legal .article-section__text strong {
+  color: var(--white);
+}
+
+.page-legal .legal-section__title {
+  color: var(--white);
+  text-decoration-color: var(--white);
+}
+
+.page-legal .legal-link {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: var(--white);
+}
+
+.page-legal .legal-link:hover {
+  opacity: 0.8;
 }
 
 .article-content__container {
@@ -2681,7 +2641,6 @@ body {
   padding: 0 2rem;
 }
 
-/* Sections de l'article */
 .article-section {
   margin-bottom: 4rem;
 }
@@ -2690,7 +2649,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Titres de l'article */
 .article-section__title {
   font-family: var(--font-sans);
   font-size: 2rem;
@@ -2701,7 +2659,6 @@ body {
   text-align: center;
 }
 
-/* Texte de l'article */
 .article-section__text {
   font-family: var(--font-sans);
   font-size: 1.125rem;
@@ -2723,7 +2680,6 @@ body {
   color: var(--text-black);
 }
 
-/* Listes dans l'article */
 .article-section__text .content-list {
   list-style: disc;
   margin: 1.5rem 0 1.5rem 2rem;
@@ -2741,7 +2697,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Responsive - Tablette */
 @media (max-width: 1024px) {
   .article-content {
     padding: 3rem 0;
@@ -2766,7 +2721,6 @@ body {
   }
 }
 
-/* Responsive - Mobile */
 @media (max-width: 768px) {
   .article-content {
     padding: 2rem 0;
@@ -2795,7 +2749,6 @@ body {
   }
 }
 
-/* Listes à puces dans le contenu */
 .content-list {
   list-style: disc;
   margin-left: 2rem;
@@ -2808,7 +2761,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Styles responsive pour les grilles de contact et candidature */
 .contact-grid,
 .candidature-grid {
   display: grid;

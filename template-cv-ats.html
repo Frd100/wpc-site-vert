@@ -28,12 +28,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./public/icons/apple-touch-icon.png">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="css/wpc-design.css">
 </head>
 
 <body class="page-template-cv-ats">
-    <!-- NAVIGATION PRINCIPALE -->
+    
     <nav class="main-navigation">
         <div class="main-navigation__container">
             <button class="main-navigation__toggle" id="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
@@ -99,10 +98,10 @@
     </nav>
 
 
-    <!-- CONTENU PRINCIPAL -->
+    
     <main class="main-content">
         <div class="main-content__container">
-            <!-- HERO SECTION -->
+            
             <section class="hero-section">
                 <h1 class="hero-section__title">Template CV ATS</h1>
                 <div class="hero-section__description">
@@ -111,7 +110,6 @@
             </section>
         </div>
 
-        <!-- CONTENU ARTICLE -->
         <article class="article-content">
             <div class="article-content__container">
             <section class="article-section">
@@ -187,7 +185,6 @@
         </article>
     </main>
 
-    <!-- SECTION TÉLÉCHARGEMENT -->
     <section class="cta-section">
         <div class="main-content__container">
             <h2 class="cta-section__title">Téléchargez notre template CV ATS</h2>
@@ -201,11 +198,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    
     <footer class="footer" role="contentinfo">
         <div class="footer__container">
             <div class="footer__content">
-                <!-- Section Logo et Contact -->
+                
                 <div class="footer__section footer__section--brand">
                     <div class="footer__logo">
                         <span>West Paris</span>
@@ -236,7 +233,7 @@
                     </div>
                 </div>
 
-                <!-- Section Navigation -->
+                
                 <nav class="footer__section footer__section--nav" aria-label="Navigation du site">
                     <h2 class="footer__heading">Navigation</h2>
                     <ul class="footer__nav-list">
@@ -247,7 +244,7 @@
                     </ul>
                 </nav>
 
-                <!-- Section Légal -->
+                
                 <nav class="footer__section footer__section--legal" aria-label="Informations légales">
                     <h2 class="footer__heading">Légal</h2>
                     <ul class="footer__nav-list">
@@ -258,7 +255,7 @@
                 </nav>
             </div>
 
-            <!-- Footer Bottom -->
+            
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 West Paris Consulting, association étudiante de l'Université Paris
                     Nanterre. Tous droits réservés.</p>
@@ -266,8 +263,68 @@
         </div>
     </footer>
 
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/common-template.js"></script>
+</body>
+
+</html>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="footer__section">
+                <div class="footer__logo">
+                    <span>West Paris</span>
+                    <span>Consulting</span>
+                </div>
+                <p>200 Avenue de la République<br>92000 Nanterre</p>
+                <p><a href="mailto:contact@westparisconsulting.fr">contact@westparisconsulting.fr</a></p>
+                <div class="footer__social">
+                    <a href="https://www.linkedin.com/company/westparisconsulting/" target="_blank"
+                        rel="noopener noreferrer" class="footer__social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 382 382" fill="currentColor">
+                            <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+                              C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+                              H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+                              c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+                              s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+                              c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+                              c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+                              c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+                              L341.91,330.654L341.91,330.654z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer__section">
+                <h4>Navigation</h4>
+                <a href="equipe.html">Notre équipe</a>
+                <a href="wpc-lab.html">WPC Lab</a>
+                <a href="contact.html">Contact</a>
+                <a href="nous-rejoindre.html">Nous rejoindre</a>
+            </div>
+
+            <div class="footer__section">
+                <h4>Légal</h4>
+                <a href="mentions-legales.html">Mentions légales</a>
+                <a href="confidentialite.html">Politique de Confidentialité</a>
+                <a href="exercer-mes-droits.html">Exercer mes droits</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>© 2025 West Paris Consulting, association étudiante de l'Université Paris Nanterre. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/animations.js"></script>

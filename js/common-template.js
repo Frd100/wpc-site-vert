@@ -1,6 +1,4 @@
-// Script commun pour toutes les pages
 (function() {
-    // Gestion des cookies
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAccept = document.getElementById('cookie-accept');
     const cookieReject = document.getElementById('cookie-reject');
@@ -26,7 +24,6 @@
 
     cookieClose?.addEventListener('click', hideBanner);
 
-    // Menu mobile
     const mobileToggle = document.getElementById('mobile-menu-toggle');
     const desktopMenu = document.getElementById('desktop-menu');
 

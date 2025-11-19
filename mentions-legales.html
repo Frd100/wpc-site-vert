@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="css/wpc-design.css">
 </head>
 
-<body>
-  <!-- NAVIGATION PRINCIPALE -->
+<body class="page-legal">
+  
   <nav class="main-navigation">
     <div class="main-navigation__container">
       <button class="main-navigation__toggle" id="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
@@ -87,20 +87,22 @@
   </nav>
 
 
-  <!-- CONTENU PRINCIPAL -->
+  
   <main class="main-content">
     <div class="main-content__container">
-      <!-- HERO SECTION -->
+      
       <section class="hero-section">
         <h1 class="hero-section__title">Mentions Légales</h1>
         <div class="hero-section__description">
           <p>Informations légales et mentions obligatoires concernant West Paris Consulting.</p>
         </div>
       </section>
+    </div>
 
-      <!-- CONTENU LÉGAL -->
-      <section class="content-section">
-        <div class="content-section__text">
+    <article class="article-content">
+      <div class="article-content__container">
+        <section class="article-section">
+          <div class="article-section__text">
           <div class="legal-section">
             <h3 class="legal-section__title">Nom de l'association</h3>
             <p>West Paris Consulting</p>
@@ -131,16 +133,17 @@
             <h3 class="legal-section__title">Mise à jour</h3>
             <p><strong>Dernière mise à jour :</strong> novembre 2025</p>
           </div>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+      </div>
+    </article>
   </main>
 
-      <!-- FOOTER -->
+      
     <footer class="footer" role="contentinfo">
         <div class="footer__container">
             <div class="footer__content">
-                <!-- Section Logo et Contact -->
+                
                 <div class="footer__section footer__section--brand">
                     <div class="footer__logo">
                         <span>West Paris</span>
@@ -170,7 +173,7 @@
                     </div>
                 </div>
 
-                <!-- Section Navigation -->
+                
                 <nav class="footer__section footer__section--nav" aria-label="Navigation du site">
                     <h2 class="footer__heading">Navigation</h2>
                     <ul class="footer__nav-list">
@@ -181,7 +184,7 @@
                     </ul>
                 </nav>
 
-                <!-- Section Légal -->
+                
                 <nav class="footer__section footer__section--legal" aria-label="Informations légales">
                     <h2 class="footer__heading">Légal</h2>
                     <ul class="footer__nav-list">
@@ -192,14 +195,18 @@
                 </nav>
             </div>
 
-            <!-- Footer Bottom -->
+            
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 West Paris Consulting, association étudiante de l'Université Paris Nanterre. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
-  <!-- Scripts -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/animations.js"></script>
   <script src="js/common-template.js"></script>
 </body>
 

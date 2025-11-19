@@ -39,7 +39,6 @@ function getGSAP() {
 function smoothScroll(target) {
   const element = typeof target === 'string' ? document.querySelector(target) : target;
   if (element) {
-    // Utiliser Lenis si disponible, sinon fallback sur scrollIntoView
     if (window.lenis) {
       window.lenis.scrollTo(element, {
         offset: 0,

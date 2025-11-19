@@ -71,7 +71,7 @@
 </head>
 
 <body>
-    <!-- NAVIGATION PRINCIPALE -->
+
     <nav class="main-navigation">
         <div class="main-navigation__container">
             <button class="main-navigation__toggle" id="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
@@ -137,15 +137,14 @@
     </nav>
 
 
-    <!-- CONTENU PRINCIPAL -->
+
     <main class="main-content">
-        <!-- HERO SECTION -->
+
         <section class="hero-section hero-section--home">
             <video class="hero-section__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
                 <source src="./public/videos/videodesktop.webm" type="video/webm; codecs=vp9"
                     media="(min-width: 1024px)">
                 <source src="./public/videos/video.webm" type="video/webm; codecs=vp9">
-                <!-- Fallback : message pour les navigateurs qui ne supportent pas la vidéo -->
                 Votre navigateur ne supporte pas la lecture de vidéos.
             </video>
             <div class="main-content__container">
@@ -159,7 +158,6 @@
         </section>
         <div class="main-content__container">
 
-            <!-- QUI SOMMES-NOUS -->
             <section class="content-section content-section--green">
                 <h2 class="content-section__title content-section__title--centered content-section__title--large">Qui
                     sommes-nous ?</h2>
@@ -179,7 +177,6 @@
 
         </div>
 
-        <!-- DOMAINES D'INTERVENTION -->
         <section class="domaines-section">
             <div class="domaines-section__container">
                 <div class="domaines-section__intro">
@@ -188,7 +185,6 @@
                         avec des solutions adaptées à vos besoins.</p>
                 </div>
                 <div class="domaines-section__grid">
-                    <!-- Domaine 1 -->
                     <article class="domaine-item">
                         <div class="domaine-item__image">
                             <img src="./public/images/strategy.png" alt="Stratégie et communication" />
@@ -201,7 +197,6 @@
                         </div>
                     </article>
 
-                    <!-- Domaine 2 -->
                     <article class="domaine-item">
                         <div class="domaine-item__image">
                             <img src="./public/images/law.png" alt="Conseil et veille juridique" />
@@ -214,7 +209,6 @@
                         </div>
                     </article>
 
-                    <!-- Domaine 3 -->
                     <article class="domaine-item">
                         <div class="domaine-item__image">
                             <img src="./public/images/digital.png" alt="Digital & Optimisation" />
@@ -232,7 +226,6 @@
 
         <div class="main-content__container">
 
-            <!-- PROCESSUS -->
             <section class="content-section">
                 <h2 class="content-section__title">Nos processus</h2>
                 <div class="processus-timeline">
@@ -269,7 +262,6 @@
         </div>
     </main>
 
-    <!-- SECTION CTA VERTE -->
     <section class="cta-section">
         <div class="main-content__container">
             <h2 class="cta-section__title">Prêt à démarrer votre projet ?</h2>
@@ -283,11 +275,10 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+
     <footer class="footer" role="contentinfo">
         <div class="footer__container">
             <div class="footer__content">
-                <!-- Section Logo et Contact -->
                 <div class="footer__section footer__section--brand">
                     <div class="footer__logo">
                         <span>West Paris</span>
@@ -318,7 +309,6 @@
                     </div>
                 </div>
 
-                <!-- Section Navigation -->
                 <nav class="footer__section footer__section--nav" aria-label="Navigation du site">
                     <h2 class="footer__heading">Navigation</h2>
                     <ul class="footer__nav-list">
@@ -329,7 +319,6 @@
                     </ul>
                 </nav>
 
-                <!-- Section Légal -->
                 <nav class="footer__section footer__section--legal" aria-label="Informations légales">
                     <h2 class="footer__heading">Légal</h2>
                     <ul class="footer__nav-list">
@@ -340,7 +329,6 @@
                 </nav>
             </div>
 
-            <!-- Footer Bottom -->
             <div class="footer__bottom">
                 <p class="footer__copyright">© 2025 West Paris Consulting, association étudiante de l'Université Paris
                     Nanterre. Tous droits réservés.</p>
@@ -348,14 +336,12 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/common-template.js"></script>
     <script>
-        // Changer la source vidéo selon la taille d'écran (uniquement lors du vrai redimensionnement)
         (function () {
             const video = document.querySelector('.hero-section__video');
             if (!video) return;
