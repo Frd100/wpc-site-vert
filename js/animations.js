@@ -1,5 +1,6 @@
 /**
  * Animations simplifiées pour le site WPC
+ * Utilise GSAP avec ScrollTrigger (sans SplitText)
  * Compatible avec le design actuel (hero-section, content-section)
  */
 
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    const { gsap, SplitText, ScrollTrigger } = getGSAP();
+    const { gsap, ScrollTrigger } = getGSAP();
 
     if (!gsap || !ScrollTrigger) {
         return;
@@ -23,39 +24,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /**
-     * Animation du titre hero avec effet blur
+     * Animation du titre hero avec ScrollTrigger
      */
     function initHeroTitleAnimation() {
         const heroTitle = document.querySelector('.hero-section__title');
-        if (!heroTitle || !SplitText) return;
+        if (!heroTitle) return;
 
-        const split = new SplitText(heroTitle, { type: 'words' });
-        if (!split.words || split.words.length === 0) return;
-
-        const allWords = [];
-        allWords.push(...split.words);
-
-        gsap.set(split.words, {
-            filter: 'blur(20px)',
-            opacity: 0
-        });
-
-        const tl = gsap.timeline({
+        gsap.set(heroTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+        gsap.to(heroTitle, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: heroTitle,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+                once: true
+            },
             onComplete: () => {
-                allWords.forEach(word => {
-                    word.style.opacity = '1';
-                    word.style.filter = 'blur(0px)';
-                });
+                gsap.set(heroTitle, { willChange: 'auto' });
             }
-        });
-
-        split.words.forEach((word, wordIndex) => {
-            tl.to(word, {
-                filter: 'blur(0px)',
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power2.out'
-            }, wordIndex * 0.1);
         });
     }
 
@@ -90,24 +79,23 @@ document.addEventListener('DOMContentLoaded', async () => {
             const text = section.querySelector('.content-section__text');
 
             // Animation du titre (sauf pour la section verte)
-            if (title && SplitText && !isGreenSection) {
-                const split = new SplitText(title, { type: 'words' });
-                if (split.words && split.words.length > 0) {
-                    gsap.set(split.words, { opacity: 0, y: 40 });
-
-                    gsap.to(split.words, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.6,
-                        ease: 'power3.out',
-                        stagger: 0.05,
-                        scrollTrigger: {
-                            trigger: title,
-                            start: 'top 85%',
-                            toggleActions: 'play none none none'
-                        }
-                    });
-                }
+            if (title && !isGreenSection) {
+                gsap.set(title, { opacity: 0, y: 40, willChange: 'opacity, transform' });
+                gsap.to(title, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                        once: true
+                    },
+                    onComplete: () => {
+                        gsap.set(title, { willChange: 'auto' });
+                    }
+                });
             }
 
             // Animation du texte (exclure la section verte qui a sa propre animation)

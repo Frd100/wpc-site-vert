@@ -959,13 +959,24 @@ body {
 }
 
 /* Hero sections sur toutes les pages sauf accueil : titre en Cormorant Garamond et texte noir */
+.hero-section:not(.hero-section--home) {
+  padding: 3rem 0 2rem;
+}
+
 .hero-section:not(.hero-section--home) .hero-section__title {
   font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
   color: var(--text-black);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
 }
 
 .hero-section:not(.hero-section--home) .hero-section__description {
+  font-size: 1.25rem;
   color: var(--text-black);
+  margin-bottom: 0;
+  line-height: 1.7;
 }
 
 /* Sur desktop, les hero sections (sauf accueil) sont alignées à gauche */
@@ -1737,7 +1748,7 @@ body {
 
   .cta-section__button {
     width: 100%;
-    max-width: 300px;
+    max-width: 70%;
   }
 }
 
@@ -1974,7 +1985,18 @@ body {
   }
 
   .hero-section:not(.hero-section--home) {
-    padding: 2rem 0;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .hero-section:not(.hero-section--home) .hero-section__title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .hero-section:not(.hero-section--home) .hero-section__description {
+    font-size: 1.125rem;
+    text-align: center;
   }
 
   .hero-section__title {
@@ -2592,11 +2614,186 @@ body {
     font-size: 2.5rem;
     line-height: 1.7;
   }
+
+  .lab-project-card {
+    aspect-ratio: 1;
+    height: auto;
+  }
+
+  .lab-project-card__description {
+    font-size: 1.2rem;
+  }
 }
 
 /* ===========================
-   TEMPLATE CV ATS PAGE
+   TEMPLATE CV ATS PAGE - FORMAT ARTICLE
    =========================== */
+
+/* Hero section verte pour la page template CV ATS uniquement */
+.page-template-cv-ats .main-content__container>.hero-section {
+  background-color: var(--teal-light);
+  margin-left: calc(-1rem - (50vw - 700px));
+  margin-right: calc(-1rem - (50vw - 700px));
+  margin-top: calc(-2rem);
+  width: calc(100% + 2rem + (100vw - 1400px));
+  max-width: none;
+  padding: 6rem 0 3.5rem;
+  padding-left: max(calc(50vw - 700px + 1rem), 3rem);
+  padding-right: max(calc(50vw - 700px + 1rem), 1rem);
+}
+
+@media (max-width: 1441px) {
+  .page-template-cv-ats .main-content__container>.hero-section {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+    padding-left: 3rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-template-cv-ats .main-content__container>.hero-section {
+    padding: 3rem 0 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.page-template-cv-ats .hero-section .hero-section__title {
+  color: var(--white);
+}
+
+.page-template-cv-ats .hero-section .hero-section__description {
+  color: var(--white);
+}
+
+/* Conteneur principal de l'article */
+.article-content {
+  background-color: var(--bg-white);
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.article-content__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Sections de l'article */
+.article-section {
+  margin-bottom: 4rem;
+}
+
+.article-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Titres de l'article */
+.article-section__title {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text-black);
+  margin: 0 0 2rem 0;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* Texte de l'article */
+.article-section__text {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: var(--text-black);
+  max-width: 100%;
+}
+
+.article-section__text p {
+  margin: 0 0 1.5rem 0;
+}
+
+.article-section__text p:last-child {
+  margin-bottom: 0;
+}
+
+.article-section__text strong {
+  font-weight: 600;
+  color: var(--text-black);
+}
+
+/* Listes dans l'article */
+.article-section__text .content-list {
+  list-style: disc;
+  margin: 1.5rem 0 1.5rem 2rem;
+  padding: 0;
+  line-height: 1.9;
+  color: var(--text-black);
+}
+
+.article-section__text .content-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
+}
+
+.article-section__text .content-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive - Tablette */
+@media (max-width: 1024px) {
+  .article-content {
+    padding: 3rem 0;
+  }
+
+  .article-content__container {
+    max-width: 700px;
+    padding: 0 1.5rem;
+  }
+
+  .article-section {
+    margin-bottom: 3rem;
+  }
+
+  .article-section__title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-section__text {
+    font-size: 1.0625rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .article-content {
+    padding: 2rem 0;
+  }
+
+  .article-content__container {
+    padding: 0 1rem;
+  }
+
+  .article-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .article-section__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-section__text {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .article-section__text .content-list {
+    margin-left: 1.5rem;
+  }
+}
 
 /* Listes à puces dans le contenu */
 .content-list {
