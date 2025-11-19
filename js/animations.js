@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
 
-            // Animation du texte
-            if (text) {
+            // Animation du texte (exclure la section verte qui a sa propre animation)
+            if (text && !isGreenSection) {
                 gsap.set(text, { opacity: 0, y: 30, willChange: 'opacity, transform' });
                 gsap.to(text, {
                     opacity: 1,
@@ -143,39 +143,47 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         if (!quiSommesNousContainer) return;
 
-        // Animation simultanée du titre et du texte avec le même trigger
-        const elementsToAnimate = [];
-
+        // Animation du titre
         if (quiSommesNousTitle) {
             gsap.set(quiSommesNousTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
-            elementsToAnimate.push(quiSommesNousTitle);
+            gsap.to(quiSommesNousTitle, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: quiSommesNousContainer,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                    once: true
+                },
+                delay: 0.1,
+                onComplete: () => {
+                    gsap.set(quiSommesNousTitle, { willChange: 'auto' });
+                }
+            });
         }
 
+        // Animation du texte qui se déclenche plus tard dans le scroll
         if (quiSommesNousText) {
             gsap.set(quiSommesNousText, { opacity: 0, y: 30, willChange: 'opacity, transform' });
-            elementsToAnimate.push(quiSommesNousText);
+            gsap.to(quiSommesNousText, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: quiSommesNousText,
+                    start: 'top 80%',
+                    toggleActions: 'play none none none',
+                    once: true
+                },
+                delay: 0.1,
+                onComplete: () => {
+                    gsap.set(quiSommesNousText, { willChange: 'auto' });
+                }
+            });
         }
-
-        if (elementsToAnimate.length === 0) return;
-
-        gsap.to(elementsToAnimate, {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: quiSommesNousContainer,
-                start: 'top 85%',
-                toggleActions: 'play none none none',
-                once: true
-            },
-            delay: 0.1,
-            onComplete: () => {
-                elementsToAnimate.forEach(el => {
-                    gsap.set(el, { willChange: 'auto' });
-                });
-            }
-        });
     }
 
     /**
