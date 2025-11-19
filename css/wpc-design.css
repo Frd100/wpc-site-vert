@@ -957,6 +957,19 @@ body {
   color: var(--text-black);
 }
 
+/* Sur desktop, les hero sections (sauf accueil) sont alignées à gauche */
+@media (min-width: 1024px) {
+  .hero-section:not(.hero-section--home) .hero-section__title {
+    text-align: left;
+  }
+
+  .hero-section:not(.hero-section--home) .hero-section__description {
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
 .hero-section__title-indent {
   display: inline-block;
   padding-left: 2rem;
@@ -2087,7 +2100,7 @@ body {
 /* Nom du membre */
 .team-card__name {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 600;
   color: var(--text-black);
   margin: 0 0 0.5rem 0;
@@ -2124,7 +2137,7 @@ body {
 /* Fonction/Rôle du membre */
 .team-card__role {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.125rem;
   color: var(--text-black);
   margin: 0;
   opacity: 0.8;
@@ -2150,11 +2163,11 @@ body {
   }
 
   .team-card__name {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .team-card__role {
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 }
 
@@ -2179,11 +2192,11 @@ body {
   }
 
   .team-card__name {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .team-card__role {
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 }
 
@@ -2334,7 +2347,7 @@ body {
   }
 
   .lab-project-card__description {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -2391,14 +2404,14 @@ body {
   }
 
   .lab-project-card__title {
-    font-size: 3.5rem;
+    font-size: 1.75rem;
     min-height: auto;
     margin-bottom: 0;
     flex-shrink: 0;
   }
 
   .lab-project-card__description {
-    font-size: 1.65rem;
+    font-size: 1.3rem;
     margin-top: auto;
     flex-shrink: 0;
   }
