@@ -339,28 +339,39 @@
     <script src="js/animations.js"></script>
     <script src="js/common-template.js"></script>
     <script>
-        // Changer la source vidéo selon la taille d'écran
+        // Changer la source vidéo selon la taille d'écran (uniquement lors du vrai redimensionnement)
         (function () {
             const video = document.querySelector('.hero-section__video');
             if (!video) return;
 
+            let currentWidth = window.innerWidth;
+            let isDesktop = currentWidth >= 1024;
+
             function updateVideoSource() {
-                if (window.innerWidth >= 1024) {
-                    video.src = './public/videos/videodesktop.webm';
-                } else {
-                    video.src = './public/videos/video.webm';
+                const newWidth = window.innerWidth;
+                const newIsDesktop = newWidth >= 1024;
+
+                // Ne mettre à jour que si le breakpoint change vraiment (pas juste un petit changement)
+                if (newIsDesktop !== isDesktop && Math.abs(newWidth - currentWidth) > 50) {
+                    if (newIsDesktop) {
+                        video.src = './public/videos/videodesktop.webm';
+                    } else {
+                        video.src = './public/videos/video.webm';
+                    }
+                    video.load();
+                    isDesktop = newIsDesktop;
+                    currentWidth = newWidth;
                 }
-                video.load();
             }
 
-            // Mettre à jour au chargement
+            // Mettre à jour au chargement initial uniquement
             updateVideoSource();
 
-            // Mettre à jour lors du redimensionnement
+            // Mettre à jour lors du redimensionnement avec un délai plus long
             let resizeTimeout;
             window.addEventListener('resize', function () {
                 clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(updateVideoSource, 250);
+                resizeTimeout = setTimeout(updateVideoSource, 500);
             });
         })();
     </script>
