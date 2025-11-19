@@ -1193,13 +1193,13 @@ body {
 .domaines-section__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 /* Carte domaine */
 .domaine-item {
   background-color: var(--white);
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1211,11 +1211,12 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Image container avec ratio 16:9 */
+/* Image container avec ratio 4:3 pour plus d'espace */
 .domaine-item__image {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
+  padding-top: 75%;
+  /* 4:3 aspect ratio */
   background-color: var(--white);
   overflow: hidden;
 }
@@ -1226,15 +1227,15 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  padding: 1.5rem;
+  object-fit: contain;
+  object-position: top center;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
 /* Contenu */
 .domaine-item__content {
-  padding: 1.5rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1245,8 +1246,9 @@ body {
   font-size: 1.375rem;
   font-weight: 600;
   color: var(--text-black);
-  margin: 0 0 1rem 0;
+  margin: 0;
   line-height: 1.3;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .domaine-item__description {
@@ -1255,6 +1257,7 @@ body {
   color: var(--text-black);
   line-height: 1.7;
   margin: 0;
+  padding: 0 1rem 1rem 1rem;
 }
 
 /* Tablette (768px et plus) */
@@ -1273,23 +1276,25 @@ body {
 
   .domaines-section__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .domaine-item__image img {
-    padding: 2rem;
+    padding: 1.25rem;
   }
 
   .domaine-item__content {
-    padding: 2rem;
+    padding: 0;
   }
 
   .domaine-item__title {
     font-size: 1.5rem;
+    padding: 0 1.25rem 1.25rem 1.25rem;
   }
 
   .domaine-item__description {
     font-size: 1rem;
+    padding: 0 1.25rem 1.25rem 1.25rem;
   }
 }
 
@@ -1313,17 +1318,17 @@ body {
 
   .domaines-section__grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
   }
 
   .domaine-item__image img {
-    padding: 2.5rem;
+    padding: 1.25rem;
   }
 
   .domaine-item__content {
-    padding: 2.5rem;
+    padding: 0;
   }
 
   .domaine-item__title {
