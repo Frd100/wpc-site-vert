@@ -134,24 +134,43 @@ document.addEventListener('DOMContentLoaded', async () => {
      * Animation du texte d'intro de la section domaines
      */
     function initDomainesIntroAnimation() {
+        const domainesIntroLabel = document.querySelector('.domaines-section__intro-label');
         const domainesIntro = document.querySelector('.domaines-section__intro-text');
-        if (!domainesIntro) return;
+        const domainesIntroContainer = document.querySelector('.domaines-section__intro');
 
-        gsap.set(domainesIntro, { opacity: 0, y: 30, willChange: 'opacity, transform' });
-        gsap.to(domainesIntro, {
+        if (!domainesIntroContainer) return;
+
+        // Animation simultanée du label et du texte avec le même trigger
+        const elementsToAnimate = [];
+
+        if (domainesIntroLabel) {
+            gsap.set(domainesIntroLabel, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+            elementsToAnimate.push(domainesIntroLabel);
+        }
+
+        if (domainesIntro) {
+            gsap.set(domainesIntro, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+            elementsToAnimate.push(domainesIntro);
+        }
+
+        if (elementsToAnimate.length === 0) return;
+
+        gsap.to(elementsToAnimate, {
             opacity: 1,
             y: 0,
             duration: 0.4,
             ease: 'power2.out',
             scrollTrigger: {
-                trigger: domainesIntro,
+                trigger: domainesIntroContainer,
                 start: 'top 85%',
                 toggleActions: 'play none none none',
                 once: true
             },
             delay: 0.1,
             onComplete: () => {
-                gsap.set(domainesIntro, { willChange: 'auto' });
+                elementsToAnimate.forEach(el => {
+                    gsap.set(el, { willChange: 'auto' });
+                });
             }
         });
     }

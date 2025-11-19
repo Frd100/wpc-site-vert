@@ -940,7 +940,7 @@ body {
 }
 
 .content-section__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 2.5rem;
   font-weight: 400;
   color: var(--text-black);
@@ -955,10 +955,12 @@ body {
 }
 
 .content-section__title--large {
-  font-size: 3.5rem;
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 400;
   margin-top: 0;
   margin-bottom: 3rem;
-  letter-spacing: 0.01em;
+  line-height: 1.6;
 }
 
 /* Section "Qui sommes-nous" avec background vert */
@@ -1014,7 +1016,7 @@ body {
 .content-section__text--intro {
   text-align: center;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-white);
   max-width: 1400px;
   margin: 0 auto;
@@ -1033,14 +1035,14 @@ body {
 
 .content-section__text--intro p {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0;
 }
 
 .content-section--green .content-section__text--intro .text-highlight {
   color: var(--text-white);
   opacity: 0.9;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 /* Styles pour les pages légales */
@@ -1182,8 +1184,8 @@ body {
 
 .domaines-section__intro-text {
   font-family: var(--font-sans);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 400;
   color: var(--text-white);
   margin: 0;
   line-height: 1.6;
@@ -1271,7 +1273,12 @@ body {
   }
 
   .domaines-section__intro-text {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  .content-section__title--large {
+    font-size: 2rem;
   }
 
   .domaines-section__grid {
@@ -1312,7 +1319,13 @@ body {
   }
 
   .domaines-section__intro-text {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .content-section__title--large {
+    font-size: 2.5rem;
     line-height: 1.7;
   }
 
@@ -1854,13 +1867,48 @@ body {
     font-size: 1.125rem;
   }
 
+  .content-section--green {
+    padding: 3rem 1rem;
+  }
+
+  .content-section--green .content-section__text--intro {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .content-section__text--intro {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
   .content-section__text--intro p {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+  }
+
+  .content-section--green .content-section__text--intro p {
+    font-size: 1.5rem;
+  }
+
+  .domaines-section__intro-label {
+    font-size: 0.875rem;
   }
 
   /* Titres des sections plus petits en mobile - surcharge les règles spécifiques */
   .main-content__container>.content-section:first-of-type .content-section__title {
     font-size: 1.75rem;
+  }
+
+  .main-content__container>.content-section:first-of-type .content-section__title--large {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .content-section__title--large {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
   .content-section:has(.processus-timeline) .content-section__title {
