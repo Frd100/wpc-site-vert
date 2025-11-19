@@ -1718,8 +1718,8 @@ body {
    =========================== */
 
 .footer {
-  background-color: #202229;
-  color: #e0e0e0;
+  background-color: #ffffff;
+  color: #000000;
   padding: 3rem 1rem 2rem;
   margin-top: 0;
   width: 100%;
@@ -1735,7 +1735,7 @@ body {
   grid-template-columns: 1fr;
   gap: 2.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .footer__section--brand {
@@ -1748,7 +1748,7 @@ body {
   font-family: var(--font-serif);
   font-size: 1.75rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
   line-height: 1.2;
   display: flex;
   flex-direction: column;
@@ -1772,7 +1772,7 @@ body {
 
 .footer__address-item {
   font-size: 0.9375rem;
-  color: #e0e0e0;
+  color: #666666;
   line-height: 1.7;
   margin-bottom: 0.75rem;
 }
@@ -1793,12 +1793,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #e0e0e0;
+  color: #000000;
   transition: color 0.2s ease;
 }
 
 .footer__social-link:hover {
-  color: #ffffff;
+  color: var(--teal-light);
 }
 
 .footer__section--nav,
@@ -1812,7 +1812,7 @@ body {
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1829,19 +1829,16 @@ body {
 
 .footer__link {
   font-size: 0.9375rem;
-  color: #e0e0e0;
+  color: #666666;
   line-height: 1.6;
   text-decoration: none;
   display: inline-block;
   transition: color 0.2s ease;
   padding: 0.25rem 0;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
 }
 
 .footer__link:hover {
-  color: #ffffff;
+  color: var(--teal-light);
 }
 
 .footer__bottom {
@@ -1851,7 +1848,7 @@ body {
 
 .footer__copyright {
   font-size: 0.8125rem;
-  color: #999999;
+  color: #666666;
   line-height: 1.6;
   margin: 0;
 }
@@ -2123,8 +2120,6 @@ body {
 
   .footer__link {
     font-size: 0.875rem;
-    min-height: 40px;
-    justify-content: center;
   }
 
   .footer__copyright {
@@ -2176,7 +2171,6 @@ body {
 
   .footer__link {
     font-size: 0.9375rem;
-    min-height: auto;
     padding: 0.25rem 0;
   }
 }
