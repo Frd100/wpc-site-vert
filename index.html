@@ -142,8 +142,9 @@
         <!-- HERO SECTION -->
         <section class="hero-section hero-section--home">
             <video class="hero-section__video" autoplay muted loop playsinline>
-                <source src="./public/videos/videodesktop.mp4" type="video/mp4" media="(min-width: 1024px)">
-                <source src="./public/videos/video.mp4" type="video/mp4">
+                <source src="./public/videos/videodesktop.webm" type="video/webm; codecs=vp9"
+                    media="(min-width: 1024px)">
+                <source src="./public/videos/video.webm" type="video/webm; codecs=vp9">
             </video>
             <div class="main-content__container">
                 <h1 class="hero-section__title">Apprendre et agir<br><span
@@ -345,9 +346,9 @@
 
             function updateVideoSource() {
                 if (window.innerWidth >= 1024) {
-                    video.src = './public/videos/videodesktop.mp4';
+                    video.src = './public/videos/videodesktop.webm';
                 } else {
-                    video.src = './public/videos/video.mp4';
+                    video.src = './public/videos/video.webm';
                 }
                 video.load();
             }
