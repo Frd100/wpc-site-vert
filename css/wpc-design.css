@@ -2654,7 +2654,7 @@ body {
 
 @media (max-width: 768px) {
   .page-template-cv-ats .main-content__container>.hero-section {
-    padding: 3rem 0 2rem;
+    padding: 4rem 0 2.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
