@@ -141,6 +141,10 @@
     <main class="main-content">
         <!-- HERO SECTION -->
         <section class="hero-section hero-section--home">
+            <video class="hero-section__video" autoplay muted loop playsinline>
+                <source src="./public/videos/videodesktop.mp4" type="video/mp4" media="(min-width: 1024px)">
+                <source src="./public/videos/video.mp4" type="video/mp4">
+            </video>
             <div class="main-content__container">
                 <h1 class="hero-section__title">Apprendre et agir<br><span
                         class="hero-section__title-indent">ensemble</span></h1>
@@ -333,6 +337,32 @@
     <script src="js/utils.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/common-template.js"></script>
+    <script>
+        // Changer la source vidéo selon la taille d'écran
+        (function () {
+            const video = document.querySelector('.hero-section__video');
+            if (!video) return;
+
+            function updateVideoSource() {
+                if (window.innerWidth >= 1024) {
+                    video.src = './public/videos/videodesktop.mp4';
+                } else {
+                    video.src = './public/videos/video.mp4';
+                }
+                video.load();
+            }
+
+            // Mettre à jour au chargement
+            updateVideoSource();
+
+            // Mettre à jour lors du redimensionnement
+            let resizeTimeout;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(updateVideoSource, 250);
+            });
+        })();
+    </script>
 </body>
 
 </html>

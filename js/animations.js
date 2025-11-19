@@ -83,11 +83,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const contentSections = document.querySelectorAll('.content-section');
 
         contentSections.forEach((section, index) => {
+            // Exclure la section "Qui sommes-nous ?" (content-section--green) de l'animation SplitText
+            const isGreenSection = section.classList.contains('content-section--green');
+
             const title = section.querySelector('.content-section__title');
             const text = section.querySelector('.content-section__text');
 
-            // Animation du titre
-            if (title && SplitText) {
+            // Animation du titre (sauf pour la section verte)
+            if (title && SplitText && !isGreenSection) {
                 const split = new SplitText(title, { type: 'words' });
                 if (split.words && split.words.length > 0) {
                     gsap.set(split.words, { opacity: 0, y: 40 });
@@ -125,6 +128,51 @@ document.addEventListener('DOMContentLoaded', async () => {
                     onComplete: () => {
                         gsap.set(text, { willChange: 'auto' });
                     }
+                });
+            }
+        });
+    }
+
+    /**
+     * Animation du titre "Qui sommes-nous ?"
+     */
+    function initQuiSommesNousAnimation() {
+        const quiSommesNousTitle = document.querySelector('.content-section--green .content-section__title--large');
+        const quiSommesNousText = document.querySelector('.content-section--green .content-section__text--intro');
+        const quiSommesNousContainer = document.querySelector('.content-section--green');
+
+        if (!quiSommesNousContainer) return;
+
+        // Animation simultanée du titre et du texte avec le même trigger
+        const elementsToAnimate = [];
+
+        if (quiSommesNousTitle) {
+            gsap.set(quiSommesNousTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+            elementsToAnimate.push(quiSommesNousTitle);
+        }
+
+        if (quiSommesNousText) {
+            gsap.set(quiSommesNousText, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+            elementsToAnimate.push(quiSommesNousText);
+        }
+
+        if (elementsToAnimate.length === 0) return;
+
+        gsap.to(elementsToAnimate, {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: quiSommesNousContainer,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+                once: true
+            },
+            delay: 0.1,
+            onComplete: () => {
+                elementsToAnimate.forEach(el => {
+                    gsap.set(el, { willChange: 'auto' });
                 });
             }
         });
@@ -207,6 +255,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initHeroTitleAnimation();
     initHeroDescriptionAnimation();
     initContentSectionsAnimation();
+    initQuiSommesNousAnimation();
     initDomainesIntroAnimation();
     initDomainesItemsAnimation();
 });

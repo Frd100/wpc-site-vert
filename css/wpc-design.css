@@ -563,6 +563,7 @@ body {
   margin-left: calc(-1rem);
   margin-right: calc(-1rem);
   margin-top: calc(-2rem);
+  /* Remonter pour supprimer l'espace avec la hero section */
   margin-bottom: calc(-2rem);
   width: calc(100% + 2rem);
   max-width: none;
@@ -589,27 +590,80 @@ body {
 }
 
 .hero-section--home {
-  min-height: 600px;
-  display: flex;
-  align-items: center;
   width: 100%;
   position: relative;
-  background-image: url('../public/images/bannière.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Sur mobile : vidéo verticale 9:16 (1080x1920) */
+@media (max-width: 1023px) {
+  .hero-section--home {
+    padding-top: 150%;
+    /* Ratio réduit pour crop la vidéo et permettre à la section suivante de remonter */
+  }
+}
+
+/* Sur desktop : vidéo horizontale 16:9 (3840x2160) */
+@media (min-width: 1024px) {
+  .hero-section--home {
+    padding-top: 56.25%;
+    /* Ratio 16:9 exact (9/16 = 0.5625) */
+  }
+}
+
+.hero-section__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Sur mobile, s'assurer que la vidéo verticale remplit correctement */
+@media (max-width: 1023px) {
+  .hero-section__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Sur desktop, la vidéo desktop est déjà horizontale (16:9) donc pas de rotation nécessaire */
+@media (min-width: 1024px) {
+  .hero-section__video {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none;
+    object-fit: cover;
+  }
 }
 
 .hero-section--home .main-content__container {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
   max-width: 1400px;
-  margin: 0;
-  margin-left: 0;
+  margin: 0 auto;
   padding: 4rem 1rem;
   width: 100%;
   padding-left: var(--hero-container-padding-left);
   padding-right: var(--hero-container-padding-right);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* ============================================
@@ -883,13 +937,14 @@ body {
 }
 
 .hero-section__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 4.5rem;
   font-weight: 700;
-  color: var(--text-black);
+  color: var(--text-white);
   line-height: 1.2;
   margin-bottom: 2rem;
   letter-spacing: 0.01em;
+  text-align: center;
 }
 
 .hero-section__title-indent {
@@ -899,10 +954,11 @@ body {
 
 .hero-section__description {
   font-size: 1.375rem;
-  color: var(--text-black);
+  color: var(--text-white);
   line-height: 1.8;
   max-width: 800px;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .hero-section__button {
@@ -916,11 +972,27 @@ body {
   border-radius: 0;
   transition: background-color 0.2s, transform 0.2s;
   margin-top: 1rem;
+  width: auto;
+  max-width: none;
+  flex-shrink: 0;
 }
 
 .hero-section__button:hover {
   background-color: var(--teal-dark);
   transform: translateY(-2px);
+}
+
+/* Bouton blanc sur desktop dans la hero section */
+@media (min-width: 1024px) {
+  .hero-section--home .hero-section__button {
+    background-color: var(--white);
+    color: var(--text-black);
+  }
+
+  .hero-section--home .hero-section__button:hover {
+    background-color: var(--white);
+    opacity: 0.9;
+  }
 }
 
 /* Sections */
@@ -978,6 +1050,7 @@ body {
   border-bottom: none;
   overflow: hidden;
 }
+
 
 .content-section--green::before {
   content: '';
@@ -1801,18 +1874,20 @@ body {
     background-color: var(--white);
     background-image: none;
     align-items: flex-start;
-    padding-top: 1rem;
-    min-height: 50vh;
+    /* padding-top géré par la règle principale pour le ratio vidéo */
+    min-height: auto;
   }
 
   .hero-section--home .main-content__container {
-    padding-top: 1rem;
+    padding-top: 0;
     padding-bottom: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    margin-top: -10rem;
+    /* Remonter encore un peu le contenu sur mobile */
   }
 
   .hero-section:not(.hero-section--home) {
@@ -1870,6 +1945,7 @@ body {
   .content-section--green {
     padding: 3rem 1rem;
   }
+
 
   .content-section--green .content-section__text--intro {
     font-size: 1.5rem;
@@ -1933,10 +2009,25 @@ body {
   .hero-section__button {
     padding: 1rem 2rem;
     font-size: 1rem;
+    background-color: var(--white);
+    color: var(--text-black);
+  }
+
+  .hero-section__button:hover {
+    background-color: var(--white);
+    opacity: 0.9;
   }
 
   .footer__top {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Réduire la hauteur de la section "Qui sommes-nous ?" sur desktop */
+@media (min-width: 1025px) {
+  .content-section--green {
+    padding: 2.5rem 0;
+    /* Réduire le padding vertical sur desktop */
   }
 }
 
