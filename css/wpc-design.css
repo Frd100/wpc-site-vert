@@ -943,8 +943,12 @@ body {
   color: var(--text-white);
   line-height: 1.2;
   margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
   letter-spacing: 0.01em;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Hero sections sur toutes les pages sauf accueil : titre en Cormorant Garamond et texte noir */
