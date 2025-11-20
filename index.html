@@ -141,7 +141,15 @@
     <main class="main-content">
 
         <section class="hero-section hero-section--home">
-            <video class="hero-section__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+            <video class="hero-section__video hero-section__video--1" autoplay muted loop playsinline preload="metadata"
+                aria-hidden="true">
+                <source src="./public/videos/videodesktop.webm" type="video/webm; codecs=vp9"
+                    media="(min-width: 1024px)">
+                <source src="./public/videos/video.webm" type="video/webm; codecs=vp9">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            <video class="hero-section__video hero-section__video--2" autoplay muted loop playsinline preload="metadata"
+                aria-hidden="true">
                 <source src="./public/videos/videodesktop.webm" type="video/webm; codecs=vp9"
                     media="(min-width: 1024px)">
                 <source src="./public/videos/video.webm" type="video/webm; codecs=vp9">
@@ -370,37 +378,54 @@
     <script src="js/common-template.js"></script>
     <script>
         (function () {
-            const video = document.querySelector('.hero-section__video');
-            if (!video) return;
+            const video1 = document.querySelector('.hero-section__video--1');
+            const video2 = document.querySelector('.hero-section__video--2');
+            if (!video1 || !video2) return;
 
-            let currentWidth = window.innerWidth;
-            let isDesktop = currentWidth >= 1024;
+            let isVideo1Active = true;
 
-            function updateVideoSource() {
-                const newWidth = window.innerWidth;
-                const newIsDesktop = newWidth >= 1024;
-
-                // Ne mettre à jour que si le breakpoint change vraiment (pas juste un petit changement)
-                if (newIsDesktop !== isDesktop && Math.abs(newWidth - currentWidth) > 50) {
-                    if (newIsDesktop) {
-                        video.src = './public/videos/videodesktop.webm';
-                    } else {
-                        video.src = './public/videos/video.webm';
-                    }
-                    video.load();
-                    isDesktop = newIsDesktop;
-                    currentWidth = newWidth;
-                }
+            function updateVideoSource(video) {
+                const isDesktop = window.innerWidth >= 1024;
+                video.src = isDesktop ? './public/videos/videodesktop.webm' : './public/videos/video.webm';
+                video.load();
             }
 
-            // Mettre à jour au chargement initial uniquement
-            updateVideoSource();
+            updateVideoSource(video1);
+            updateVideoSource(video2);
 
-            // Mettre à jour lors du redimensionnement avec un délai plus long
+            // S'assurer que video2 démarre en pause et invisible
+            video2.pause();
+            video2.style.opacity = '0';
+
+            // Mettre à jour lors du redimensionnement
             let resizeTimeout;
             window.addEventListener('resize', function () {
                 clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(updateVideoSource, 500);
+                resizeTimeout = setTimeout(function () {
+                    updateVideoSource(video1);
+                    updateVideoSource(video2);
+                }, 500);
+            });
+
+            // Fade simple entre les deux vidéos
+            video1.addEventListener('timeupdate', function () {
+                if (video1.duration > 0 && video1.currentTime >= video1.duration - 0.8 && isVideo1Active) {
+                    video1.style.opacity = '0';
+                    video2.currentTime = 0;
+                    video2.play();
+                    video2.style.opacity = '1';
+                    isVideo1Active = false;
+                }
+            });
+
+            video2.addEventListener('timeupdate', function () {
+                if (video2.duration > 0 && video2.currentTime >= video2.duration - 0.8 && !isVideo1Active) {
+                    video2.style.opacity = '0';
+                    video1.currentTime = 0;
+                    video1.play();
+                    video1.style.opacity = '1';
+                    isVideo1Active = true;
+                }
             });
         })();
     </script>

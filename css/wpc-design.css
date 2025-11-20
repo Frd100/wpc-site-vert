@@ -608,6 +608,13 @@ body {
   background-color: #1a1a1a;
   will-change: auto;
   pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hero-section__video--2 {
+  opacity: 0;
+  z-index: 1;
 }
 
 @media (max-width: 1023px) {
