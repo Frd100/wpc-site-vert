@@ -23,10 +23,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /**
-     * Animation du titre hero avec ScrollTrigger
+     * Animation du titre hero avec ScrollTrigger (uniquement sur la page index)
      */
     function initHeroTitleAnimation() {
-        const heroTitle = document.querySelector('.hero-section__title');
+        const heroSection = document.querySelector('.hero-section--home');
+        if (!heroSection) return; // Ne pas animer si ce n'est pas la page index
+
+        const heroTitle = heroSection.querySelector('.hero-section__title');
         if (!heroTitle) return;
 
         gsap.set(heroTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
@@ -102,7 +105,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const title = section.querySelector('.content-section__title');
             const text = section.querySelector('.content-section__text');
-            if (title && !isGreenSection) {
+            
+            // Exclure l'animation du titre "Nos processus"
+            const isProcessusTitle = title && title.textContent.trim() === 'Nos processus';
+            
+            if (title && !isGreenSection && !isProcessusTitle) {
                 gsap.set(title, { opacity: 0, y: 40, willChange: 'opacity, transform' });
                 gsap.to(title, {
                     opacity: 1,
@@ -266,10 +273,66 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    /**
+     * Animation de la section chiffres
+     */
+    function initStatsSectionAnimation() {
+        const statsSection = document.querySelector('.stats-section');
+        if (!statsSection) return;
+
+        const statsTitle = document.querySelector('.stats-section__title');
+        const statItems = document.querySelectorAll('.stat-item');
+
+        // Animation du titre (même style que les autres sections)
+        if (statsTitle) {
+            gsap.set(statsTitle, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+            gsap.to(statsTitle, {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: statsSection,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                    once: true
+                },
+                delay: 0.1,
+                onComplete: () => {
+                    gsap.set(statsTitle, { willChange: 'auto' });
+                }
+            });
+        }
+
+        // Animation des items (même style que les domaines)
+        if (statItems && statItems.length > 0) {
+            statItems.forEach((item) => {
+                gsap.set(item, { opacity: 0, y: 30, willChange: 'opacity, transform' });
+                gsap.to(item, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.4,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                        once: true
+                    },
+                    delay: 0.1,
+                    onComplete: () => {
+                        gsap.set(item, { willChange: 'auto' });
+                    }
+                });
+            });
+        }
+    }
+
     initHeroTitleAnimation();
     initHeroDescriptionAnimation();
     initContentSectionsAnimation();
     initQuiSommesNousAnimation();
+    initStatsSectionAnimation();
     initDomainesIntroAnimation();
     initDomainesItemsAnimation();
 });

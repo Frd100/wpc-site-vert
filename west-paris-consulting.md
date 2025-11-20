@@ -2,7 +2,7 @@
 
 ## Présentation
 
-West Paris Consulting (WPC) est une association étudiante de l'Université Paris Nanterre qui accompagne entreprises et organisations dans leurs projets de transformation et d'innovation. Fondée en 2024, l'association se distingue par son engagement à mettre les compétences académiques au service de projets concrets et professionnels.
+West Paris Consulting (WPC) est une association étudiante de l'Université Paris Nanterre qui accompagne entreprises et organisations dans leurs projets de transformation et d'innovation. Fondée en 2025, l'association se distingue par son engagement à mettre les compétences académiques au service de projets concrets et professionnels.
 
 Basée à l'Université Paris Nanterre, à proximité du quartier d'affaires de La Défense, West Paris Consulting bénéficie d'une position stratégique qui lui permet d'accompagner les entreprises et organisations avec une connaissance approfondie du territoire francilien.
 
@@ -19,6 +19,7 @@ West Paris Consulting intervient dans trois domaines principaux, offrant un acco
 ### Stratégie et communication
 
 L'association conçoit des stratégies de communication et développe des outils de croissance pour ses clients. Ses services incluent :
+
 - Études de marché
 - Création de portefeuille clients
 - Plans de communication efficaces
@@ -26,6 +27,7 @@ L'association conçoit des stratégies de communication et développe des outils
 ### Conseil et veille juridique
 
 West Paris Consulting sécurise les projets de ses clients grâce à un accompagnement juridique complet :
+
 - Rédaction de documents
 - Accompagnement dans les démarches administratives
 - Veille réglementaire
@@ -33,6 +35,7 @@ West Paris Consulting sécurise les projets de ses clients grâce à un accompag
 ### Digital & Optimisation
 
 L'association accélère la transformation digitale de ses clients à travers :
+
 - Audit de présence en ligne
 - Conception de sites web
 - Optimisation d'outils collaboratifs
@@ -71,6 +74,7 @@ WPC Lab est l'espace d'expérimentation et de création de West Paris Consulting
 Le premier projet développé par WPC Lab est un template CV optimisé pour les systèmes ATS (Applicant Tracking System). Ce template gratuit répond à un besoin réel des étudiants et jeunes diplômés qui doivent faire face aux logiciels de recrutement utilisés par la majorité des entreprises.
 
 **Caractéristiques du template :**
+
 - Compatibilité optimisée avec les principaux ATS utilisés en France (Workday, iCIMS, SAP SuccessFactors, SmartRecruiters, Taleo, Bullhorn, Lever, Greenhouse, BambooHR, et solutions françaises comme Flatchr, Recruitee, Talentsoft)
 - Format adapté (1 page pour jeunes diplômés, 1.5-2 pages pour profils expérimentés)
 - Structure claire facilitant l'extraction automatique des informations
@@ -91,6 +95,7 @@ L'association offre aux étudiants l'opportunité de développer leurs compéten
 ### Contact et localisation
 
 West Paris Consulting est basée à :
+
 - **Adresse** : Université Paris Nanterre, 200 Avenue de la République, 92000 Nanterre, France
 - **Email** : contact@westparisconsulting.fr
 - **LinkedIn** : [West Paris Consulting](https://www.linkedin.com/company/westparisconsulting/)
@@ -108,4 +113,3 @@ L'association s'inscrit dans une dynamique de transformation et d'innovation, ac
 *West Paris Consulting - Association étudiante de l'Université Paris Nanterre*
 
 *© 2025 West Paris Consulting. Tous droits réservés.*
-

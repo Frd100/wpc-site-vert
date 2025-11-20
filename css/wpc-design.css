@@ -1001,6 +1001,8 @@ body {
   .hero-section--home .hero-section__button {
     background-color: var(--white);
     color: var(--text-black);
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
   }
 
   .hero-section--home .hero-section__button:hover {
@@ -1229,11 +1231,122 @@ body {
 }
 
 /* ============================================
+   SECTION CHIFFRES / STATISTIQUES
+   ============================================ */
+
+.stats-section {
+  background-color: var(--teal-light);
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.stats-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  color: var(--white);
+}
+
+.stats-section__title {
+  font-family: var(--font-sans);
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--white);
+  margin: 0 0 3rem 0;
+  padding: 0 1rem;
+  letter-spacing: 0.01em;
+}
+
+.stat-item__number {
+  font-family: var(--font-sans);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+.stat-item__label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--white);
+  opacity: 0.95;
+}
+
+@media (max-width: 767px) {
+  .stats-section__title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .stats-section__grid .stat-item:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .stats-section__title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stats-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+
+  .stat-item__number {
+    font-size: 5rem;
+  }
+
+  .stat-item__label {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-section {
+    padding: 4rem 0;
+  }
+
+  .stats-section__title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stats-section__grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    padding: 0 max(calc(50vw - 700px + 1rem), 2rem);
+  }
+
+  .stat-item__number {
+    font-size: 6rem;
+  }
+
+  .stat-item__label {
+    font-size: 1.25rem;
+  }
+}
+
+/* ============================================
    SECTION DOMAINES D'INTERVENTION - Mobile First
    ============================================ */
 
 .domaines-section {
-  background-color: var(--teal-light);
+  background-color: var(--teal-dark);
   width: 100%;
   padding: 3rem 1.5rem;
 }
