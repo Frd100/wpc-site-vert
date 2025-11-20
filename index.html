@@ -141,14 +141,14 @@
     <main class="main-content">
 
         <section class="hero-section hero-section--home">
-            <video class="hero-section__video hero-section__video--1" autoplay muted loop playsinline preload="metadata"
+            <video class="hero-section__video hero-section__video--1" autoplay muted loop playsinline preload="auto"
                 aria-hidden="true">
                 <source src="./public/videos/videodesktop.webm" type="video/webm; codecs=vp9"
                     media="(min-width: 1024px)">
                 <source src="./public/videos/video.webm" type="video/webm; codecs=vp9">
                 Votre navigateur ne supporte pas la lecture de vidéos.
             </video>
-            <video class="hero-section__video hero-section__video--2" autoplay muted loop playsinline preload="metadata"
+            <video class="hero-section__video hero-section__video--2" muted loop playsinline preload="none"
                 aria-hidden="true">
                 <source src="./public/videos/videodesktop.webm" type="video/webm; codecs=vp9"
                     media="(min-width: 1024px)">
@@ -384,27 +384,51 @@
 
             let isVideo1Active = true;
 
+            // Ne changer la source que si nécessaire (redimensionnement)
             function updateVideoSource(video) {
                 const isDesktop = window.innerWidth >= 1024;
-                video.src = isDesktop ? './public/videos/videodesktop.webm' : './public/videos/video.webm';
-                video.load();
+                const newSrc = isDesktop ? './public/videos/videodesktop.webm' : './public/videos/video.webm';
+                if (video.src && !video.src.includes(newSrc.split('/').pop())) {
+                    video.src = newSrc;
+                    video.load();
+                }
             }
 
-            updateVideoSource(video1);
-            updateVideoSource(video2);
+            // S'assurer que les vidéos démarrent correctement
+            video1.addEventListener('loadeddata', function () {
+                video1.play().catch(function () { });
+            });
+
+            // Forcer le démarrage immédiat si déjà chargé
+            if (video1.readyState >= 2) {
+                video1.play().catch(function () { });
+            }
 
             // S'assurer que video2 démarre en pause et invisible
             video2.pause();
             video2.style.opacity = '0';
 
-            // Mettre à jour lors du redimensionnement
+            // Précharger video2 en arrière-plan mais ne pas la jouer
+            video2.preload = 'none'; // Ne pas charger video2 immédiatement pour accélérer video1
+
+            // Mettre à jour les sources uniquement lors du redimensionnement (pas au chargement initial)
             let resizeTimeout;
+            let currentWidth = window.innerWidth;
+            let isDesktop = currentWidth >= 1024;
+
             window.addEventListener('resize', function () {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(function () {
-                    updateVideoSource(video1);
-                    updateVideoSource(video2);
-                }, 500);
+                const newWidth = window.innerWidth;
+                const newIsDesktop = newWidth >= 1024;
+
+                if (newIsDesktop !== isDesktop && Math.abs(newWidth - currentWidth) > 50) {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(function () {
+                        updateVideoSource(video1);
+                        updateVideoSource(video2);
+                        isDesktop = newIsDesktop;
+                        currentWidth = newWidth;
+                    }, 500);
+                }
             });
 
             // Fade simple entre les deux vidéos
