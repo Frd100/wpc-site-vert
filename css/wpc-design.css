@@ -2439,7 +2439,7 @@ body {
 }
 
 /* ===========================
-   WPC LAB - Lab Description & Projects
+   WPC INSIGHT - Resources & Tools
    =========================== */
 
 .lab-section {
@@ -2486,6 +2486,19 @@ body {
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
+}
+
+.lab-section__intro {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-white);
+  text-align: center;
+  margin: 0 auto 2.5rem auto;
+  max-width: 800px;
+  padding: 0 2rem;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .lab-projects-grid {
@@ -2565,6 +2578,12 @@ body {
     font-size: 1.5rem;
   }
 
+  .lab-section__intro {
+    font-size: 1rem;
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+
   .lab-projects-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -2610,6 +2629,12 @@ body {
 
   .lab-section__text p {
     font-size: 1.5rem;
+  }
+
+  .lab-section__intro {
+    font-size: 0.9375rem;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .lab-projects-grid {
