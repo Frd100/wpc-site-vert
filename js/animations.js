@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: quiSommesNousContainer,
-                    start: 'top 85%',
+                    start: 'top 70%',
                     toggleActions: 'play none none none',
                     once: true
                 },
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: quiSommesNousText,
-                    start: 'top 80%',
+                    start: 'top 65%',
                     toggleActions: 'play none none none',
                     once: true
                 },
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: domainesIntroContainer,
-                start: 'top 85%',
+                start: 'top 70%',
                 toggleActions: 'play none none none',
                 once: true
             },
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: item,
-                    start: 'top 85%',
+                    start: 'top 65%',
                     toggleActions: 'play none none none',
                     once: true
                 },
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: statsSection,
-                    start: 'top 85%',
+                    start: 'top 70%',
                     toggleActions: 'play none none none',
                     once: true
                 },
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: item,
-                        start: 'top 85%',
+                        start: 'top 65%',
                         toggleActions: 'play none none none',
                         once: true
                     },
