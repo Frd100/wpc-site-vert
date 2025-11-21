@@ -1288,11 +1288,6 @@ body {
     font-size: 2rem;
     margin-bottom: 2.5rem;
   }
-
-  .stats-section__grid .stat-item:last-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
 }
 
 @media (min-width: 768px) {
@@ -1302,7 +1297,7 @@ body {
   }
 
   .stats-section__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 0 2rem;
   }
@@ -1327,7 +1322,7 @@ body {
   }
 
   .stats-section__grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     padding: 0 max(calc(50vw - 700px + 1rem), 2rem);
   }
