@@ -112,7 +112,7 @@ Le site est construit avec une architecture HTML5 sémantique, organisée en pag
 
 - **Page d'accueil** (`index.html`) : Présentation de l'association, domaines d'expertise, chiffres clés, processus
 - **Notre équipe** (`equipe.html`) : Présentation des membres de l'équipe dirigeante
-- **WPC Insight** (`wpc-lab.html`) : Présentation des ressources, outils et insights
+- **WPC Insight** (`wpc-insight.html`) : Présentation des ressources, outils et insights
 - **Contact** (`contact.html`) : Formulaire de contact et informations
 - **Nous rejoindre** (`nous-rejoindre.html`) : Processus de recrutement et candidature
 - **Template CV ATS** (`template-cv-ats.html`) : Page dédiée au téléchargement du template CV
