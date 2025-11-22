@@ -105,10 +105,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const title = section.querySelector('.content-section__title');
             const text = section.querySelector('.content-section__text');
-            
+
             // Exclure l'animation du titre "Nos processus"
             const isProcessusTitle = title && title.textContent.trim() === 'Nos processus';
-            
+
             if (title && !isGreenSection && !isProcessusTitle) {
                 gsap.set(title, { opacity: 0, y: 40, willChange: 'opacity, transform' });
                 gsap.to(title, {
